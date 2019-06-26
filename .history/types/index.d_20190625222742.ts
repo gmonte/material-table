@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { IconProps } from '@material-ui/core/Icon';
 import { IconButtonProps } from '@material-ui/core/IconButton';
-import { TextFieldProps } from '@material-ui/core/TextField';
-import { ToolbarProps } from '@material-ui/core/Toolbar';
-import { TableBodyProps } from '@material-ui/core/TableBody';
 import { string } from 'prop-types';
 
 export interface MaterialTableProps {
@@ -71,11 +68,10 @@ export interface Action {
   isFreeAction?: boolean;
   tooltip?: string;
   onClick: (event: any, data: any) => void;
-  iconButtonProps?: IconButtonProps;
   iconProps?: IconProps;
   iconButtonProps?: IconButtonProps;
   fab?: boolean;
-  title?: string | React.ReactElement<any>;
+  title?: string;
   hidden?: boolean;
 }
 
@@ -216,16 +212,13 @@ export interface Options {
   search?: boolean;
   searchFieldAlignment?: 'left' | 'right';
   searchFieldStyle?: React.CSSProperties;
-  searchFieldProps?: searchFieldProps;
+  searchFieldProps?: object;
   selection?: boolean;
   selectionProps?: any | ((data: any) => any);
   sorting?: boolean;
   toolbar?: boolean;
-  toolbarProps?: ToolbarProps;
   toolbarButtonAlignment?: 'left' | 'right';
   detailPanelColumnAlignment?: 'left' | 'right';
-  tableBodyProps: TableBodyProps,
-  notShowEmptyRows: boolean
 }
 
 export interface Localization {
