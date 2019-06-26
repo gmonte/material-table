@@ -256,11 +256,19 @@ export class MTableToolbar extends React.Component {
             this.props.selectedRows &&
             this.props.selectedRows.length > 0
         })}
+<<<<<<< HEAD
         {...this.props.toolbarProps}
         style={{
           zIndex: 60,
           ...(this.props.toolbarProps.styles || {})
         }}
+=======
+        { ...this.props.toolbarProps }
+        style={ {
+          zIndex: 60,
+          ...(this.props.toolbarProps.styles || {})
+        } }
+>>>>>>> added options.toolbarProps
       >
         {title && (
           <div className={classes.title}>
