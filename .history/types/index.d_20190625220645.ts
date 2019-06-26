@@ -1,12 +1,6 @@
 import * as React from 'react';
 import { IconProps } from '@material-ui/core/Icon';
 import { IconButtonProps } from '@material-ui/core/IconButton';
-<<<<<<< HEAD
-import { TextFieldProps } from '@material-ui/core/TextField';
-import { ToolbarProps } from '@material-ui/core/Toolbar';
-import { TableBodyProps } from '@material-ui/core/TableBody';
-=======
->>>>>>> added options.searchFieldProps and actions.iconButtonProps
 import { string } from 'prop-types';
 
 export interface MaterialTableProps {
@@ -76,9 +70,6 @@ export interface Action {
   onClick: (event: any, data: any) => void;
   iconButtonProps?: IconButtonProps;
   iconProps?: IconProps;
-  iconButtonProps?: IconButtonProps;
-  fab?: boolean;
-  title?: string | React.ReactElement<any>;
   hidden?: boolean;
 }
 
@@ -219,20 +210,13 @@ export interface Options {
   search?: boolean;
   searchFieldAlignment?: 'left' | 'right';
   searchFieldStyle?: React.CSSProperties;
-<<<<<<< HEAD
-  searchFieldProps?: searchFieldProps;
-=======
   searchFieldProps?: object;
->>>>>>> added options.searchFieldProps and actions.iconButtonProps
   selection?: boolean;
   selectionProps?: any | ((data: any) => any);
   sorting?: boolean;
   toolbar?: boolean;
-  toolbarProps?: ToolbarProps;
   toolbarButtonAlignment?: 'left' | 'right';
   detailPanelColumnAlignment?: 'left' | 'right';
-  tableBodyProps: TableBodyProps,
-  notShowEmptyRows: boolean
 }
 
 export interface Localization {

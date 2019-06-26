@@ -81,7 +81,6 @@ export class MTableToolbar extends React.Component {
           onChange={event => this.props.onSearchChanged(event.target.value)}
           placeholder={localization.searchPlaceholder}
           color="inherit"
-          {...this.props.searchFieldProps}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -104,11 +103,7 @@ export class MTableToolbar extends React.Component {
               </InputAdornment>
             ),
             style: this.props.searchFieldStyle,
-<<<<<<< HEAD
-            ...(this.props.searchFieldProps.InputProps || {})
-=======
             classes: this.props.searchFieldProps
->>>>>>> added options.searchFieldProps and actions.iconButtonProps
           }}
         />
       );
@@ -260,14 +255,6 @@ export class MTableToolbar extends React.Component {
             this.props.selectedRows &&
             this.props.selectedRows.length > 0
         })}
-<<<<<<< HEAD
-        { ...this.props.toolbarProps }
-        style={ {
-          zIndex: 60,
-          ...(this.props.toolbarProps.styles || {})
-        } }
-=======
->>>>>>> added options.searchFieldProps and actions.iconButtonProps
       >
         {title && (
           <div className={classes.title}>
@@ -302,10 +289,6 @@ MTableToolbar.defaultProps = {
   search: true,
   showTitle: true,
   showTextRowsSelected: true,
-<<<<<<< HEAD
-  toolbarProps: {},
-=======
->>>>>>> added options.searchFieldProps and actions.iconButtonProps
   toolbarButtonAlignment: "right",
   searchFieldAlignment: "right",
   searchText: "",
@@ -331,10 +314,6 @@ MTableToolbar.propTypes = {
   title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   showTitle: PropTypes.bool.isRequired,
   showTextRowsSelected: PropTypes.bool.isRequired,
-<<<<<<< HEAD
-  toolbarProps: PropTypes.object.isRequired,
-=======
->>>>>>> added options.searchFieldProps and actions.iconButtonProps
   toolbarButtonAlignment: PropTypes.string.isRequired,
   searchFieldAlignment: PropTypes.string.isRequired,
   renderData: PropTypes.array,

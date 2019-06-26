@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
-import * as React from "react";
-import PropTypes from "prop-types";
-import { Icon, IconButton, Fab, Tooltip } from "@material-ui/core";
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import { Icon, IconButton, Tooltip } from '@material-ui/core';
 /* eslint-enable no-unused-vars */
 
 class MTableAction extends React.Component {
   render() {
     let action = this.props.action;
-    if (typeof action === "function") {
+    if (typeof action === 'function') {
       action = action(this.props.data);
       if (!action) {
         return null;
@@ -25,32 +25,25 @@ class MTableAction extends React.Component {
       }
     };
 
-    const IconButtonComponent = action.fab ? Fab : IconButton;
-    const title = action.fab && action.title ? action.title : null;
-
     const button = (
       <span>
-        <IconButtonComponent
+        <IconButton
           size={this.props.size}
           color="inherit"
           disabled={action.disabled}
-<<<<<<< HEAD
-          onClick={event => handleOnClick(event)}
-          {...action.iconButtonProps || {}}
-=======
           onClick={(event) => handleOnClick(event)}
           { ...(action.iconButtonProps || {}) }
->>>>>>> added options.searchFieldProps and actions.iconButtonProps
         >
           {typeof action.icon === "string" ? (
-            <Icon {...action.iconProps} fontSize="small">
-              {action.icon}
-            </Icon>
+            <Icon {...action.iconProps} fontSize="small">{action.icon}</Icon>
           ) : (
-            <action.icon {...action.iconProps} disabled={action.disabled} />
-          )}
-          {title}
-        </IconButtonComponent>
+              <action.icon
+                {...action.iconProps}
+                disabled={action.disabled}
+              />
+            )
+          }
+        </IconButton>
       </span>
     );
 
@@ -69,10 +62,7 @@ MTableAction.defaultProps = {
 
 MTableAction.propTypes = {
   action: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
-  data: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.arrayOf(PropTypes.object)
-  ]),
+  data: PropTypes.oneOfType([PropTypes.object, PropTypes.arrayOf(PropTypes.object)]),
   size: PropTypes.string
 };
 

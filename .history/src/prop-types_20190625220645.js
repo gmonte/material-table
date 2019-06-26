@@ -21,11 +21,6 @@ export const propTypes = {
         onClick: PropTypes.func.isRequired,
         iconProps: PropTypes.object,
         iconButtonProps: PropTypes.object,
-<<<<<<< HEAD
-        fab: PropTypes.bool,
-        title: PropTypes.string,
-=======
->>>>>>> added options.searchFieldProps and actions.iconButtonProps
         disabled: PropTypes.bool,
         hidden: PropTypes.bool
       })
