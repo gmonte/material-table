@@ -200,12 +200,9 @@ class App extends Component {
                   options={{
                     selection: true,
                     filtering: true,
-<<<<<<< HEAD
                     toolbarProps: {
                       variant: "dense"
                     },
-=======
->>>>>>> added options.toolbarProps
                     searchFieldStyle: {
                       marginRight: 10
                     },

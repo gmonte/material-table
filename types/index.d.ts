@@ -221,11 +221,7 @@ export interface Options {
   selectionProps?: any | ((data: any) => any);
   sorting?: boolean;
   toolbar?: boolean;
-<<<<<<< HEAD
   toolbarProps?: ToolbarProps;
-=======
-  toolbarProps?: object;
->>>>>>> added options.toolbarProps
   toolbarButtonAlignment?: 'left' | 'right';
   detailPanelColumnAlignment?: 'left' | 'right';
   tableBodyProps: TableBodyProps,
