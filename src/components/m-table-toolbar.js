@@ -106,7 +106,6 @@ export class MTableToolbar extends React.Component {
             style: this.props.searchFieldStyle,
             ...(this.props.searchFieldProps.InputProps || {})
           }}
-          {...this.props.searchFieldProps}
         />
       );
     } else {
