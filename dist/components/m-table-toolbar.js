@@ -101,7 +101,8 @@ function (_React$Component) {
             return _this2.props.onSearchChanged(event.target.value);
           },
           placeholder: localization.searchPlaceholder,
-          color: "inherit",
+          color: "inherit"
+        }, this.props.searchFieldProps, {
           InputProps: (0, _objectSpread2["default"])({
             startAdornment: React.createElement(_core.InputAdornment, {
               position: "start"
@@ -124,7 +125,7 @@ function (_React$Component) {
             }))),
             style: this.props.searchFieldStyle
           }, this.props.searchFieldProps.InputProps || {})
-        }, this.props.searchFieldProps));
+        }));
       } else {
         return null;
       }
