@@ -81,7 +81,6 @@ export class MTableToolbar extends React.Component {
           onChange={event => this.props.onSearchChanged(event.target.value)}
           placeholder={localization.searchPlaceholder}
           color="inherit"
-          {...this.props.searchFieldProps}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -103,8 +102,7 @@ export class MTableToolbar extends React.Component {
                 </IconButton>
               </InputAdornment>
             ),
-            style: this.props.searchFieldStyle,
-            ...(this.props.searchFieldProps.InputProps || {})
+            style: this.props.searchFieldStyle
           }}
           {...this.props.searchFieldProps}
         />
@@ -257,11 +255,6 @@ export class MTableToolbar extends React.Component {
             this.props.selectedRows &&
             this.props.selectedRows.length > 0
         })}
-        {...this.props.toolbarProps}
-        style={{
-          zIndex: 60,
-          ...(this.props.toolbarProps.styles || {})
-        }}
       >
         {title && (
           <div className={classes.title}>
@@ -296,7 +289,6 @@ MTableToolbar.defaultProps = {
   search: true,
   showTitle: true,
   showTextRowsSelected: true,
-  toolbarProps: {},
   toolbarButtonAlignment: "right",
   searchFieldAlignment: "right",
   searchText: "",
@@ -322,7 +314,6 @@ MTableToolbar.propTypes = {
   title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   showTitle: PropTypes.bool.isRequired,
   showTextRowsSelected: PropTypes.bool.isRequired,
-  toolbarProps: PropTypes.object.isRequired,
   toolbarButtonAlignment: PropTypes.string.isRequired,
   searchFieldAlignment: PropTypes.string.isRequired,
   renderData: PropTypes.array,
