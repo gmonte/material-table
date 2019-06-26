@@ -228,9 +228,13 @@ function (_React$Component) {
       var classes = this.props.classes;
       var localization = (0, _objectSpread2["default"])({}, MTableToolbar.defaultProps.localization, this.props.localization);
       var title = this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 ? localization.nRowsSelected.replace("{0}", this.props.selectedRows.length) : this.props.showTitle ? this.props.title : null;
-      return React.createElement(_core.Toolbar, {
+      return React.createElement(_core.Toolbar, (0, _extends2["default"])({
         className: (0, _classnames["default"])(classes.root, (0, _defineProperty2["default"])({}, classes.highlight, this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0))
-      }, title && React.createElement("div", {
+      }, this.props.toolbarProps, {
+        style: (0, _objectSpread2["default"])({
+          zIndex: 60
+        }, this.props.toolbarProps.styles || {})
+      }), title && React.createElement("div", {
         className: classes.title
       }, React.createElement(_core.Typography, {
         variant: "h6"
@@ -261,6 +265,7 @@ MTableToolbar.defaultProps = {
   search: true,
   showTitle: true,
   showTextRowsSelected: true,
+  toolbarProps: {},
   toolbarButtonAlignment: "right",
   searchFieldAlignment: "right",
   searchText: "",
@@ -285,6 +290,7 @@ MTableToolbar.propTypes = {
   title: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].string]),
   showTitle: _propTypes["default"].bool.isRequired,
   showTextRowsSelected: _propTypes["default"].bool.isRequired,
+  toolbarProps: _propTypes["default"].object.isRequired,
   toolbarButtonAlignment: _propTypes["default"].string.isRequired,
   searchFieldAlignment: _propTypes["default"].string.isRequired,
   renderData: _propTypes["default"].array,
