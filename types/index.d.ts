@@ -224,6 +224,7 @@ export interface Options {
   selectionProps?: any | ((data: any) => any);
   sorting?: boolean;
   toolbar?: boolean;
+  toolbarProps?: object;
   toolbarButtonAlignment?: 'left' | 'right';
   detailPanelColumnAlignment?: 'left' | 'right';
 }

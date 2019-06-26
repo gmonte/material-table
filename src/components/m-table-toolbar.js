@@ -219,7 +219,11 @@ export class MTableToolbar extends React.Component {
     const localization = { ...MTableToolbar.defaultProps.localization, ...this.props.localization };
     const title = this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 ? localization.nRowsSelected.replace('{0}', this.props.selectedRows.length) : this.props.showTitle ? this.props.title : null;
     return (
-      <Toolbar className={classNames(classes.root, { [classes.highlight]: this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 })}>
+      <Toolbar
+        className={classNames(classes.root, { [classes.highlight]: this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 })}
+        { ...this.props.toolbarProps }
+        style={{zIndex: 60, ...(this.props.toolbarProps.styles || {})}}
+      >
         {title && <div className={classes.title}>
           <Typography variant="h6">{title}</Typography>
         </div>}
@@ -254,6 +258,8 @@ MTableToolbar.defaultProps = {
   toolbarButtonAlignment: 'right',
   searchFieldAlignment: 'right',
   searchText: '',
+  toolbarProps: {},
+  toolbarButtonAlignment: "right",
   selectedRows: [],
   title: "No Title!",
   searchFieldProps: {}
@@ -276,6 +282,7 @@ MTableToolbar.propTypes = {
   title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   showTitle: PropTypes.bool.isRequired,
   showTextRowsSelected: PropTypes.bool.isRequired,
+  toolbarProps: PropTypes.object.isRequired,
   toolbarButtonAlignment: PropTypes.string.isRequired,
   searchFieldAlignment: PropTypes.string.isRequired,
   renderData: PropTypes.array,

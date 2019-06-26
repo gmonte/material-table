@@ -160,12 +160,48 @@ class App extends Component {
                     selection: true,
                     columnsButton: true,
                     filtering: true,
+                    searchFieldStyle: {
+                      marginRight: 10
+                    },
                     searchFieldProps: {
-                      variant: "outlined"
+                      type: "search",
+                      InputProps: {
+                        endAdornment: null
+                      }
                     }
                   }}
                   onSearchChange={(e) => console.log("search changed: " + e)}
                   onColumnDragged={(oldPos, newPos) => console.log("Dropped column from " + oldPos + " to position " + newPos)}
+                  actions={[
+                    {
+                      icon: "add",
+                      tooltip: "add item",
+                      onClick: () => alert("added!"),
+                      isFreeAction: true,
+                      fab: true,
+                      iconButtonProps: {
+                        color: "primary",
+                        size: "small",
+                        style: {
+                          marginLeft: 5
+                        }
+                      }
+                    },
+                    {
+                      icon: "star",
+                      tooltip: "add item",
+                      onClick: () => alert("favorite!"),
+                      isFreeAction: true,
+                      fab: true,
+                      iconButtonProps: {
+                        color: "secondary",
+                        size: "small",
+                        style: {
+                          marginLeft: 5
+                        }
+                      }
+                    }
+                  ]}
                 />
               </Grid>
             </Grid>
