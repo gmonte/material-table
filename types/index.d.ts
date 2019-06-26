@@ -75,7 +75,7 @@ export interface Action<RowData extends object> {
   iconButtonProps?: IconButtonProps;
   iconProps?: IconProps;
   fab?: boolean;
-  title?: string;
+  title?: string | React.ReactElement<any>;
   hidden?: boolean;
 }
 
