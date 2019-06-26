@@ -3,82 +3,78 @@ import { IconProps } from '@material-ui/core/Icon';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 import { string } from 'prop-types';
 
-export interface MaterialTableProps<RowData extends object> {
-  actions?: (Action<RowData> | ((rowData: RowData) => Action<RowData>))[];
-  columns: Column<RowData>[];
+export interface MaterialTableProps {
+  actions?: (Action | ((rowData: any) => Action))[];
+  columns: Column[];
   components?: Components;
-  data: RowData[] | ((query: Query<RowData>) => Promise<QueryResult<RowData>>);
-  detailPanel?: ((rowData: RowData) => React.ReactNode) | (DetailPanel<RowData> | ((rowData: RowData) => DetailPanel<RowData>))[];
+  data: any[] | ((query: Query) => Promise<QueryResult>);
+  detailPanel?: ((rowData: any) => React.ReactNode) | (DetailPanel | ((rowData: any) => DetailPanel))[];
   editable?: {
-    isEditable?: (rowData: RowData) => boolean;
-    isDeletable?: (rowData: RowData) => boolean;
-    onRowAdd?: (newData: RowData) => Promise<void>;
-    onRowUpdate?: (newData: RowData, oldData?: RowData) => Promise<void>;
-    onRowDelete?: (oldData: RowData) => Promise<void>;
+    isEditable?: (rowData: any) => boolean;
+    isDeletable?: (rowData: any) => boolean;
+    onRowAdd?: (newData: any) => Promise<void>;
+    onRowUpdate?: (newData: any, oldData?: any) => Promise<void>;
+    onRowDelete?: (oldData: any) => Promise<void>;
   }
   icons?: Icons;
   isLoading?: boolean;
   title?: string | React.ReactElement<any>;
   options?: Options;
-  parentChildData?: (row: RowData, rows: RowData[]) => RowData[];
+  parentChildData?: (row: any, rows: any[]) => any;
   localization?: Localization;
   onChangeRowsPerPage?: (pageSize: number) => void;
   onChangePage?: (page: number) => void;
-  onChangeColumnHidden?: (column:Column<RowData>, hidden:boolean) => void;
-  onColumnDragged?: (sourceIndex: number, destinationIndex: number) => void;
   onOrderChange?: (orderBy: number, orderDirection: ("asc" | "desc")) => void;
-  onGroupRemoved?: (column:Column<RowData>, index:boolean) => void;
-  onRowClick?: (event?: React.MouseEvent, rowData?: RowData, toggleDetailPanel?: (panelIndex?: number) => void) => void;
-  onRowSelected?: (rowData: RowData) => void;
-  onSearchChange?: (searchText: string) => void;
-  onSelectionChange?: (data: RowData[], rowData?: RowData) => void;
+  onRowClick?: (event?: React.MouseEvent, rowData?: any, toggleDetailPanel?: (panelIndex?: number) => void) => void;
+  onRowSelected?: (rowData: any) => void;
+  onSelectionChange?: (data: any[], rowData?: any) => void;
   onTreeExpandChange?: (data: any, isExpanded: boolean) => void;
   style?: React.CSSProperties;
   tableRef?: any;
 }
 
-export interface Filter<RowData extends object> {
-  column: Column<RowData>;
+export interface Filter {
+  column: Column;
   operator: "=";
   value: any;
 }
 
-export interface Query<RowData extends object> {
-  filters: Filter<RowData>[];
+export interface Query {
+  filters: Filter[];
   page: number;
   pageSize: number;
   search: string;
-  orderBy: Column<RowData>;
+  orderBy: Column;
   orderDirection: "asc" | "desc";
 }
 
-export interface QueryResult<RowData extends object> {
-  data: RowData[];
+export interface QueryResult {
+  data: any[];
   page: number;
   totalCount: number;
 }
 
-export interface DetailPanel<RowData extends object> {
+export interface DetailPanel {
   disabled?: boolean;
   icon?: string | React.ReactElement<any>;
   openIcon?: string | React.ReactElement<any>;
   tooltip?: string;
-  render: (rowData: RowData) => string | React.ReactNode;
+  render: (rowData: any) => string | React.ReactNode;
 }
 
-export interface Action<RowData extends object> {
+export interface Action {
   disabled?: boolean;
   icon: string | (() => React.ReactElement<any>);
   isFreeAction?: boolean;
   tooltip?: string;
-  onClick: (event: any, data: RowData | RowData[]) => void;
+  onClick: (event: any, data: any) => void;
   iconButtonProps?: IconButtonProps;
   iconProps?: IconProps;
   hidden?: boolean;
 }
 
-export interface EditComponentProps<RowData extends object> {
-  rowData: RowData;
+export interface EditComponentProps {
+  rowData: any;
   value: any,
   onChange: (newValue: any) => void,
   columnDef: EditCellColumnDef,
@@ -95,31 +91,29 @@ export interface EditCellColumnDef {
   }
 }
 
-export interface Column<RowData extends object> {
-  cellStyle?: React.CSSProperties | ((data: RowData[], rowData: RowData) => React.CSSProperties);
+export interface Column {
+  cellStyle?: React.CSSProperties | ((data: any, rowData: any) => React.CSSProperties);
   currencySetting?: { locale?: string, currencyCode?: string, minimumFractionDigits?: number, maximumFractionDigits?: number };
-  customFilterAndSearch?: (filter: any, rowData: RowData, columnDef: Column<RowData>) => boolean;
-  customSort?: (data1: RowData, data2: RowData, type: (('row' | 'group'))) => number;
+  customFilterAndSearch?: (filter: any, rowData: any, columnDef: Column) => boolean;
+  customSort?: (data1: any, data2: any, type: (('row' | 'group'))) => number;
   defaultFilter?: any;
   defaultGroupOrder?: number;
   defaultGroupSort?: ('asc' | 'desc');
   defaultSort?: ('asc' | 'desc');
   disableClick?: boolean;
-  editComponent?: ((props: EditComponentProps<RowData>) => React.ReactElement<any>);
+  editComponent?: ((props: EditComponentProps) => React.ReactElement<any>);
   emptyValue?: string | React.ReactElement<any> | ((data: any) => React.ReactElement<any> | string);
   export?: boolean;
-  field?: keyof RowData;
+  field?: string;
   filtering?: boolean;
-  filterPlaceholder?: string;
   filterCellStyle?: React.CSSProperties;
   grouping?: boolean;
   headerStyle?: React.CSSProperties;
   hidden?: boolean;
-  initialEditValue?: any,
   lookup?: object;
-  editable?: ('always' | 'onUpdate' | 'onAdd' | 'never' | ((columnDef: Column<RowData>, rowData: RowData) => boolean));
+  editable?: ('always' | 'onUpdate' | 'onAdd' | 'never' | ((columnDef: Column, rowData: any) => boolean));
   removable?: boolean;
-  render?: (data: RowData, type: ('row' | 'group')) => any;
+  render?: (data: any, type: ('row' | 'group')) => any;
   searchable?: boolean;
   sorting?: boolean;
   title?: string | React.ReactElement<any>;
@@ -157,26 +151,26 @@ export const MTableGroupRow: () => React.ReactElement<any>;
 export const MTableHeader: () => React.ReactElement<any>;
 export const MTablePagination: () => React.ReactElement<any>;
 export const MTableToolbar: () => React.ReactElement<any>;
-export const MTable: () => React.ReactElement<any>;
+
 
 export interface Icons {
-  Add?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  Check?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  Clear?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  Delete?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  DetailPanel?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  Edit?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  Export?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  Filter?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  FirstPage?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  SortArrow?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  LastPage?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  NextPage?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  PreviousPage?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  ResetSearch?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  Search?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  ThirdStateCheck?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
-  ViewColumn?: React.ForwardRefExoticComponent<React.RefAttributes<SVGSVGElement>>;
+  Add?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  Check?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  Clear?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  Delete?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  DetailPanel?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  Edit?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  Export?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  Filter?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  FirstPage?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  SortArrow?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  LastPage?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  NextPage?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  PreviousPage?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  ResetSearch?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  Search?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  ThirdStateCheck?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
+  ViewColumn?: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
 }
 
 export interface Options {
@@ -188,7 +182,6 @@ export interface Options {
   debounceInterval?: number;
   detailPanelType?: ('single' | 'multiple');
   doubleHorizontalScroll?: boolean;
-  draggable?: boolean;
   emptyRowsWhenPaging?: boolean;
   exportAllData?: boolean;
   exportButton?: boolean;
@@ -208,7 +201,7 @@ export interface Options {
   pageSize?: number;
   pageSizeOptions?: number[];
   paginationType?: ('normal' | 'stepped');
-  rowStyle?: React.CSSProperties | ((data: any, index: number, level: number) => React.CSSProperties);
+  rowStyle?: React.CSSProperties | ((data: any, index: number) => React.CSSProperties);
   showEmptyDataSourceMessage?: boolean;
   showFirstLastPageButtons?: boolean;
   showSelectAllCheckbox?: boolean;
@@ -217,7 +210,7 @@ export interface Options {
   search?: boolean;
   searchFieldAlignment?: 'left' | 'right';
   searchFieldStyle?: React.CSSProperties;
-  searchFieldProps?: object;
+  searchFieldClasses?: object;
   selection?: boolean;
   selectionProps?: any | ((data: any) => any);
   sorting?: boolean;
@@ -270,4 +263,5 @@ export interface Localization {
   };
 }
 
-export default class MaterialTable<RowData extends object> extends React.Component<MaterialTableProps<RowData>> {}
+declare const MaterialTable: React.ComponentType<MaterialTableProps>;
+export default MaterialTable;

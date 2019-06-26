@@ -1,20 +1,23 @@
 /* eslint-disable no-unused-vars */
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import IconButton from '@material-ui/core/IconButton';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-import Toolbar from '@material-ui/core/Toolbar';
-import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
-import withStyles from '@material-ui/core/styles/withStyles';
-import { lighten } from '@material-ui/core/styles/colorManipulator';
-import classNames from 'classnames';
-import { CsvBuilder } from 'filefy';
-import PropTypes, { oneOf } from 'prop-types';
-import * as React from 'react';
+import {
+  Checkbox,
+  FormControlLabel,
+  Icon,
+  IconButton,
+  InputAdornment,
+  Menu,
+  MenuItem,
+  TextField,
+  Toolbar,
+  Tooltip,
+  Typography,
+  withStyles
+} from "@material-ui/core";
+import { lighten } from "@material-ui/core/styles/colorManipulator";
+import classNames from "classnames";
+import { CsvBuilder } from "filefy";
+import PropTypes, { oneOf } from "prop-types";
+import * as React from "react";
 /* eslint-enable no-unused-vars */
 
 export class MTableToolbar extends React.Component {
@@ -27,12 +30,14 @@ export class MTableToolbar extends React.Component {
   }
 
   defaultExportCsv = () => {
-    const columns = this.props.columns
-      .filter(columnDef => {
-        return !columnDef.hidden && columnDef.field && columnDef.export !== false;
-      })
-      .sort((a, b) => (a.tableData.columnOrder > b.tableData.columnOrder) ? 1 : -1);
-    const dataToExport = this.props.exportAllData ? this.props.data : this.props.renderData;
+    const columns = this.props.columns.filter(columnDef => {
+      return !columnDef.hidden && columnDef.field && columnDef.export !== false;
+    });
+
+    const dataToExport = this.props.exportAllData
+      ? this.props.data
+      : this.props.renderData;
+
     const data = dataToExport.map(rowData =>
       columns.map(columnDef => {
         return this.props.getFieldValue(rowData, columnDef);
@@ -139,20 +144,29 @@ export class MTableToolbar extends React.Component {
               >
                 {localization.addRemoveColumns}
               </MenuItem>
-              {
-                this.props.columns.map((col) => {
-                  return (
-                    <MenuItem key={col.tableData.id} disabled={col.removable === false}
-                      onClick={() => this.props.onColumnsChanged(col, !col.hidden)}
-                    >
-                      <FormControlLabel
-                        label={col.title}
-                        control={<Checkbox checked={!col.hidden} />}
-                      />
-                    </MenuItem>
-                  );
-                })
-              }
+              {this.props.columns.map((col, index) => {
+                return (
+                  <MenuItem
+                    key={col.tableData.id}
+                    disabled={col.removable === false}
+                  >
+                    <FormControlLabel
+                      label={col.title}
+                      control={
+                        <Checkbox
+                          checked={!col.hidden}
+                          onChange={(event, checked) => {
+                            this.props.onColumnsChanged(
+                              col.tableData.id,
+                              !checked
+                            );
+                          }}
+                        />
+                      }
+                    />
+                  </MenuItem>
+                );
+              })}
             </Menu>
           </span>
         )}
@@ -180,9 +194,12 @@ export class MTableToolbar extends React.Component {
             </Menu>
           </span>
         )}
-        <span>
-          <this.props.components.Actions actions={this.props.actions && this.props.actions.filter(a => a.isFreeAction)} components={this.props.components} />
-        </span>
+        <this.props.components.Actions
+          actions={
+            this.props.actions && this.props.actions.filter(a => a.isFreeAction)
+          }
+          components={this.props.components}
+        />
       </div>
     );
   }
@@ -215,15 +232,37 @@ export class MTableToolbar extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const localization = { ...MTableToolbar.defaultProps.localization, ...this.props.localization };
-    const title = this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 ? localization.nRowsSelected.replace('{0}', this.props.selectedRows.length) : this.props.showTitle ? this.props.title : null;
+    const localization = {
+      ...MTableToolbar.defaultProps.localization,
+      ...this.props.localization
+    };
+    const title =
+      this.props.showTextRowsSelected &&
+      this.props.selectedRows &&
+      this.props.selectedRows.length > 0
+        ? localization.nRowsSelected.replace(
+            "{0}",
+            this.props.selectedRows.length
+          )
+        : this.props.showTitle
+        ? this.props.title
+        : null;
     return (
-      <Toolbar className={classNames(classes.root, { [classes.highlight]: this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 })}>
-        {title && <div className={classes.title}>
-          <Typography variant="h6">{title}</Typography>
-        </div>}
-        {this.props.searchFieldAlignment === 'left' && this.renderSearch()}
-        {this.props.toolbarButtonAlignment === 'left' && this.renderActions()}
+      <Toolbar
+        className={classNames(classes.root, {
+          [classes.highlight]:
+            this.props.showTextRowsSelected &&
+            this.props.selectedRows &&
+            this.props.selectedRows.length > 0
+        })}
+      >
+        {title && (
+          <div className={classes.title}>
+            <Typography variant="h6">{title}</Typography>
+          </div>
+        )}
+        {this.props.searchFieldAlignment === "left" && this.renderSearch()}
+        {this.props.toolbarButtonAlignment === "left" && this.renderActions()}
         <div className={classes.spacer} />
         {this.props.searchFieldAlignment === "right" && this.renderSearch()}
         {this.props.toolbarButtonAlignment === "right" && this.renderActions()}
@@ -250,9 +289,9 @@ MTableToolbar.defaultProps = {
   search: true,
   showTitle: true,
   showTextRowsSelected: true,
-  toolbarButtonAlignment: 'right',
-  searchFieldAlignment: 'right',
-  searchText: '',
+  toolbarButtonAlignment: "right",
+  searchFieldAlignment: "right",
+  searchText: "",
   selectedRows: [],
   title: "No Title!",
   searchFieldProps: {}
