@@ -2,7 +2,8 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Icon from "@material-ui/core/Icon";
-import IconButton from "@material-ui/core/IconButton";
+import IconButtonComponent from "@material-ui/core/IconButton";
+import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
 /* eslint-enable no-unused-vars */
 
@@ -30,12 +31,17 @@ class MTableAction extends React.Component {
 
     const disabled = action.disabled || this.props.disabled;
 
+    const iconButtonProps = action.iconButtonProps || {};
+
     const handleOnClick = (event) => {
       if (action.onClick) {
         action.onClick(event, this.props.data);
         event.stopPropagation();
       }
     };
+
+    const IconButtonComponent = action.fab ? Fab : IconButtonComponent;
+    const title = action.fab && action.title;
 
     const icon =
       typeof action.icon === "string" ? (
@@ -47,14 +53,16 @@ class MTableAction extends React.Component {
       );
 
     const button = (
-      <IconButton
+      <IconButtonComponent
         size={this.props.size}
         color="inherit"
         disabled={disabled}
         onClick={handleOnClick}
+        {...iconButtonProps}
       >
         {icon}
-      </IconButton>
+        {title}
+      </IconButtonComponent>
     );
 
     if (action.tooltip) {

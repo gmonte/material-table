@@ -521,6 +521,18 @@ class App extends Component {
                         color: "primary",
                       };
                     },
+                    searchFieldStyle: {
+                      marginRight: 10
+                    },
+                    searchFieldProps: {
+                      type: "search",
+                      InputProps: {
+                        endAdornment: null
+                      }
+                    },
+                    toolbarProps: {
+                      variant: "dense"
+                    }
                   }}
                   editable={{
                     onBulkUpdate: (changedRows) =>
@@ -603,6 +615,64 @@ class App extends Component {
                   Remote Data Preview
                 </Typography>
               }
+              actions={[
+                {
+                  icon: "add",
+                  tooltip: "add item",
+                  onClick: () => alert("added!"),
+                  isFreeAction: true,
+                  fab: true,
+                  iconButtonProps: {
+                    color: "primary",
+                    size: "small",
+                    variant: "extended",
+                    style: {
+                      marginLeft: 5
+                    }
+                  },
+                  title: "Add",
+                  iconProps: {
+                    style: {
+                      marginRight: 8
+                    }
+                  }
+                },
+                {
+                  icon: "star",
+                  tooltip: "favorite",
+                  onClick: () => alert("favorite!"),
+                  isFreeAction: true,
+                  fab: true,
+                  iconButtonProps: {
+                    color: "secondary",
+                    size: "small",
+                    style: {
+                      marginLeft: 5
+                    }
+                  }
+                },
+                {
+                  icon: "remove_red_eye",
+                  tooltip: "visit item",
+                  onClick: () => alert("visited!"),
+                  fab: true,
+                  iconButtonProps: {
+                    color: "primary",
+                    size: "small",
+                    variant: "extended",
+                    style: {
+                      marginTop: 3,
+                      marginRight: 5
+                    }
+                  },
+                  title: "view",
+                  iconProps: {
+                    style: {
+                      marginRight: 8
+                    }
+                  }
+                }
+              ]}
               columns={[
                 {
                   title: "Avatar",
@@ -612,7 +682,7 @@ class App extends Component {
                       style={{ height: 36, borderRadius: "50%" }}
                       src={rowData.avatar}
                     />
-                  ),
+                  )
                 },
                 {
                   title: "Id",

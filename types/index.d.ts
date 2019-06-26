@@ -1,5 +1,9 @@
 import * as React from "react";
 import { IconProps } from "@material-ui/core/Icon";
+import { IconButtonProps } from "@material-ui/core/IconButton";
+import { TextFieldProps } from "@material-ui/core/TextField";
+import { ToolbarProps } from "@material-ui/core/Toolbar";
+import { TableBodyProps } from "@material-ui/core/TableBody";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import { string } from "prop-types";
 
@@ -115,6 +119,9 @@ export interface Action<RowData extends object> {
   onClick: (event: any, data: RowData | RowData[]) => void;
   iconProps?: IconProps;
   hidden?: boolean;
+  iconButtonProps?: IconButtonProps;
+  fab?: boolean;
+  title?: string | React.ReactElement<any>;
 }
 
 export interface EditComponentProps<RowData extends object> {
@@ -353,6 +360,10 @@ export interface Options<RowData extends object> {
   toolbarButtonAlignment?: "left" | "right";
   detailPanelColumnAlignment?: "left" | "right";
   cspNonce?: string;
+  notShowEmptyRows: boolean;
+  searchFieldProps?: TextFieldProps;
+  toolbarProps?: ToolbarProps;
+  tableBodyProps: TableBodyProps;
 }
 
 export interface Localization {

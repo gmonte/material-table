@@ -60,6 +60,8 @@ class MTableBody extends React.Component {
           </TableCell>
         </TableRow>
       );
+    } else if (this.props.options.notShowEmptyRows) {
+      return null;
     } else if (this.props.options.emptyRowsWhenPaging) {
       return (
         <React.Fragment>
@@ -195,7 +197,7 @@ class MTableBody extends React.Component {
     }
 
     return (
-      <TableBody>
+      <TableBody { ...(this.props.options?.tableBodyProps || {}) }>
         {this.props.options.filtering && (
           <this.props.components.FilterRow
             columns={this.props.columns.filter(
@@ -296,6 +298,7 @@ MTableBody.defaultProps = {
     filterRow: {},
     editRow: {},
   },
+  tableBodyProps: {},
 };
 
 MTableBody.propTypes = {
@@ -334,6 +337,7 @@ MTableBody.propTypes = {
   onCellEditFinished: PropTypes.func,
   bulkEditOpen: PropTypes.bool,
   onBulkEditRowChanged: PropTypes.func,
+  tableBodyProps: PropTypes.object
 };
 
 export default MTableBody;

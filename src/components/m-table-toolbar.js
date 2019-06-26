@@ -135,6 +135,7 @@ export class MTableToolbar extends React.Component {
           onChange={(event) => this.onSearchChange(event.target.value)}
           placeholder={localization.searchPlaceholder}
           variant={this.props.searchFieldVariant}
+          {...this.props.searchFieldProps}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -161,6 +162,7 @@ export class MTableToolbar extends React.Component {
             inputProps: {
               "aria-label": localization.searchAriaLabel,
             },
+            ...(this.props.searchFieldProps?.InputProps || {}),
           }}
         />
       );
@@ -354,6 +356,8 @@ export class MTableToolbar extends React.Component {
             this.props.selectedRows &&
             this.props.selectedRows.length > 0,
         })}
+        {...this.props.toolbarProps}
+        style={{ zIndex: 60, ...(this.props.toolbarProps?.styles || {}) }}
       >
         {title && this.renderToolbarTitle(title)}
         {this.props.searchFieldAlignment === "left" && this.renderSearch()}
@@ -388,12 +392,14 @@ MTableToolbar.defaultProps = {
   showTitle: true,
   searchText: "",
   showTextRowsSelected: true,
+  toolbarProps: {},
   toolbarButtonAlignment: "right",
   searchAutoFocus: false,
   searchFieldAlignment: "right",
   searchFieldVariant: "standard",
   selectedRows: [],
   title: "No Title!",
+  searchFieldProps: {},
 };
 
 MTableToolbar.propTypes = {
@@ -410,10 +416,12 @@ MTableToolbar.propTypes = {
   search: PropTypes.bool.isRequired,
   searchFieldStyle: PropTypes.object,
   searchFieldVariant: PropTypes.string,
+  searchFieldProps: PropTypes.object,
   selectedRows: PropTypes.array,
   title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   showTitle: PropTypes.bool.isRequired,
   showTextRowsSelected: PropTypes.bool.isRequired,
+  toolbarProps: PropTypes.object.isRequired,
   toolbarButtonAlignment: PropTypes.string.isRequired,
   searchFieldAlignment: PropTypes.string.isRequired,
   renderData: PropTypes.array,
@@ -450,6 +458,7 @@ export const styles = (theme) => ({
   },
   title: {
     overflow: "hidden",
+    flex: "0 0 auto",
   },
   searchField: {
     minWidth: 150,
