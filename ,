@@ -12,6 +12,8 @@ actions: PropTypes.arrayOf(
         onClick: PropTypes.func.isRequired,
         iconProps: PropTypes.object,
         iconButtonProps: PropTypes.object,
+        fab: PropTypes.bool,
+        title: PropTypes.string,
         disabled: PropTypes.bool,
         hidden: PropTypes.bool
       })

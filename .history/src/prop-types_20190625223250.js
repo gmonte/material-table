@@ -7,50 +7,78 @@ const StyledComponent = PropTypes.shape({
 });
 
 export const propTypes = {
-  actions: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.shape({
-    icon: PropTypes.oneOfType([PropTypes.element, PropTypes.func, PropTypes.string]).isRequired,
-    isFreeAction: PropTypes.bool,
-    tooltip: PropTypes.string,
-    onClick: PropTypes.func.isRequired,
-    iconProps: PropTypes.object, 
-    iconButtonProps: PropTypes.object,
-    fab: PropTypes.bool,
-    title: PropTypes.string,
-    disabled: PropTypes.bool,
-    hidden: PropTypes.bool,
-  })])),
-  columns: PropTypes.arrayOf(PropTypes.shape({
-    cellStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-    currencySetting: PropTypes.shape({
-      locale: PropTypes.string,
-      currencyCode: PropTypes.string,
-      minimumFractionDigits: PropTypes.number,
-      maximumFractionDigits: PropTypes.number
-    }),
-    customFilterAndSearch: PropTypes.func,
-    customSort: PropTypes.func,
-    defaultFilter: PropTypes.any,
-    defaultSort: PropTypes.oneOf(['asc', 'desc']),
-    editComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-    emptyValue: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.func]),
-    export: PropTypes.bool,
-    field: PropTypes.string,
-    filtering: PropTypes.bool,
-    filterCellStyle: PropTypes.object,
-    filterPlaceholder: PropTypes.string,
-    grouping: PropTypes.bool,
-    headerStyle: PropTypes.object,
-    hidden: PropTypes.bool,
-    initialEditValue: PropTypes.any,
-    lookup: PropTypes.object,
-    editable: PropTypes.oneOf(['always', 'onUpdate', 'onAdd', 'never', PropTypes.func]),
-    removable: PropTypes.bool,
-    render: PropTypes.func,
-    searchable: PropTypes.bool,
-    sorting: PropTypes.bool,
-    title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-    type: PropTypes.oneOf(['string', 'boolean', 'numeric', 'date', 'datetime', 'time', 'currency'])
-  })).isRequired,
+  actions: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape({
+        icon: PropTypes.oneOfType([
+          PropTypes.element,
+          PropTypes.func,
+          PropTypes.string
+        ]).isRequired,
+        isFreeAction: PropTypes.bool,
+        tooltip: PropTypes.string,
+        onClick: PropTypes.func.isRequired,
+        iconProps: PropTypes.object,
+        iconButtonProps: PropTypes.object,
+        fab: PropTypes.bool,
+        title: PropTypes.string,
+        disabled: PropTypes.bool,
+        hidden: PropTypes.bool
+      })
+    ])
+  ),
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      cellStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+      currencySetting: PropTypes.shape({
+        locale: PropTypes.string,
+        currencyCode: PropTypes.string,
+        minimumFractionDigits: PropTypes.number,
+        maximumFractionDigits: PropTypes.number
+      }),
+      customFilterAndSearch: PropTypes.func,
+      customSort: PropTypes.func,
+      defaultFilter: PropTypes.any,
+      defaultSort: PropTypes.oneOf(["asc", "desc"]),
+      editComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+      emptyValue: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.node,
+        PropTypes.func
+      ]),
+      export: PropTypes.bool,
+      field: PropTypes.string,
+      filtering: PropTypes.bool,
+      filterCellStyle: PropTypes.object,
+      filterPlaceholder: PropTypes.string,
+      grouping: PropTypes.bool,
+      headerStyle: PropTypes.object,
+      hidden: PropTypes.bool,
+      lookup: PropTypes.object,
+      editable: PropTypes.oneOf([
+        "always",
+        "onUpdate",
+        "onAdd",
+        "never",
+        PropTypes.func
+      ]),
+      removable: PropTypes.bool,
+      render: PropTypes.func,
+      searchable: PropTypes.bool,
+      sorting: PropTypes.bool,
+      title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+      type: PropTypes.oneOf([
+        "string",
+        "boolean",
+        "numeric",
+        "date",
+        "datetime",
+        "time",
+        "currency"
+      ])
+    })
+  ).isRequired,
   components: PropTypes.shape({
     Action: PropTypes.oneOfType([
       PropTypes.element,
@@ -299,13 +327,9 @@ export const propTypes = {
     body: PropTypes.object
   }),
   initialFormData: PropTypes.object,
-  onSearchChange: PropTypes.func,
-  onColumnDragged: PropTypes.func,
-  onGroupRemoved: PropTypes.func,
   onSelectionChange: PropTypes.func,
   onChangeRowsPerPage: PropTypes.func,
   onChangePage: PropTypes.func,
-  onChangeColumnHidden: PropTypes.func,
   onOrderChange: PropTypes.func,
   onRowClick: PropTypes.func,
   onTreeExpandChange: PropTypes.func,
