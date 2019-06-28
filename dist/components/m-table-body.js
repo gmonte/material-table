@@ -47,7 +47,7 @@ function (_React$Component) {
     value: function renderEmpty(emptyRowCount, renderData) {
       var _this = this;
 
-      var rowHeight = this.props.options.padding === 'default' ? 49 : 36;
+      var rowHeight = this.props.options.padding === "default" ? 49 : 36;
       var localization = (0, _objectSpread2["default"])({}, MTableBody.defaultProps.localization, this.props.localization);
 
       if (this.props.options.showEmptyDataSourceMessage && renderData.length === 0) {
@@ -71,29 +71,31 @@ function (_React$Component) {
           style: {
             height: rowHeight * (this.props.options.paging && this.props.options.emptyRowsWhenPaging ? this.props.pageSize : 1)
           },
-          key: 'empty-' + 0
+          key: "empty-" + 0
         }, React.createElement(_core.TableCell, {
           style: {
             paddingTop: 0,
             paddingBottom: 0,
-            textAlign: 'center'
+            textAlign: "center"
           },
           colSpan: this.props.columns.length + addColumn,
           key: "empty-"
         }, localization.emptyDataSourceMessage));
+      } else if (this.props.options.notShowEmptyRows) {
+        return null;
       } else if (this.props.options.emptyRowsWhenPaging) {
         return React.createElement(React.Fragment, null, (0, _toConsumableArray2["default"])(Array(emptyRowCount)).map(function (r, index) {
           return React.createElement(_core.TableRow, {
             style: {
               height: rowHeight
             },
-            key: 'empty-' + index
+            key: "empty-" + index
           });
         }), emptyRowCount > 0 && React.createElement(_core.TableRow, {
           style: {
             height: 1
           },
-          key: 'empty-last1'
+          key: "empty-last1"
         }));
       }
     }
@@ -157,7 +159,7 @@ function (_React$Component) {
       return renderData.map(function (groupData, index) {
         return React.createElement(_this3.props.components.GroupRow, {
           actions: _this3.props.actions,
-          key: groupData.value == null ? '' + index : groupData.value,
+          key: groupData.value == null ? "" + index : groupData.value,
           columns: _this3.props.columns,
           components: _this3.props.components,
           detailPanel: _this3.props.detailPanel,
@@ -260,7 +262,7 @@ MTableBody.defaultProps = {
   renderData: [],
   selection: false,
   localization: {
-    emptyDataSourceMessage: 'No records to display',
+    emptyDataSourceMessage: "No records to display",
     filterRow: {},
     editRow: {}
   },
