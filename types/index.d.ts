@@ -224,7 +224,8 @@ export interface Options {
   toolbarButtonAlignment?: 'left' | 'right';
   detailPanelColumnAlignment?: 'left' | 'right';
   tableBodyProps: TableBodyProps,
-  notShowEmptyRows: boolean
+  notShowEmptyRows: boolean,
+  detailPanelCondition: ((data: object) => boolean);
 }
 
 export interface Localization {
