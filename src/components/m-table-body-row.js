@@ -122,30 +122,30 @@ export default class MTableBodyRow extends React.Component {
       );
 
     if (typeof this.props.detailPanel == "function") {
-      let Button = null;
+      let Button = (
+        <IconButton
+          size={this.getElementSize()}
+          style={{
+            transition: "all ease 200ms",
+            ...this.rotateIconStyle(this.props.data.tableData.showDetailPanel)
+          }}
+          onClick={event => {
+            this.props.onToggleDetailPanel(
+              this.props.path,
+              this.props.detailPanel
+            );
+            event.stopPropagation();
+          }}
+        >
+          <this.props.icons.DetailPanel />
+        </IconButton>
+      );
 
       if (
         typeof this.props.options.detailPanelCondition === "function" &&
         !this.props.options.detailPanelCondition(this.props.data)
       ) {
-        Button = (
-          <IconButton
-            size={this.getElementSize()}
-            style={{
-              transition: "all ease 200ms",
-              ...this.rotateIconStyle(this.props.data.tableData.showDetailPanel)
-            }}
-            onClick={event => {
-              this.props.onToggleDetailPanel(
-                this.props.path,
-                this.props.detailPanel
-              );
-              event.stopPropagation();
-            }}
-          >
-            <this.props.icons.DetailPanel />
-          </IconButton>
-        );
+        Button = null;
       }
 
       return (
