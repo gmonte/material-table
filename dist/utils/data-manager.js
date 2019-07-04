@@ -60,6 +60,21 @@ function () {
     (0, _defineProperty2["default"])(this, "sorted", false);
     (0, _defineProperty2["default"])(this, "paged", false);
     (0, _defineProperty2["default"])(this, "rootGroupsIndex", {});
+    (0, _defineProperty2["default"])(this, "expandTreeForNodes", function (data) {
+      data.forEach(function (row) {
+        var currentRow = row;
+
+        while (_this.parentFunc(currentRow, _this.data)) {
+          var parent = _this.parentFunc(currentRow, _this.data);
+
+          if (parent) {
+            parent.tableData.isTreeExpanded = true;
+          }
+
+          currentRow = parent;
+        }
+      });
+    });
     (0, _defineProperty2["default"])(this, "findDataByPath", function (renderData, path) {
       if (_this.isDataType("tree")) {
         var node = path.reduce(function (result, current) {
@@ -381,6 +396,7 @@ function () {
     value: function changeSearchText(searchText) {
       this.searchText = searchText;
       this.searched = false;
+      this.currentPage = 0;
     }
   }, {
     key: "changeRowEditing",
@@ -696,18 +712,26 @@ function () {
       });
       this.treefiedData = [];
       this.treefiedDataLength = 0;
-      this.treeDataMaxLevel = 0;
+      this.treeDataMaxLevel = 0; // if filter or search is enabled, collapse the tree
+
+      if (this.searchText || this.columns.some(function (columnDef) {
+        return columnDef.tableData.filterValue;
+      })) {
+        this.data.forEach(function (row) {
+          row.tableData.isTreeExpanded = false;
+        });
+      } // expand the tree for all nodes present after filtering and searching
+
+
+      this.expandTreeForNodes(this.searchedData);
 
       var addRow = function addRow(rowData) {
+        rowData.tableData.markedForTreeRemove = false;
+
         var parent = _this6.parentFunc(rowData, _this6.data);
 
         if (parent) {
           parent.tableData.childRows = parent.tableData.childRows || [];
-
-          var oldParent = parent.tableData.path && _this6.findDataByPath(_this6.treefiedData, parent.tableData.path);
-
-          var isDefined = oldParent && oldParent.tableData.isTreeExpanded !== undefined;
-          parent.tableData.isTreeExpanded = isDefined ? oldParent.tableData.isTreeExpanded : _this6.defaultExpanded ? true : false;
 
           if (!parent.tableData.childRows.includes(rowData)) {
             parent.tableData.childRows.push(rowData);
@@ -725,11 +749,69 @@ function () {
             rowData.tableData.path = [_this6.treefiedData.length - 1];
           }
         }
-      };
+      }; // Add all rows initially
 
-      this.searchedData.forEach(function (rowData) {
+
+      this.data.forEach(function (rowData) {
         addRow(rowData);
       });
+
+      var markForTreeRemove = function markForTreeRemove(rowData) {
+        var pointer = _this6.treefiedData;
+        rowData.tableData.path.forEach(function (pathPart) {
+          if (pointer.tableData && pointer.tableData.childRows) {
+            pointer = pointer.tableData.childRows;
+          }
+
+          pointer = pointer[pathPart];
+        });
+        pointer.tableData.markedForTreeRemove = true;
+      };
+
+      var traverseChildrenAndUnmark = function traverseChildrenAndUnmark(rowData) {
+        if (rowData.tableData.childRows) {
+          rowData.tableData.childRows.forEach(function (row) {
+            traverseChildrenAndUnmark(row);
+          });
+        }
+
+        rowData.tableData.markedForTreeRemove = false;
+      }; // for all data rows, restore initial expand if no search term is available and remove items that shouldn't be there
+
+
+      this.data.forEach(function (rowData) {
+        if (!_this6.searchText && !_this6.columns.some(function (columnDef) {
+          return columnDef.tableData.filterValue;
+        })) {
+          rowData.tableData.isTreeExpanded = _this6.defaultExpanded;
+        }
+
+        var hasSearchMatchedChildren = rowData.tableData.isTreeExpanded;
+
+        if (!hasSearchMatchedChildren && _this6.searchedData.indexOf(rowData) < 0) {
+          markForTreeRemove(rowData);
+        }
+      }); // preserve all children of nodes that are matched by search or filters
+
+      this.data.forEach(function (rowData) {
+        if (_this6.searchedData.indexOf(rowData) > -1) {
+          traverseChildrenAndUnmark(rowData);
+        }
+      });
+
+      var traverseTreeAndDeleteMarked = function traverseTreeAndDeleteMarked(rowDataArray) {
+        for (var i = rowDataArray.length - 1; i >= 0; i--) {
+          var item = rowDataArray[i];
+
+          if (item.tableData.childRows) {
+            traverseTreeAndDeleteMarked(item.tableData.childRows);
+          }
+
+          if (item.tableData.markedForTreeRemove) rowDataArray.splice(i, 1);
+        }
+      };
+
+      traverseTreeAndDeleteMarked(this.treefiedData);
       this.treefied = true;
     }
   }, {

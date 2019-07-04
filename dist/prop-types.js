@@ -120,6 +120,7 @@ var propTypes = {
     columnsButton: _propTypes["default"].bool,
     defaultExpanded: _propTypes["default"].bool,
     debounceInterval: _propTypes["default"].number,
+    detailPanelCondition: _propTypes["default"].func,
     detailPanelType: _propTypes["default"].oneOf(["single", "multiple"]),
     doubleHorizontalScroll: _propTypes["default"].bool,
     emptyRowsWhenPaging: _propTypes["default"].bool,

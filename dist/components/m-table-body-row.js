@@ -59,11 +59,11 @@ function (_React$Component) {
     _this = (0, _possibleConstructorReturn2["default"])(this, (_getPrototypeOf2 = (0, _getPrototypeOf3["default"])(MTableBodyRow)).call.apply(_getPrototypeOf2, [this].concat(args)));
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "rotateIconStyle", function (isOpen) {
       return {
-        transform: isOpen ? 'rotate(90deg)' : 'none'
+        transform: isOpen ? "rotate(90deg)" : "none"
       };
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getElementSize", function () {
-      return _this.props.options.padding === 'default' ? 'medium' : 'small';
+      return _this.props.options.padding === "default" ? "medium" : "small";
     });
     return _this;
   }
@@ -98,7 +98,7 @@ function (_React$Component) {
       var _this3 = this;
 
       var size = this.getElementSize();
-      var baseIconSize = size === 'medium' ? 42 : 26;
+      var baseIconSize = size === "medium" ? 42 : 26;
       var actions = this.props.actions.filter(function (a) {
         return !a.isFreeAction && !_this3.props.options.selection;
       });
@@ -108,11 +108,11 @@ function (_React$Component) {
         key: "key-actions-column",
         style: (0, _objectSpread2["default"])({
           width: baseIconSize * actions.length,
-          padding: '0px 5px'
+          padding: "0px 5px"
         }, this.props.options.actionsCellStyle)
       }, React.createElement("div", {
         style: {
-          display: 'flex'
+          display: "flex"
         }
       }, React.createElement(this.props.components.Actions, {
         data: this.props.data,
@@ -128,13 +128,13 @@ function (_React$Component) {
 
       var checkboxProps = this.props.options.selectionProps || {};
 
-      if (typeof checkboxProps === 'function') {
+      if (typeof checkboxProps === "function") {
         checkboxProps = checkboxProps(this.props.data);
       }
 
       var size = this.getElementSize();
-      var baseIconSize = size === 'medium' ? 42 : 26;
-      var styles = size === 'medium' ? {
+      var baseIconSize = size === "medium" ? 42 : 26;
+      var styles = size === "medium" ? {
         marginLeft: this.props.level * 9
       } : {
         padding: "4px",
@@ -175,26 +175,32 @@ function (_React$Component) {
         });
       };
 
-      if (typeof this.props.detailPanel == 'function') {
-        return React.createElement(_core.TableCell, {
-          size: this.getElementSize(),
-          padding: "none",
-          key: "key-detail-panel-column",
-          style: {
-            width: 42,
-            textAlign: 'center'
-          }
-        }, React.createElement(_core.IconButton, {
+      if (typeof this.props.detailPanel == "function") {
+        var Button = React.createElement(_core.IconButton, {
           size: this.getElementSize(),
           style: (0, _objectSpread2["default"])({
-            transition: 'all ease 200ms'
+            transition: "all ease 200ms"
           }, this.rotateIconStyle(this.props.data.tableData.showDetailPanel)),
           onClick: function onClick(event) {
             _this5.props.onToggleDetailPanel(_this5.props.path, _this5.props.detailPanel);
 
             event.stopPropagation();
           }
-        }, React.createElement(this.props.icons.DetailPanel, null)));
+        }, React.createElement(this.props.icons.DetailPanel, null));
+
+        if (typeof this.props.options.detailPanelCondition === "function" && !this.props.options.detailPanelCondition(this.props.data)) {
+          Button = null;
+        }
+
+        return React.createElement(_core.TableCell, {
+          size: this.getElementSize(),
+          padding: "none",
+          key: "key-detail-panel-column",
+          style: {
+            width: 42,
+            textAlign: "center"
+          }
+        }, Button);
       } else {
         return React.createElement(_core.TableCell, {
           size: this.getElementSize(),
@@ -203,15 +209,15 @@ function (_React$Component) {
         }, React.createElement("div", {
           style: {
             width: 42 * this.props.detailPanel.length,
-            textAlign: 'center',
-            display: 'inline-block'
+            textAlign: "center",
+            display: "inline-block"
           }
         }, this.props.detailPanel.map(function (panel, index) {
           if (typeof panel === "function") {
             panel = panel(_this5.props.data);
           }
 
-          var isOpen = (_this5.props.data.tableData.showDetailPanel || '').toString() === panel.render.toString();
+          var isOpen = (_this5.props.data.tableData.showDetailPanel || "").toString() === panel.render.toString();
           var iconButton = React.createElement(_this5.props.icons.DetailPanel, null);
           var animation = true;
 
@@ -237,7 +243,7 @@ function (_React$Component) {
             size: _this5.getElementSize(),
             key: "key-detail-panel-" + index,
             style: (0, _objectSpread2["default"])({
-              transition: 'all ease 200ms'
+              transition: "all ease 200ms"
             }, _this5.rotateIconStyle(animation && isOpen)),
             disabled: panel.disabled,
             onClick: function onClick(event) {
@@ -262,7 +268,7 @@ function (_React$Component) {
     key: "getStyle",
     value: function getStyle(index) {
       var style = {
-        transition: 'all ease 300ms'
+        transition: "all ease 300ms"
       };
 
       if (typeof this.props.options.rowStyle === "function") {
@@ -272,7 +278,7 @@ function (_React$Component) {
       }
 
       if (this.props.onRowClick) {
-        style.cursor = 'pointer';
+        style.cursor = "pointer";
       }
 
       if (this.props.hasAnyEditingRow) {
@@ -320,7 +326,7 @@ function (_React$Component) {
           }, React.createElement(_core.IconButton, {
             size: this.getElementSize(),
             style: (0, _objectSpread2["default"])({
-              transition: 'all ease 200ms',
+              transition: "all ease 200ms",
               marginLeft: this.props.level * 9
             }, this.rotateIconStyle(this.props.data.tableData.isTreeExpanded)),
             onClick: function onClick(event) {
@@ -339,7 +345,7 @@ function (_React$Component) {
 
 
       if (this.props.detailPanel) {
-        if (this.props.options.detailPanelColumnAlignment === 'right') {
+        if (this.props.options.detailPanelColumnAlignment === "right") {
           renderColumns.push(this.renderDetailPanelColumn());
         } else {
           renderColumns.splice(0, 0, this.renderDetailPanelColumn());
