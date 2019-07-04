@@ -194,10 +194,12 @@ class App extends Component {
                   columns={this.state.columns}
                   data={this.state.data}
                   title="Demo Title"
+                  detailPanel={rowData => <h5>detail</h5>}
                   parentChildData={(row, rows) =>
                     rows.find(a => a.id === row.parentId)
                   }
                   options={{
+                    detailPanelCondition: rowData => rowData.name !== "A5",
                     selection: true,
                     filtering: true,
                     toolbarProps: {
