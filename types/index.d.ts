@@ -223,8 +223,8 @@ export interface Options {
   toolbarProps?: ToolbarProps;
   toolbarButtonAlignment?: 'left' | 'right';
   detailPanelColumnAlignment?: 'left' | 'right';
-  tableBodyProps: TableBodyProps,
-  notShowEmptyRows: boolean,
+  tableBodyProps: TableBodyProps;
+  notShowEmptyRows: boolean;
   detailPanelCondition: ((data: object) => boolean);
 }
 
