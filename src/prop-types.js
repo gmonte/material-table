@@ -280,6 +280,7 @@ export const propTypes = {
     columnsButton: PropTypes.bool,
     defaultExpanded: PropTypes.bool,
     debounceInterval: PropTypes.number,
+    detailPanelCondition: PropTypes.func,
     detailPanelType: PropTypes.oneOf(["single", "multiple"]),
     doubleHorizontalScroll: PropTypes.bool,
     emptyRowsWhenPaging: PropTypes.bool,
