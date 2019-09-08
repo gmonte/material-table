@@ -259,7 +259,6 @@ MTableToolbar.defaultProps = {
   searchFieldAlignment: 'right',
   searchText: '',
   toolbarProps: {},
-  toolbarButtonAlignment: "right",
   selectedRows: [],
   title: "No Title!",
   searchFieldProps: {}
