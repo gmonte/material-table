@@ -75,7 +75,7 @@ export class MTableToolbar extends React.Component {
           value={this.props.searchText}
           onChange={event => this.props.onSearchChanged(event.target.value)}
           placeholder={localization.searchPlaceholder}
-          color="inherit"
+          color="primary"
           {...this.props.searchFieldProps}
           InputProps={{
             startAdornment: (
