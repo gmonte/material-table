@@ -90,8 +90,6 @@ export default class MTableCell extends React.Component {
       cellStyle.cursor = 'default';
     }
 
-    console.warn('cellStyle', cellStyle, this.props.columnDef)
-
     return { ...this.props.style, ...cellStyle };
   }
 

@@ -73,7 +73,6 @@ function (_React$Component) {
         cellStyle.cursor = 'default';
       }
 
-      console.warn('cellStyle', cellStyle, _this.props.columnDef);
       return (0, _objectSpread2["default"])({}, _this.props.style, cellStyle);
     });
     return _this;
