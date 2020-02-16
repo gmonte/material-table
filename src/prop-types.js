@@ -15,7 +15,7 @@ export const propTypes = {
     iconProps: PropTypes.object, 
     iconButtonProps: PropTypes.object,
     fab: PropTypes.bool,
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     disabled: PropTypes.bool,
     hidden: PropTypes.bool,
   })])),
