@@ -220,7 +220,7 @@ export class MTableToolbar extends React.Component {
     const title = this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 ? localization.nRowsSelected.replace('{0}', this.props.selectedRows.length) : this.props.showTitle ? this.props.title : null;
     return (
       <Toolbar
-        className={classNames(classes.root, { [classes.highlight]: this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 })}
+        className={classNames(this.props.toolbarProps.className, classes.root, { [classes.highlight]: this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 })}
         { ...this.props.toolbarProps }
         style={{zIndex: 60, ...(this.props.toolbarProps.styles || {})}}
       >
@@ -296,7 +296,11 @@ MTableToolbar.propTypes = {
 
 export const styles = theme => ({
   root: {
-    paddingRight: theme.spacing(1)
+    paddingRight: theme.spacing(1),
+    [theme.breakpoints.down('sm')]: {
+      display: 'flex',
+      flexDirection: 'column'
+    }
   },
   highlight:
     theme.palette.type === "light"
@@ -312,13 +316,29 @@ export const styles = theme => ({
     flex: "1 1 10%"
   },
   actions: {
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      margin: 0,
+      padding: 0,
+      alginSelf: 'flex-end'
+    }
   },
   title: {
-    flex: "0 0 auto"
+    flex: "0 0 auto",
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      margin: 0,
+      padding: 0
+    }
   },
   searchField: {
-    paddingLeft: theme.spacing(2)
+    paddingLeft: theme.spacing(2),
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      margin: 0,
+      padding: 0
+    }
   }
 });
 

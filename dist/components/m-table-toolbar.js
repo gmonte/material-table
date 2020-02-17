@@ -251,7 +251,7 @@ function (_React$Component) {
       var localization = (0, _objectSpread2["default"])({}, MTableToolbar.defaultProps.localization, this.props.localization);
       var title = this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 ? localization.nRowsSelected.replace('{0}', this.props.selectedRows.length) : this.props.showTitle ? this.props.title : null;
       return React.createElement(_Toolbar["default"], (0, _extends2["default"])({
-        className: (0, _classnames["default"])(classes.root, (0, _defineProperty2["default"])({}, classes.highlight, this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0))
+        className: (0, _classnames["default"])(this.props.toolbarProps.className, classes.root, (0, _defineProperty2["default"])({}, classes.highlight, this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0))
       }, this.props.toolbarProps, {
         style: (0, _objectSpread2["default"])({
           zIndex: 60
@@ -327,9 +327,12 @@ MTableToolbar.propTypes = {
 
 var styles = function styles(theme) {
   return {
-    root: {
+    root: (0, _defineProperty2["default"])({
       paddingRight: theme.spacing(1)
-    },
+    }, theme.breakpoints.down('sm'), {
+      display: 'flex',
+      flexDirection: 'column'
+    }),
     highlight: theme.palette.type === "light" ? {
       color: theme.palette.secondary.main,
       backgroundColor: (0, _colorManipulator.lighten)(theme.palette.secondary.light, 0.85)
@@ -340,15 +343,28 @@ var styles = function styles(theme) {
     spacer: {
       flex: "1 1 10%"
     },
-    actions: {
+    actions: (0, _defineProperty2["default"])({
       color: theme.palette.text.secondary
-    },
-    title: {
+    }, theme.breakpoints.down('sm'), {
+      width: '100%',
+      margin: 0,
+      padding: 0,
+      alginSelf: 'flex-end'
+    }),
+    title: (0, _defineProperty2["default"])({
       flex: "0 0 auto"
-    },
-    searchField: {
+    }, theme.breakpoints.down('sm'), {
+      width: '100%',
+      margin: 0,
+      padding: 0
+    }),
+    searchField: (0, _defineProperty2["default"])({
       paddingLeft: theme.spacing(2)
-    }
+    }, theme.breakpoints.down('sm'), {
+      width: '100%',
+      margin: 0,
+      padding: 0
+    })
   };
 };
 
