@@ -259,7 +259,7 @@ function (_React$Component) {
       }), title && React.createElement("div", {
         className: classes.title
       }, React.createElement(_Typography["default"], {
-        variant: "h6"
+        variant: "h5"
       }, title)), this.props.searchFieldAlignment === 'left' && this.renderSearch(), this.props.toolbarButtonAlignment === 'left' && this.renderActions(), React.createElement("div", {
         className: classes.spacer
       }), this.props.searchFieldAlignment === "right" && this.renderSearch(), this.props.toolbarButtonAlignment === "right" && this.renderActions());
@@ -331,7 +331,10 @@ var styles = function styles(theme) {
       paddingRight: theme.spacing(1)
     }, theme.breakpoints.down('sm'), {
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      paddingTop: 3,
+      paddingBottom: 3,
+      paddingRight: 16
     }),
     highlight: theme.palette.type === "light" ? {
       color: theme.palette.secondary.main,
@@ -349,7 +352,11 @@ var styles = function styles(theme) {
       width: '100%',
       margin: 0,
       padding: 0,
-      alginSelf: 'flex-end'
+      '& > div > div': {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end'
+      }
     }),
     title: (0, _defineProperty2["default"])({
       flex: "0 0 auto"

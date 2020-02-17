@@ -225,7 +225,7 @@ export class MTableToolbar extends React.Component {
         style={{zIndex: 60, ...(this.props.toolbarProps.styles || {})}}
       >
         {title && <div className={classes.title}>
-          <Typography variant="h6">{title}</Typography>
+          <Typography variant="h5">{title}</Typography>
         </div>}
         {this.props.searchFieldAlignment === 'left' && this.renderSearch()}
         {this.props.toolbarButtonAlignment === 'left' && this.renderActions()}
@@ -299,7 +299,10 @@ export const styles = theme => ({
     paddingRight: theme.spacing(1),
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      paddingTop: 3,
+      paddingBottom: 3,
+      paddingRight: 16
     }
   },
   highlight:
@@ -321,7 +324,11 @@ export const styles = theme => ({
       width: '100%',
       margin: 0,
       padding: 0,
-      alginSelf: 'flex-end'
+      '& > div > div': {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end'
+      }
     }
   },
   title: {
