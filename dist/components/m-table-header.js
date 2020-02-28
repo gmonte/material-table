@@ -79,7 +79,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
         if (columnDef.sorting !== false && _this.props.sorting) {
           content = React.createElement(_TableSortLabel["default"], {
             IconComponent: _this.props.icons.SortArrow,
-            classes: _this.props.classes.sortLabel,
+            classes: _this.props.sortLabelClasses,
             active: _this.props.orderBy === columnDef.tableData.id,
             direction: _this.props.orderDirection || 'asc',
             onClick: function onClick() {
@@ -205,6 +205,7 @@ MTableHeader.defaultProps = {
   hasSelection: false,
   headerStyle: {},
   tableHeaderClassName: null,
+  sortLabelClasses: undefined,
   selectedCount: 0,
   sorting: true,
   localization: {
@@ -224,6 +225,7 @@ MTableHeader.propTypes = {
   hasSelection: _propTypes["default"].bool,
   headerStyle: _propTypes["default"].object,
   tableHeaderClassName: _propTypes["default"].string,
+  sortLabelClasses: _propTypes["default"].object,
   localization: _propTypes["default"].object,
   selectedCount: _propTypes["default"].number,
   sorting: _propTypes["default"].bool,
@@ -245,8 +247,7 @@ var styles = function styles(theme) {
       zIndex: 10,
       backgroundColor: theme.palette.background.paper // Change according to theme,
 
-    },
-    sortLabel: {}
+    }
   };
 };
 

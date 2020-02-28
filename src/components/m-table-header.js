@@ -40,7 +40,7 @@ export class MTableHeader extends React.Component {
           content = (
             <TableSortLabel
               IconComponent={this.props.icons.SortArrow}
-              classes={this.props.classes.sortLabel}
+              classes={this.props.sortLabelClasses}
               active={this.props.orderBy === columnDef.tableData.id}
               direction={this.props.orderDirection || 'asc'}
               onClick={() => {
@@ -175,6 +175,7 @@ MTableHeader.defaultProps = {
   hasSelection: false,
   headerStyle: {},
   tableHeaderClassName: null,
+  sortLabelClasses: undefined,
   selectedCount: 0,
   sorting: true,
   localization: {
@@ -195,6 +196,7 @@ MTableHeader.propTypes = {
   hasSelection: PropTypes.bool,
   headerStyle: PropTypes.object,
   tableHeaderClassName: PropTypes.string,
+  sortLabelClasses: PropTypes.object,
   localization: PropTypes.object,
   selectedCount: PropTypes.number,
   sorting: PropTypes.bool,
@@ -215,8 +217,7 @@ export const styles = theme => ({
     top: 0,
     zIndex: 10,
     backgroundColor: theme.palette.background.paper, // Change according to theme,
-  },
-  sortLabel: {}
+  }
 });
 
 export default withStyles(styles)(MTableHeader);
