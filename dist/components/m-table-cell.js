@@ -38,9 +38,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 /* eslint-disable no-unused-vars */
 
 /* eslint-enable no-unused-vars */
-var MTableCell =
-/*#__PURE__*/
-function (_React$Component) {
+var MTableCell = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableCell, _React$Component);
 
   function MTableCell() {

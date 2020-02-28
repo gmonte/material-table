@@ -39,9 +39,7 @@ var _pickers = require("@material-ui/pickers");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var MTableEditField =
-/*#__PURE__*/
-function (_React$Component) {
+var MTableEditField = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableEditField, _React$Component);
 
   function MTableEditField() {

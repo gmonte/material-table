@@ -52,9 +52,7 @@ var _debounce = require("debounce");
 /* eslint-disable no-unused-vars */
 
 /* eslint-enable no-unused-vars */
-var MaterialTable =
-/*#__PURE__*/
-function (_React$Component) {
+var MaterialTable = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MaterialTable, _React$Component);
 
   function MaterialTable(_props) {

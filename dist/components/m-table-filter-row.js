@@ -71,9 +71,7 @@ var MenuProps = {
   }
 };
 
-var MTableFilterRow =
-/*#__PURE__*/
-function (_React$Component) {
+var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableFilterRow, _React$Component);
 
   function MTableFilterRow() {

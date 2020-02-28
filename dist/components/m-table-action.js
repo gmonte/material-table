@@ -36,9 +36,7 @@ var _Tooltip = _interopRequireDefault(require("@material-ui/core/Tooltip"));
 /* eslint-disable no-unused-vars */
 
 /* eslint-enable no-unused-vars */
-var MTableAction =
-/*#__PURE__*/
-function (_React$Component) {
+var MTableAction = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableAction, _React$Component);
 
   function MTableAction() {

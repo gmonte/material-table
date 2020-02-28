@@ -40,9 +40,7 @@ var React = _interopRequireWildcard(require("react"));
 /* eslint-disable no-unused-vars */
 
 /* eslint-enable no-unused-vars */
-var MTableGroupRow =
-/*#__PURE__*/
-function (_React$Component) {
+var MTableGroupRow = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableGroupRow, _React$Component);
 
   function MTableGroupRow() {

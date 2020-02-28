@@ -42,9 +42,7 @@ var _reactBeautifulDnd = require("react-beautiful-dnd");
 /* eslint-disable no-unused-vars */
 
 /* eslint-enable no-unused-vars */
-var MTableGroupbar =
-/*#__PURE__*/
-function (_React$Component) {
+var MTableGroupbar = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableGroupbar, _React$Component);
 
   function MTableGroupbar(props) {

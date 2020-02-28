@@ -36,9 +36,7 @@ var React = _interopRequireWildcard(require("react"));
 /* eslint-disable no-unused-vars */
 
 /* eslint-enable no-unused-vars */
-var MTableBody =
-/*#__PURE__*/
-function (_React$Component) {
+var MTableBody = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableBody, _React$Component);
 
   function MTableBody() {

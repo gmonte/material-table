@@ -62,9 +62,7 @@ var React = _interopRequireWildcard(require("react"));
 /* eslint-disable no-unused-vars */
 
 /* eslint-enable no-unused-vars */
-var MTableToolbar =
-/*#__PURE__*/
-function (_React$Component) {
+var MTableToolbar = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableToolbar, _React$Component);
 
   function MTableToolbar(props) {

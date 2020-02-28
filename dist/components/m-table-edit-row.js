@@ -40,9 +40,7 @@ var _utils = require("../utils");
 /* eslint-disable no-unused-vars */
 
 /* eslint-enable no-unused-vars */
-var MTableEditRow =
-/*#__PURE__*/
-function (_React$Component) {
+var MTableEditRow = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableEditRow, _React$Component);
 
   function MTableEditRow(props) {

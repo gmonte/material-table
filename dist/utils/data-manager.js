@@ -21,9 +21,7 @@ var _format = _interopRequireDefault(require("date-fns/format"));
 
 var _2 = require("./");
 
-var DataManager =
-/*#__PURE__*/
-function () {
+var DataManager = /*#__PURE__*/function () {
   function DataManager() {
     var _this = this;
 

@@ -40,9 +40,7 @@ var React = _interopRequireWildcard(require("react"));
 /* eslint-disable no-unused-vars */
 
 /* eslint-enable no-unused-vars */
-var MTablePaginationInner =
-/*#__PURE__*/
-function (_React$Component) {
+var MTablePaginationInner = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTablePaginationInner, _React$Component);
 
   function MTablePaginationInner() {
