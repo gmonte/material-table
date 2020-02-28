@@ -245,7 +245,8 @@ var styles = function styles(theme) {
       zIndex: 10,
       backgroundColor: theme.palette.background.paper // Change according to theme,
 
-    }
+    },
+    sortLabel: {}
   };
 };
 
