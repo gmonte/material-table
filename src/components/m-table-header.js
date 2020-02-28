@@ -49,7 +49,6 @@ export class MTableHeader extends React.Component {
           content = (
             <TableSortLabel
               IconComponent={this.props.icons.SortArrow}
-              classes={this.props.classes.sortLabel}
               active={this.props.orderBy === columnDef.tableData.id}
               direction={this.props.orderDirection || "asc"}
               onClick={() => {
@@ -291,7 +290,7 @@ export const styles = (theme) => ({
     top: 0,
     zIndex: 10,
     backgroundColor: theme.palette.background.paper, // Change according to theme,
-  },
+  }
 });
 
 export default withStyles(styles)(MTableHeader);
