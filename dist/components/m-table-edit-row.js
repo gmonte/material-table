@@ -95,7 +95,7 @@ function _isNativeReflectConstruct() {
 }
 
 /* eslint-enable no-unused-vars */
-var MTableEditRow = /*#__PURE__*/ (function (_React$Component) {
+var MTableEditRow = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableEditRow, _React$Component);
 
   var _super = _createSuper(MTableEditRow);

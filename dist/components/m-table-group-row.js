@@ -85,7 +85,7 @@ function _isNativeReflectConstruct() {
 }
 
 /* eslint-enable no-unused-vars */
-var MTableGroupRow = /*#__PURE__*/ (function (_React$Component) {
+var MTableGroupRow = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableGroupRow, _React$Component);
 
   var _super = _createSuper(MTableGroupRow);

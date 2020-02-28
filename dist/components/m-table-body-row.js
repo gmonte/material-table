@@ -101,7 +101,7 @@ function _isNativeReflectConstruct() {
 }
 
 /* eslint-enable no-unused-vars */
-var MTableBodyRow = /*#__PURE__*/ (function (_React$Component) {
+var MTableBodyRow = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableBodyRow, _React$Component);
 
   var _super = _createSuper(MTableBodyRow);
