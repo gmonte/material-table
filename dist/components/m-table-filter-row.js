@@ -100,6 +100,9 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
         onChange: function onChange(event) {
           _this.props.onFilterChanged(columnDef.tableData.id, event.target.value);
         },
+        style: {
+          margin: 0
+        },
         input: React.createElement(_Input["default"], {
           id: "select-multiple-checkbox"
         }),
