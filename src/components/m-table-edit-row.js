@@ -206,8 +206,8 @@ export default class MTableEditRow extends React.Component {
     return (
       <>
         <TableRow
-          {...rowProps}
           style={this.getStyle()}
+          {...rowProps}
         >
           {columns}
         </TableRow>

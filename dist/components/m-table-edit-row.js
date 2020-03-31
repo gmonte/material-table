@@ -275,9 +275,9 @@ var MTableEditRow = /*#__PURE__*/function (_React$Component) {
           onEditingCanceled = _this$props.onEditingCanceled,
           getFieldValue = _this$props.getFieldValue,
           rowProps = (0, _objectWithoutProperties2["default"])(_this$props, ["detailPanel", "isTreeData", "onRowClick", "onRowSelected", "onTreeExpandChanged", "onToggleDetailPanel", "onEditingApproved", "onEditingCanceled", "getFieldValue"]);
-      return React.createElement(React.Fragment, null, React.createElement(_TableRow["default"], (0, _extends2["default"])({}, rowProps, {
+      return React.createElement(React.Fragment, null, React.createElement(_TableRow["default"], (0, _extends2["default"])({
         style: this.getStyle()
-      }), columns));
+      }, rowProps), columns));
     }
   }]);
   return MTableEditRow;
