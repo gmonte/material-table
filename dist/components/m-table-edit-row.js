@@ -575,51 +575,12 @@ var MTableEditRow = /*#__PURE__*/function (_React$Component) {
           onEditingApproved = _this$props.onEditingApproved,
           onEditingCanceled = _this$props.onEditingCanceled,
           getFieldValue = _this$props.getFieldValue,
-          components = _this$props.components,
-          icons = _this$props.icons,
-          columnsProp = _this$props.columns,
-          localizationProp = _this$props.localization,
-          options = _this$props.options,
-          actions = _this$props.actions,
-          errorState = _this$props.errorState,
-          rowProps = (0, _objectWithoutProperties2["default"])(_this$props, [
-            "detailPanel",
-            "isTreeData",
-            "onRowClick",
-            "onRowSelected",
-            "onTreeExpandChanged",
-            "onToggleDetailPanel",
-            "onEditingApproved",
-            "onEditingCanceled",
-            "getFieldValue",
-            "components",
-            "icons",
-            "columns",
-            "localization",
-            "options",
-            "actions",
-            "errorState",
-          ]);
-        return /*#__PURE__*/ React.createElement(
-          React.Fragment,
-          null,
-          /*#__PURE__*/ React.createElement(
-            _TableRow["default"],
-            (0, _extends2["default"])(
-              {
-                onKeyDown: this.handleKeyDown,
-              },
-              rowProps,
-              {
-                style: this.getStyle(),
-              }
-            ),
-            columns
-          )
-        );
-      },
-    },
-  ]);
+          rowProps = (0, _objectWithoutProperties2["default"])(_this$props, ["detailPanel", "isTreeData", "onRowClick", "onRowSelected", "onTreeExpandChanged", "onToggleDetailPanel", "onEditingApproved", "onEditingCanceled", "getFieldValue"]);
+      return React.createElement(React.Fragment, null, React.createElement(_TableRow["default"], (0, _extends2["default"])({
+        style: this.getStyle()
+      }, rowProps), columns));
+    }
+  }]);
   return MTableEditRow;
 })(React.Component);
 

@@ -366,8 +366,8 @@ export default class MTableEditRow extends React.Component {
       <>
         <TableRow
           onKeyDown={this.handleKeyDown}
-          {...rowProps}
           style={this.getStyle()}
+          {...rowProps}
         >
           {columns}
         </TableRow>
