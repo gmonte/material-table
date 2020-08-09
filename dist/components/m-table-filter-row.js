@@ -125,7 +125,7 @@ var MenuProps = {
   },
 };
 
-var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
+var MTableFilterRow = /*#__PURE__*/ (function (_React$Component) {
   (0, _inherits2["default"])(MTableFilterRow, _React$Component);
 
   var _super = _createSuper(MTableFilterRow);
@@ -143,93 +143,129 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    _this = (0, _possibleConstructorReturn2["default"])(this, (_getPrototypeOf2 = (0, _getPrototypeOf3["default"])(MTableFilterRow)).call.apply(_getPrototypeOf2, [this].concat(args)));
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderLookupFilter", function (columnDef) {
-      return React.createElement(_FormControl["default"], {
-        style: {
-          width: '100%'
-        }
-      }, React.createElement(_InputLabel["default"], {
-        htmlFor: "select-multiple-checkbox"
-      }, columnDef.filterPlaceholder), React.createElement(_Select["default"], {
-        multiple: true,
-        value: columnDef.tableData.filterValue || [],
-        onChange: function onChange(event) {
-          _this.props.onFilterChanged(columnDef.tableData.id, event.target.value);
-        },
-        style: {
-          margin: 0
-        },
-        input: React.createElement(_Input["default"], {
-          id: "select-multiple-checkbox"
-        }),
-        renderValue: function renderValue(selecteds) {
-          return selecteds.map(function (selected) {
-            return columnDef.lookup[selected];
-          }).join(', ');
-        },
-        MenuProps: MenuProps
-      }, Object.keys(columnDef.lookup).map(function (key) {
-        return React.createElement(_MenuItem["default"], {
-          key: key,
-          value: key
-        }, React.createElement(_Checkbox["default"], {
-          checked: columnDef.tableData.filterValue ? columnDef.tableData.filterValue.indexOf(key.toString()) > -1 : false
-        }), React.createElement(_ListItemText["default"], {
-          primary: columnDef.lookup[key]
-        }));
-      })));
-    });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderBooleanFilter", function (columnDef) {
-      return React.createElement(_Checkbox["default"], {
-        indeterminate: columnDef.tableData.filterValue === undefined,
-        checked: columnDef.tableData.filterValue === 'checked',
-        onChange: function onChange() {
-          var val;
+    _this = _super.call.apply(_super, [this].concat(args));
+    (0, _defineProperty2["default"])(
+      (0, _assertThisInitialized2["default"])(_this),
+      "getLocalizationData",
+      function () {
+        return (0, _objectSpread2["default"])(
+          {},
+          MTableFilterRow.defaultProps.localization,
+          _this.props.localization
+        );
+      }
+    );
+    (0, _defineProperty2["default"])(
+      (0, _assertThisInitialized2["default"])(_this),
+      "getLocalizedFilterPlaceHolder",
+      function (columnDef) {
+        return (
+          columnDef.filterPlaceholder ||
+          _this.getLocalizationData().filterPlaceHolder ||
+          ""
+        );
+      }
+    );
+    (0, _defineProperty2["default"])(
+      (0, _assertThisInitialized2["default"])(_this),
+      "LookupFilter",
+      function (_ref) {
+        var columnDef = _ref.columnDef;
 
-          if (columnDef.tableData.filterValue === undefined) {
-            val = 'checked';
-          } else if (columnDef.tableData.filterValue === 'checked') {
-            val = 'unchecked';
-          }
+        var _React$useState = React.useState(
+            columnDef.tableData.filterValue || []
+          ),
+          _React$useState2 = (0, _slicedToArray2["default"])(
+            _React$useState,
+            2
+          ),
+          selectedFilter = _React$useState2[0],
+          setSelectedFilter = _React$useState2[1];
 
-          _this.props.onFilterChanged(columnDef.tableData.id, val);
-        }
-      });
-    });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderDefaultFilter", function (columnDef) {
-      var localization = (0, _objectSpread2["default"])({}, MTableFilterRow.defaultProps.localization, _this.props.localization);
-      return React.createElement(_TextField["default"], {
-        style: columnDef.type === 'numeric' ? {
-          "float": 'right'
-        } : {},
-        type: columnDef.type === 'numeric' ? 'number' : 'text',
-        value: columnDef.tableData.filterValue || '',
-        placeholder: columnDef.filterPlaceholder || '',
-        onChange: function onChange(event) {
-          _this.props.onFilterChanged(columnDef.tableData.id, event.target.value);
-        },
-        InputProps: {
-          startAdornment: React.createElement(_InputAdornment["default"], {
-            position: "start"
-          }, React.createElement(_Tooltip["default"], {
-            title: localization.filterTooltip
-          }, React.createElement(_this2.props.icons.Filter, null)))
-        }
-      });
-    });
-    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderDateTypeFilter", function (columnDef) {
-      var dateInputElement = null;
-
-      var onDateInputChange = function onDateInputChange(date) {
-        return _this.props.onFilterChanged(columnDef.tableData.id, date);
-      };
-
-      if (columnDef.type === 'date') {
-        dateInputElement = React.createElement(_pickers.DatePicker, {
-          value: columnDef.tableData.filterValue || null,
-          onChange: onDateInputChange,
-          clearable: true
+        React.useEffect(
+          function () {
+            setSelectedFilter(columnDef.tableData.filterValue || []);
+          },
+          [columnDef.tableData.filterValue]
+        );
+        return /*#__PURE__*/ React.createElement(
+          _FormControl["default"],
+          {
+            style: {
+              width: "100%",
+            },
+          },
+          /*#__PURE__*/ React.createElement(
+            _InputLabel["default"],
+            {
+              htmlFor: "select-multiple-checkbox" + columnDef.tableData.id,
+              style: {
+                marginTop: -16,
+              },
+            },
+            _this.getLocalizedFilterPlaceHolder(columnDef)
+          ),
+          /*#__PURE__*/ React.createElement(
+            _Select["default"],
+            {
+              multiple: true,
+              value: selectedFilter,
+              onClose: function onClose() {
+                if (columnDef.filterOnItemSelect !== true)
+                  _this.props.onFilterChanged(
+                    columnDef.tableData.id,
+                    selectedFilter
+                  );
+              },
+              onChange: function onChange(event) {
+                setSelectedFilter(event.target.value);
+                if (columnDef.filterOnItemSelect === true)
+                  _this.props.onFilterChanged(
+                    columnDef.tableData.id,
+                    event.target.value
+                  );
+              },
+              input: /*#__PURE__*/ React.createElement(_Input["default"], {
+                id: "select-multiple-checkbox" + columnDef.tableData.id,
+              }),
+              renderValue: function renderValue(selecteds) {
+                return selecteds
+                  .map(function (selected) {
+                    return columnDef.lookup[selected];
+                  })
+                  .join(", ");
+              },
+              MenuProps: MenuProps,
+              style: {
+                marginTop: 0,
+              },
+            },
+            Object.keys(columnDef.lookup).map(function (key) {
+              return /*#__PURE__*/ React.createElement(
+                _MenuItem["default"],
+                {
+                  key: key,
+                  value: key,
+                },
+                /*#__PURE__*/ React.createElement(_Checkbox["default"], {
+                  checked: selectedFilter.indexOf(key.toString()) > -1,
+                }),
+                /*#__PURE__*/ React.createElement(_ListItemText["default"], {
+                  primary: columnDef.lookup[key],
+                })
+              );
+            })
+          )
+        );
+      }
+    );
+    (0, _defineProperty2["default"])(
+      (0, _assertThisInitialized2["default"])(_this),
+      "renderFilterComponent",
+      function (columnDef) {
+        return React.createElement(columnDef.filterComponent, {
+          columnDef: columnDef,
+          onFilterChanged: _this.props.onFilterChanged,
         });
       }
     );

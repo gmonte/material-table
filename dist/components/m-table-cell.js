@@ -85,7 +85,12 @@ function _isNativeReflectConstruct() {
 }
 
 /* eslint-enable no-unused-vars */
-var MTableCell = /*#__PURE__*/function (_React$Component) {
+
+/* eslint-disable no-useless-escape */
+var isoDateRegex = /^\d{4}-(0[1-9]|1[0-2])-([12]\d|0[1-9]|3[01])([T\s](([01]\d|2[0-3])\:[0-5]\d|24\:00)(\:[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3])\:?([0-5]\d)?)?)?$/;
+/* eslint-enable no-useless-escape */
+
+var MTableCell = /*#__PURE__*/ (function (_React$Component) {
   (0, _inherits2["default"])(MTableCell, _React$Component);
 
   var _super = _createSuper(MTableCell);

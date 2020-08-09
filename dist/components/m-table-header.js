@@ -91,7 +91,7 @@ function _isNativeReflectConstruct() {
 }
 
 /* eslint-enable no-unused-vars */
-var MTableHeader = /*#__PURE__*/function (_React$Component) {
+var MTableHeader = /*#__PURE__*/ (function (_React$Component) {
   (0, _inherits2["default"])(MTableHeader, _React$Component);
 
   var _super = _createSuper(MTableHeader);
@@ -143,14 +143,39 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
               );
             }
 
-        if (columnDef.sorting !== false && _this.props.sorting) {
-          content = React.createElement(_TableSortLabel["default"], {
-            IconComponent: _this.props.icons.SortArrow,
-            classes: _this.props.classes.sortLabel,
-            active: _this.props.orderBy === columnDef.tableData.id,
-            direction: _this.props.orderDirection || 'asc',
-            onClick: function onClick() {
-              var orderDirection = columnDef.tableData.id !== _this.props.orderBy ? 'asc' : _this.props.orderDirection === 'asc' ? 'desc' : _this.props.orderDirection === 'desc' ? '' : _this.props.orderDirection === '' ? 'asc' : 'desc';
+            if (columnDef.sorting !== false && _this.props.sorting) {
+              content = /*#__PURE__*/ React.createElement(
+                _TableSortLabel["default"],
+                {
+                  IconComponent: _this.props.icons.SortArrow,
+                  classes: _this.props.sortLabelClasses,
+                  active: _this.props.orderBy === columnDef.tableData.id,
+                  direction: _this.props.orderDirection || "asc",
+                  onClick: function onClick() {
+                    var orderDirection =
+                      columnDef.tableData.id !== _this.props.orderBy
+                        ? "asc"
+                        : _this.props.orderDirection === "asc"
+                        ? "desc"
+                        : _this.props.orderDirection === "desc" &&
+                          _this.props.thirdSortClick
+                        ? ""
+                        : _this.props.orderDirection === "desc" &&
+                          !_this.props.thirdSortClick
+                        ? "asc"
+                        : _this.props.orderDirection === ""
+                        ? "asc"
+                        : "desc";
+
+                    _this.props.onOrderChange(
+                      columnDef.tableData.id,
+                      orderDirection
+                    );
+                  },
+                },
+                content
+              );
+            }
 
             if (columnDef.tooltip) {
               content = /*#__PURE__*/ React.createElement(
@@ -359,6 +384,7 @@ MTableHeader.defaultProps = {
   hasSelection: false,
   headerStyle: {},
   tableHeaderClassName: null,
+  sortLabelClasses: undefined,
   selectedCount: 0,
   sorting: true,
   localization: {
@@ -379,6 +405,7 @@ MTableHeader.propTypes = {
   hasSelection: _propTypes["default"].bool,
   headerStyle: _propTypes["default"].object,
   tableHeaderClassName: _propTypes["default"].string,
+  sortLabelClasses: _propTypes["default"].object,
   localization: _propTypes["default"].object,
   selectedCount: _propTypes["default"].number,
   sorting: _propTypes["default"].bool,

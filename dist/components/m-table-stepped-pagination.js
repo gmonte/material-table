@@ -87,7 +87,7 @@ function _isNativeReflectConstruct() {
 }
 
 /* eslint-enable no-unused-vars */
-var MTablePaginationInner = /*#__PURE__*/function (_React$Component) {
+var MTablePaginationInner = /*#__PURE__*/ (function (_React$Component) {
   (0, _inherits2["default"])(MTablePaginationInner, _React$Component);
 
   var _super = _createSuper(MTablePaginationInner);

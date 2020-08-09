@@ -111,7 +111,7 @@ function _isNativeReflectConstruct() {
 }
 
 /* eslint-enable no-unused-vars */
-var MaterialTable = /*#__PURE__*/function (_React$Component) {
+var MaterialTable = /*#__PURE__*/ (function (_React$Component) {
   (0, _inherits2["default"])(MaterialTable, _React$Component);
 
   var _super = _createSuper(MaterialTable);

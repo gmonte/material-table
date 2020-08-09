@@ -87,7 +87,7 @@ function _isNativeReflectConstruct() {
 }
 
 /* eslint-enable no-unused-vars */
-var MTableGroupbar = /*#__PURE__*/function (_React$Component) {
+var MTableGroupbar = /*#__PURE__*/ (function (_React$Component) {
   (0, _inherits2["default"])(MTableGroupbar, _React$Component);
 
   var _super = _createSuper(MTableGroupbar);

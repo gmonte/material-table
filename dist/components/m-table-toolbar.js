@@ -122,7 +122,8 @@ function _isNativeReflectConstruct() {
 
 var jsPDF = typeof window !== "undefined" ? require("jspdf") : null;
 /* eslint-enable no-unused-vars */
-var MTableToolbar = /*#__PURE__*/function (_React$Component) {
+
+var MTableToolbar = /*#__PURE__*/ (function (_React$Component) {
   (0, _inherits2["default"])(MTableToolbar, _React$Component);
 
   var _super = _createSuper(MTableToolbar);
