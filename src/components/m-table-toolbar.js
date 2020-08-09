@@ -444,7 +444,7 @@ export const styles = (theme) => ({
     theme.palette.type === "light"
       ? {
           color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+          backgroundColor: theme.palette.secondary.dark,
         }
       : {
           color: theme.palette.text.primary,
