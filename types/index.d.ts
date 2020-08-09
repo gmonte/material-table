@@ -122,9 +122,6 @@ export interface Action<RowData extends object> {
   fab?: boolean;
   title?: string | React.ReactElement<any>;
   hidden?: boolean;
-  iconButtonProps?: IconButtonProps;
-  fab?: boolean;
-  title?: string | React.ReactElement<any>;
 }
 
 export interface EditComponentProps<RowData extends object> {
