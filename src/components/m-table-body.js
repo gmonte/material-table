@@ -197,7 +197,7 @@ class MTableBody extends React.Component {
     }
 
     return (
-      <TableBody { ...(this.props.options?.tableBodyProps || {}) }>
+      <TableBody {...(this.props.options?.tableBodyProps || {})}>
         {this.props.options.filtering && (
           <this.props.components.FilterRow
             columns={this.props.columns.filter(
@@ -337,7 +337,7 @@ MTableBody.propTypes = {
   onCellEditFinished: PropTypes.func,
   bulkEditOpen: PropTypes.bool,
   onBulkEditRowChanged: PropTypes.func,
-  tableBodyProps: PropTypes.object
+  tableBodyProps: PropTypes.object,
 };
 
 export default MTableBody;

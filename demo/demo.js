@@ -522,17 +522,17 @@ class App extends Component {
                       };
                     },
                     searchFieldStyle: {
-                      marginRight: 10
+                      marginRight: 10,
                     },
                     searchFieldProps: {
                       type: "search",
                       InputProps: {
-                        endAdornment: null
-                      }
+                        endAdornment: null,
+                      },
                     },
                     toolbarProps: {
-                      variant: "dense"
-                    }
+                      variant: "dense",
+                    },
                   }}
                   editable={{
                     onBulkUpdate: (changedRows) =>
@@ -627,15 +627,15 @@ class App extends Component {
                     size: "small",
                     variant: "extended",
                     style: {
-                      marginLeft: 5
-                    }
+                      marginLeft: 5,
+                    },
                   },
                   title: "Add",
                   iconProps: {
                     style: {
-                      marginRight: 8
-                    }
-                  }
+                      marginRight: 8,
+                    },
+                  },
                 },
                 {
                   icon: "star",
@@ -647,9 +647,9 @@ class App extends Component {
                     color: "secondary",
                     size: "small",
                     style: {
-                      marginLeft: 5
-                    }
-                  }
+                      marginLeft: 5,
+                    },
+                  },
                 },
                 {
                   icon: "remove_red_eye",
@@ -662,16 +662,16 @@ class App extends Component {
                     variant: "extended",
                     style: {
                       marginTop: 3,
-                      marginRight: 5
-                    }
+                      marginRight: 5,
+                    },
                   },
                   title: "view",
                   iconProps: {
                     style: {
-                      marginRight: 8
-                    }
-                  }
-                }
+                      marginRight: 8,
+                    },
+                  },
+                },
               ]}
               columns={[
                 {
@@ -682,7 +682,7 @@ class App extends Component {
                       style={{ height: 36, borderRadius: "50%" }}
                       src={rowData.avatar}
                     />
-                  )
+                  ),
                 },
                 {
                   title: "Id",

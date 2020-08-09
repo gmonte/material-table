@@ -455,6 +455,16 @@ export const styles = (theme) => ({
   },
   actions: {
     color: theme.palette.text.secondary,
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      margin: 0,
+      padding: 0,
+      "& > div > div": {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-end",
+      },
+    },
   },
   title: {
     overflow: "hidden",
