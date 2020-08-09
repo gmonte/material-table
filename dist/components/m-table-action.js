@@ -129,7 +129,7 @@ var MTableAction = /*#__PURE__*/ (function (_React$Component) {
 
         var IconButtonComponent = action.fab
           ? _Fab["default"]
-          : IconButtonComponent;
+          : _IconButton["default"];
         var title = action.fab && action.title;
         var icon =
           typeof action.icon === "string"
