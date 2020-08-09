@@ -34,7 +34,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _colorManipulator = require("@material-ui/core/styles/colorManipulator");
 
 var OverlayLoading = function OverlayLoading(props) {
-  return _react["default"].createElement(
+  return /*#__PURE__*/ _react["default"].createElement(
     "div",
     {
       style: {
@@ -47,7 +47,7 @@ var OverlayLoading = function OverlayLoading(props) {
         ),
       },
     },
-    _react["default"].createElement(
+    /*#__PURE__*/ _react["default"].createElement(
       "div",
       {
         style: {
@@ -58,7 +58,10 @@ var OverlayLoading = function OverlayLoading(props) {
           textAlign: "center",
         },
       },
-      _react["default"].createElement(_CircularProgress["default"], null)
+      /*#__PURE__*/ _react["default"].createElement(
+        _CircularProgress["default"],
+        null
+      )
     )
   );
 };
@@ -67,8 +70,61 @@ OverlayLoading.propTypes = {
   theme: _propTypes["default"].any,
 };
 
+var OverlayError = function OverlayError(props) {
+  return /*#__PURE__*/ _react["default"].createElement(
+    "div",
+    {
+      style: {
+        display: "table",
+        width: "100%",
+        height: "100%",
+        backgroundColor: (0, _colorManipulator.fade)(
+          props.theme.palette.background.paper,
+          0.7
+        ),
+      },
+    },
+    /*#__PURE__*/ _react["default"].createElement(
+      "div",
+      {
+        style: {
+          display: "table-cell",
+          width: "100%",
+          height: "100%",
+          verticalAlign: "middle",
+          textAlign: "center",
+        },
+      },
+      /*#__PURE__*/ _react["default"].createElement(
+        "span",
+        null,
+        props.error.message
+      ),
+      " ",
+      /*#__PURE__*/ _react["default"].createElement(props.icon, {
+        onClick: props.retry,
+        style: {
+          cursor: "pointer",
+          position: "relative",
+          top: 5,
+        },
+      })
+    )
+  );
+};
+
+OverlayError.propTypes = {
+  error: _propTypes["default"].oneOfType([
+    _propTypes["default"].object,
+    _propTypes["default"].string,
+  ]),
+  retry: _propTypes["default"].func,
+  theme: _propTypes["default"].any,
+  icon: _propTypes["default"].any,
+};
+
 var Container = function Container(props) {
-  return _react["default"].createElement(
+  return /*#__PURE__*/ _react["default"].createElement(
     _Paper["default"],
     (0, _extends2["default"])(
       {
@@ -89,6 +145,7 @@ var defaultProps = {
     Body: MComponents.MTableBody,
     Cell: MComponents.MTableCell,
     Container: Container,
+    EditCell: MComponents.MTableEditCell,
     EditField: MComponents.MTableEditField,
     EditRow: MComponents.MTableEditRow,
     FilterRow: MComponents.MTableFilterRow,
@@ -96,6 +153,7 @@ var defaultProps = {
     GroupRow: MComponents.MTableGroupRow,
     Header: MComponents.MTableHeader,
     OverlayLoading: OverlayLoading,
+    OverlayError: OverlayError,
     Pagination: _TablePagination["default"],
     Row: MComponents.MTableBodyRow,
     Toolbar: MComponents.MTableToolbar,
@@ -104,7 +162,7 @@ var defaultProps = {
   icons: {
     /* eslint-disable react/display-name */
     Add: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -113,7 +171,7 @@ var defaultProps = {
       );
     }),
     Check: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -122,7 +180,7 @@ var defaultProps = {
       );
     }),
     Clear: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -131,7 +189,7 @@ var defaultProps = {
       );
     }),
     Delete: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -140,7 +198,7 @@ var defaultProps = {
       );
     }),
     DetailPanel: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -149,7 +207,7 @@ var defaultProps = {
       );
     }),
     Edit: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -158,7 +216,7 @@ var defaultProps = {
       );
     }),
     Export: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -167,7 +225,7 @@ var defaultProps = {
       );
     }),
     Filter: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -176,7 +234,7 @@ var defaultProps = {
       );
     }),
     FirstPage: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -185,7 +243,7 @@ var defaultProps = {
       );
     }),
     LastPage: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -194,7 +252,7 @@ var defaultProps = {
       );
     }),
     NextPage: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -203,7 +261,7 @@ var defaultProps = {
       );
     }),
     PreviousPage: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -212,7 +270,7 @@ var defaultProps = {
       );
     }),
     ResetSearch: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -221,7 +279,7 @@ var defaultProps = {
       );
     }),
     Search: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -230,7 +288,7 @@ var defaultProps = {
       );
     }),
     SortArrow: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -239,7 +297,7 @@ var defaultProps = {
       );
     }),
     ThirdStateCheck: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
@@ -248,12 +306,21 @@ var defaultProps = {
       );
     }),
     ViewColumn: _react["default"].forwardRef(function (props, ref) {
-      return _react["default"].createElement(
+      return /*#__PURE__*/ _react["default"].createElement(
         _Icon["default"],
         (0, _extends2["default"])({}, props, {
           ref: ref,
         }),
         "view_column"
+      );
+    }),
+    Retry: _react["default"].forwardRef(function (props, ref) {
+      return /*#__PURE__*/ _react["default"].createElement(
+        _Icon["default"],
+        (0, _extends2["default"])({}, props, {
+          ref: ref,
+        }),
+        "replay"
       );
     }),
     /* eslint-enable react/display-name */
@@ -272,30 +339,40 @@ var defaultProps = {
     exportButton: false,
     exportDelimiter: ",",
     filtering: false,
+    groupTitle: false,
     header: true,
+    headerSelectionProps: {},
+    hideFilterIcons: false,
     loadingType: "overlay",
     padding: "default",
+    searchAutoFocus: false,
     paging: true,
     pageSize: 5,
     pageSizeOptions: [5, 10, 20],
     paginationType: "normal",
+    paginationPosition: "bottom",
     showEmptyDataSourceMessage: true,
     showFirstLastPageButtons: true,
     showSelectAllCheckbox: true,
     search: true,
     showTitle: true,
     showTextRowsSelected: true,
+    tableLayout: "auto",
     toolbarButtonAlignment: "right",
     searchFieldAlignment: "right",
     searchFieldStyle: {},
+    searchFieldVariant: "standard",
     selection: false,
     selectionProps: {},
     sorting: true,
     toolbar: true,
     defaultExpanded: false,
     detailPanelColumnAlignment: "left",
+    thirdSortClick: true,
+    overflowY: "auto",
   },
   localization: {
+    error: "Data could not be retrieved",
     grouping: {
       groupedBy: "Grouped By:",
       placeholder: "Drag headers here to group by",
@@ -317,6 +394,9 @@ var defaultProps = {
       addTooltip: "Add",
       deleteTooltip: "Delete",
       editTooltip: "Edit",
+      bulkEditTooltip: "Edit All",
+      bulkEditApprove: "Save all changes",
+      bulkEditCancel: "Discard all changes",
     },
   },
   style: {},
