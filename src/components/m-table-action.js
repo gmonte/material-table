@@ -2,7 +2,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Icon from "@material-ui/core/Icon";
-import IconButtonComponent from "@material-ui/core/IconButton";
+import IconButton from "@material-ui/core/IconButton";
 import Fab from "@material-ui/core/Fab";
 import Tooltip from "@material-ui/core/Tooltip";
 /* eslint-enable no-unused-vars */
@@ -40,7 +40,7 @@ class MTableAction extends React.Component {
       }
     };
 
-    const IconButtonComponent = action.fab ? Fab : IconButtonComponent;
+    const IconButtonComponent = action.fab ? Fab : IconButton;
     const title = action.fab && action.title;
 
     const icon =
