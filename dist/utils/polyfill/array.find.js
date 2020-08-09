@@ -27,5 +27,5 @@ Object.defineProperty(Array.prototype, "find", {
     }
 
     return undefined;
-  },
+  }
 });

@@ -5,63 +5,37 @@ var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWild
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
-  value: true,
+  value: true
 });
 exports["default"] = exports.styles = exports.MTableToolbar = void 0;
 
-var _extends2 = _interopRequireDefault(
-  require("@babel/runtime/helpers/extends")
-);
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _objectSpread2 = _interopRequireDefault(
-  require("@babel/runtime/helpers/objectSpread")
-);
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
-var _slicedToArray2 = _interopRequireDefault(
-  require("@babel/runtime/helpers/slicedToArray")
-);
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
-var _classCallCheck2 = _interopRequireDefault(
-  require("@babel/runtime/helpers/classCallCheck")
-);
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _createClass2 = _interopRequireDefault(
-  require("@babel/runtime/helpers/createClass")
-);
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var _assertThisInitialized2 = _interopRequireDefault(
-  require("@babel/runtime/helpers/assertThisInitialized")
-);
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
-var _inherits2 = _interopRequireDefault(
-  require("@babel/runtime/helpers/inherits")
-);
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
-var _possibleConstructorReturn2 = _interopRequireDefault(
-  require("@babel/runtime/helpers/possibleConstructorReturn")
-);
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
-var _getPrototypeOf2 = _interopRequireDefault(
-  require("@babel/runtime/helpers/getPrototypeOf")
-);
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
 
-var _defineProperty2 = _interopRequireDefault(
-  require("@babel/runtime/helpers/defineProperty")
-);
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var _Checkbox = _interopRequireDefault(require("@material-ui/core/Checkbox"));
 
-var _FormControlLabel = _interopRequireDefault(
-  require("@material-ui/core/FormControlLabel")
-);
+var _FormControlLabel = _interopRequireDefault(require("@material-ui/core/FormControlLabel"));
 
-var _IconButton = _interopRequireDefault(
-  require("@material-ui/core/IconButton")
-);
+var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
 
-var _InputAdornment = _interopRequireDefault(
-  require("@material-ui/core/InputAdornment")
-);
+var _InputAdornment = _interopRequireDefault(require("@material-ui/core/InputAdornment"));
 
 var _Menu = _interopRequireDefault(require("@material-ui/core/Menu"));
 
@@ -73,13 +47,9 @@ var _Toolbar = _interopRequireDefault(require("@material-ui/core/Toolbar"));
 
 var _Tooltip = _interopRequireDefault(require("@material-ui/core/Tooltip"));
 
-var _Typography = _interopRequireDefault(
-  require("@material-ui/core/Typography")
-);
+var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
 
-var _withStyles = _interopRequireDefault(
-  require("@material-ui/core/styles/withStyles")
-);
+var _withStyles = _interopRequireDefault(require("@material-ui/core/styles/withStyles"));
 
 var _colorManipulator = require("@material-ui/core/styles/colorManipulator");
 
@@ -93,37 +63,14 @@ require("jspdf-autotable");
 
 var React = _interopRequireWildcard(require("react"));
 
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = (0, _getPrototypeOf2["default"])(Derived),
-      result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-    return (0, _possibleConstructorReturn2["default"])(this, result);
-  };
-}
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
 
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var jsPDF = typeof window !== "undefined" ? require("jspdf") : null;
 /* eslint-enable no-unused-vars */
 
-var MTableToolbar = /*#__PURE__*/ (function (_React$Component) {
+var MTableToolbar = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2["default"])(MTableToolbar, _React$Component);
 
   var _super = _createSuper(MTableToolbar);
@@ -133,552 +80,287 @@ var MTableToolbar = /*#__PURE__*/ (function (_React$Component) {
 
     (0, _classCallCheck2["default"])(this, MTableToolbar);
     _this = _super.call(this, props);
-    (0, _defineProperty2["default"])(
-      (0, _assertThisInitialized2["default"])(_this),
-      "onSearchChange",
-      function (searchText) {
-        _this.props.dataManager.changeSearchText(searchText);
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onSearchChange", function (searchText) {
+      _this.props.dataManager.changeSearchText(searchText);
 
-        _this.setState(
-          {
-            searchText: searchText,
-          },
-          _this.props.onSearchChanged(searchText)
-        );
-      }
-    );
-    (0, _defineProperty2["default"])(
-      (0, _assertThisInitialized2["default"])(_this),
-      "getTableData",
-      function () {
-        var columns = _this.props.columns
-          .filter(function (columnDef) {
-            return (
-              (!columnDef.hidden || columnDef["export"] === true) &&
-              columnDef["export"] !== false &&
-              columnDef.field
-            );
-          })
-          .sort(function (a, b) {
-            return a.tableData.columnOrder > b.tableData.columnOrder ? 1 : -1;
-          });
+      _this.setState({
+        searchText: searchText
+      }, _this.props.onSearchChanged(searchText));
+    });
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getTableData", function () {
+      var columns = _this.props.columns.filter(function (columnDef) {
+        return (!columnDef.hidden || columnDef["export"] === true) && columnDef["export"] !== false && columnDef.field;
+      }).sort(function (a, b) {
+        return a.tableData.columnOrder > b.tableData.columnOrder ? 1 : -1;
+      });
 
-        var data = (_this.props.exportAllData
-          ? _this.props.data
-          : _this.props.renderData
-        ).map(function (rowData) {
-          return columns.map(function (columnDef) {
-            return _this.props.getFieldValue(rowData, columnDef);
-          });
+      var data = (_this.props.exportAllData ? _this.props.data : _this.props.renderData).map(function (rowData) {
+        return columns.map(function (columnDef) {
+          return _this.props.getFieldValue(rowData, columnDef);
         });
-        return [columns, data];
-      }
-    );
-    (0, _defineProperty2["default"])(
-      (0, _assertThisInitialized2["default"])(_this),
-      "defaultExportCsv",
-      function () {
-        var _this$getTableData = _this.getTableData(),
-          _this$getTableData2 = (0, _slicedToArray2["default"])(
-            _this$getTableData,
-            2
-          ),
+      });
+      return [columns, data];
+    });
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "defaultExportCsv", function () {
+      var _this$getTableData = _this.getTableData(),
+          _this$getTableData2 = (0, _slicedToArray2["default"])(_this$getTableData, 2),
           columns = _this$getTableData2[0],
           data = _this$getTableData2[1];
 
-        var fileName = _this.props.title || "data";
+      var fileName = _this.props.title || "data";
 
-        if (_this.props.exportFileName) {
-          fileName =
-            typeof _this.props.exportFileName === "function"
-              ? _this.props.exportFileName()
-              : _this.props.exportFileName;
-        }
-
-        var builder = new _filefy.CsvBuilder(fileName + ".csv");
-        builder
-          .setDelimeter(_this.props.exportDelimiter)
-          .setColumns(
-            columns.map(function (columnDef) {
-              return columnDef.title;
-            })
-          )
-          .addRows(data)
-          .exportFile();
+      if (_this.props.exportFileName) {
+        fileName = typeof _this.props.exportFileName === "function" ? _this.props.exportFileName() : _this.props.exportFileName;
       }
-    );
-    (0, _defineProperty2["default"])(
-      (0, _assertThisInitialized2["default"])(_this),
-      "defaultExportPdf",
-      function () {
-        if (jsPDF !== null) {
-          var _this$getTableData3 = _this.getTableData(),
-            _this$getTableData4 = (0, _slicedToArray2["default"])(
-              _this$getTableData3,
-              2
-            ),
+
+      var builder = new _filefy.CsvBuilder(fileName + ".csv");
+      builder.setDelimeter(_this.props.exportDelimiter).setColumns(columns.map(function (columnDef) {
+        return columnDef.title;
+      })).addRows(data).exportFile();
+    });
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "defaultExportPdf", function () {
+      if (jsPDF !== null) {
+        var _this$getTableData3 = _this.getTableData(),
+            _this$getTableData4 = (0, _slicedToArray2["default"])(_this$getTableData3, 2),
             columns = _this$getTableData4[0],
             data = _this$getTableData4[1];
 
-          var content = {
-            startY: 50,
-            head: [
-              columns.map(function (columnDef) {
-                return columnDef.title;
-              }),
-            ],
-            body: data,
-          };
-          var unit = "pt";
-          var size = "A4";
-          var orientation = "landscape";
-          var doc = new jsPDF(orientation, unit, size);
-          doc.setFontSize(15);
-          doc.text(_this.props.exportFileName || _this.props.title, 40, 40);
-          doc.autoTable(content);
-          doc.save(
-            (_this.props.exportFileName || _this.props.title || "data") + ".pdf"
-          );
-        }
+        var content = {
+          startY: 50,
+          head: [columns.map(function (columnDef) {
+            return columnDef.title;
+          })],
+          body: data
+        };
+        var unit = "pt";
+        var size = "A4";
+        var orientation = "landscape";
+        var doc = new jsPDF(orientation, unit, size);
+        doc.setFontSize(15);
+        doc.text(_this.props.exportFileName || _this.props.title, 40, 40);
+        doc.autoTable(content);
+        doc.save((_this.props.exportFileName || _this.props.title || "data") + ".pdf");
       }
-    );
-    (0, _defineProperty2["default"])(
-      (0, _assertThisInitialized2["default"])(_this),
-      "exportCsv",
-      function () {
-        if (_this.props.exportCsv) {
-          _this.props.exportCsv(_this.props.columns, _this.props.data);
-        } else {
-          _this.defaultExportCsv();
-        }
+    });
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "exportCsv", function () {
+      if (_this.props.exportCsv) {
+        _this.props.exportCsv(_this.props.columns, _this.props.data);
+      } else {
+        _this.defaultExportCsv();
+      }
 
-        _this.setState({
-          exportButtonAnchorEl: null,
-        });
+      _this.setState({
+        exportButtonAnchorEl: null
+      });
+    });
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "exportPdf", function () {
+      if (_this.props.exportPdf) {
+        _this.props.exportPdf(_this.props.columns, _this.props.data);
+      } else {
+        _this.defaultExportPdf();
       }
-    );
-    (0, _defineProperty2["default"])(
-      (0, _assertThisInitialized2["default"])(_this),
-      "exportPdf",
-      function () {
-        if (_this.props.exportPdf) {
-          _this.props.exportPdf(_this.props.columns, _this.props.data);
-        } else {
-          _this.defaultExportPdf();
-        }
 
-        _this.setState({
-          exportButtonAnchorEl: null,
-        });
-      }
-    );
+      _this.setState({
+        exportButtonAnchorEl: null
+      });
+    });
     _this.state = {
       columnsButtonAnchorEl: null,
       exportButtonAnchorEl: null,
-      searchText: props.searchText,
+      searchText: props.searchText
     };
     return _this;
   }
 
-  (0, _createClass2["default"])(MTableToolbar, [
-    {
-      key: "renderSearch",
-      value: function renderSearch() {
-        var _this2 = this;
+  (0, _createClass2["default"])(MTableToolbar, [{
+    key: "renderSearch",
+    value: function renderSearch() {
+      var _this2 = this;
 
-        var localization = (0, _objectSpread2["default"])(
-          {},
-          MTableToolbar.defaultProps.localization,
-          this.props.localization
-        );
+      var localization = (0, _objectSpread2["default"])({}, MTableToolbar.defaultProps.localization, this.props.localization);
 
-        if (this.props.search) {
-          var _this$props$searchFie;
+      if (this.props.search) {
+        var _this$props$searchFie;
 
-          return /*#__PURE__*/ React.createElement(
-            _TextField["default"],
-            (0, _extends2["default"])(
-              {
-                autoFocus: this.props.searchAutoFocus,
-                className:
-                  this.props.searchFieldAlignment === "left" &&
-                  this.props.showTitle === false
-                    ? null
-                    : this.props.classes.searchField,
-                value: this.state.searchText,
-                onChange: function onChange(event) {
-                  return _this2.onSearchChange(event.target.value);
-                },
-                placeholder: localization.searchPlaceholder,
-                variant: this.props.searchFieldVariant,
+        return /*#__PURE__*/React.createElement(_TextField["default"], (0, _extends2["default"])({
+          autoFocus: this.props.searchAutoFocus,
+          className: this.props.searchFieldAlignment === "left" && this.props.showTitle === false ? null : this.props.classes.searchField,
+          value: this.state.searchText,
+          onChange: function onChange(event) {
+            return _this2.onSearchChange(event.target.value);
+          },
+          placeholder: localization.searchPlaceholder,
+          variant: this.props.searchFieldVariant
+        }, this.props.searchFieldProps, {
+          InputProps: (0, _objectSpread2["default"])({
+            startAdornment: /*#__PURE__*/React.createElement(_InputAdornment["default"], {
+              position: "start"
+            }, /*#__PURE__*/React.createElement(_Tooltip["default"], {
+              title: localization.searchTooltip
+            }, /*#__PURE__*/React.createElement(this.props.icons.Search, {
+              fontSize: "small"
+            }))),
+            endAdornment: /*#__PURE__*/React.createElement(_InputAdornment["default"], {
+              position: "end"
+            }, /*#__PURE__*/React.createElement(_IconButton["default"], {
+              disabled: !this.state.searchText,
+              onClick: function onClick() {
+                return _this2.onSearchChange("");
               },
-              this.props.searchFieldProps,
-              {
-                InputProps: (0, _objectSpread2["default"])(
-                  {
-                    startAdornment: /*#__PURE__*/ React.createElement(
-                      _InputAdornment["default"],
-                      {
-                        position: "start",
-                      },
-                      /*#__PURE__*/ React.createElement(
-                        _Tooltip["default"],
-                        {
-                          title: localization.searchTooltip,
-                        },
-                        /*#__PURE__*/ React.createElement(
-                          this.props.icons.Search,
-                          {
-                            fontSize: "small",
-                          }
-                        )
-                      )
-                    ),
-                    endAdornment: /*#__PURE__*/ React.createElement(
-                      _InputAdornment["default"],
-                      {
-                        position: "end",
-                      },
-                      /*#__PURE__*/ React.createElement(
-                        _IconButton["default"],
-                        {
-                          disabled: !this.state.searchText,
-                          onClick: function onClick() {
-                            return _this2.onSearchChange("");
-                          },
-                          "aria-label": localization.clearSearchAriaLabel,
-                        },
-                        /*#__PURE__*/ React.createElement(
-                          this.props.icons.ResetSearch,
-                          {
-                            fontSize: "small",
-                            "aria-label": "clear",
-                          }
-                        )
-                      )
-                    ),
-                    style: this.props.searchFieldStyle,
-                    inputProps: {
-                      "aria-label": localization.searchAriaLabel,
-                    },
-                  },
-                  ((_this$props$searchFie = this.props.searchFieldProps) ===
-                    null || _this$props$searchFie === void 0
-                    ? void 0
-                    : _this$props$searchFie.InputProps) || {}
-                ),
-              }
-            )
-          );
-        } else {
-          return null;
-        }
-      },
-    },
-    {
-      key: "renderDefaultActions",
-      value: function renderDefaultActions() {
-        var _this3 = this;
-
-        var localization = (0, _objectSpread2["default"])(
-          {},
-          MTableToolbar.defaultProps.localization,
-          this.props.localization
-        );
-        var classes = this.props.classes;
-        return /*#__PURE__*/ React.createElement(
-          "div",
-          null,
-          this.props.columnsButton &&
-            /*#__PURE__*/ React.createElement(
-              "span",
-              null,
-              /*#__PURE__*/ React.createElement(
-                _Tooltip["default"],
-                {
-                  title: localization.showColumnsTitle,
-                },
-                /*#__PURE__*/ React.createElement(
-                  _IconButton["default"],
-                  {
-                    color: "inherit",
-                    onClick: function onClick(event) {
-                      return _this3.setState({
-                        columnsButtonAnchorEl: event.currentTarget,
-                      });
-                    },
-                    "aria-label": localization.showColumnsAriaLabel,
-                  },
-                  /*#__PURE__*/ React.createElement(
-                    this.props.icons.ViewColumn,
-                    null
-                  )
-                )
-              ),
-              /*#__PURE__*/ React.createElement(
-                _Menu["default"],
-                {
-                  anchorEl: this.state.columnsButtonAnchorEl,
-                  open: Boolean(this.state.columnsButtonAnchorEl),
-                  onClose: function onClose() {
-                    return _this3.setState({
-                      columnsButtonAnchorEl: null,
-                    });
-                  },
-                },
-                /*#__PURE__*/ React.createElement(
-                  _MenuItem["default"],
-                  {
-                    key: "text",
-                    disabled: true,
-                    style: {
-                      opacity: 1,
-                      fontWeight: 600,
-                      fontSize: 12,
-                    },
-                  },
-                  localization.addRemoveColumns
-                ),
-                this.props.columns.map(function (col) {
-                  if (!col.hidden || col.hiddenByColumnsButton) {
-                    return /*#__PURE__*/ React.createElement(
-                      "li",
-                      {
-                        key: col.tableData.id,
-                      },
-                      /*#__PURE__*/ React.createElement(
-                        _MenuItem["default"],
-                        {
-                          className: classes.formControlLabel,
-                          component: "label",
-                          htmlFor: "column-toggle-".concat(col.tableData.id),
-                          disabled: col.removable === false,
-                        },
-                        /*#__PURE__*/ React.createElement(
-                          _Checkbox["default"],
-                          {
-                            checked: !col.hidden,
-                            id: "column-toggle-".concat(col.tableData.id),
-                            onChange: function onChange() {
-                              return _this3.props.onColumnsChanged(
-                                col,
-                                !col.hidden
-                              );
-                            },
-                          }
-                        ),
-                        /*#__PURE__*/ React.createElement(
-                          "span",
-                          null,
-                          col.title
-                        )
-                      )
-                    );
-                  }
-
-                  return null;
-                })
-              )
-            ),
-          this.props.exportButton &&
-            /*#__PURE__*/ React.createElement(
-              "span",
-              null,
-              /*#__PURE__*/ React.createElement(
-                _Tooltip["default"],
-                {
-                  title: localization.exportTitle,
-                },
-                /*#__PURE__*/ React.createElement(
-                  _IconButton["default"],
-                  {
-                    color: "inherit",
-                    onClick: function onClick(event) {
-                      return _this3.setState({
-                        exportButtonAnchorEl: event.currentTarget,
-                      });
-                    },
-                    "aria-label": localization.exportAriaLabel,
-                  },
-                  /*#__PURE__*/ React.createElement(
-                    this.props.icons.Export,
-                    null
-                  )
-                )
-              ),
-              /*#__PURE__*/ React.createElement(
-                _Menu["default"],
-                {
-                  anchorEl: this.state.exportButtonAnchorEl,
-                  open: Boolean(this.state.exportButtonAnchorEl),
-                  onClose: function onClose() {
-                    return _this3.setState({
-                      exportButtonAnchorEl: null,
-                    });
-                  },
-                },
-                /*#__PURE__*/ React.createElement(
-                  _MenuItem["default"],
-                  {
-                    key: "export-csv",
-                    onClick: this.exportCsv,
-                  },
-                  localization.exportCSVName
-                ),
-                /*#__PURE__*/ React.createElement(
-                  _MenuItem["default"],
-                  {
-                    key: "export-pdf",
-                    onClick: this.exportPdf,
-                  },
-                  localization.exportPDFName
-                )
-              )
-            ),
-          /*#__PURE__*/ React.createElement(
-            "span",
-            null,
-            /*#__PURE__*/ React.createElement(this.props.components.Actions, {
-              actions:
-                this.props.actions &&
-                this.props.actions.filter(function (a) {
-                  return a.position === "toolbar";
-                }),
-              components: this.props.components,
-            })
-          )
-        );
-      },
-    },
-    {
-      key: "renderSelectedActions",
-      value: function renderSelectedActions() {
-        return /*#__PURE__*/ React.createElement(
-          React.Fragment,
-          null,
-          /*#__PURE__*/ React.createElement(this.props.components.Actions, {
-            actions: this.props.actions.filter(function (a) {
-              return a.position === "toolbarOnSelect";
-            }),
-            data: this.props.selectedRows,
-            components: this.props.components,
-          })
-        );
-      },
-    },
-    {
-      key: "renderActions",
-      value: function renderActions() {
-        var classes = this.props.classes;
-        return /*#__PURE__*/ React.createElement(
-          "div",
-          {
-            className: classes.actions,
-          },
-          /*#__PURE__*/ React.createElement(
-            "div",
-            null,
-            this.props.selectedRows && this.props.selectedRows.length > 0
-              ? this.renderSelectedActions()
-              : this.renderDefaultActions()
-          )
-        );
-      },
-    },
-    {
-      key: "renderToolbarTitle",
-      value: function renderToolbarTitle(title) {
-        var classes = this.props.classes;
-        var toolBarTitle =
-          typeof title === "string"
-            ? /*#__PURE__*/ React.createElement(
-                _Typography["default"],
-                {
-                  variant: "h6",
-                  style: {
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  },
-                },
-                title
-              )
-            : title;
-        return /*#__PURE__*/ React.createElement(
-          "div",
-          {
-            className: classes.title,
-          },
-          toolBarTitle
-        );
-      },
-    },
-    {
-      key: "render",
-      value: function render() {
-        var _this$props$toolbarPr;
-
-        var classes = this.props.classes;
-        var localization = (0, _objectSpread2["default"])(
-          {},
-          MTableToolbar.defaultProps.localization,
-          this.props.localization
-        );
-        var title =
-          this.props.showTextRowsSelected &&
-          this.props.selectedRows &&
-          this.props.selectedRows.length > 0
-            ? typeof localization.nRowsSelected === "function"
-              ? localization.nRowsSelected(this.props.selectedRows.length)
-              : localization.nRowsSelected.replace(
-                  "{0}",
-                  this.props.selectedRows.length
-                )
-            : this.props.showTitle
-            ? this.props.title
-            : null;
-        return /*#__PURE__*/ React.createElement(
-          _Toolbar["default"],
-          (0, _extends2["default"])(
-            {
-              className: (0, _classnames["default"])(
-                classes.root,
-                (0, _defineProperty2["default"])(
-                  {},
-                  classes.highlight,
-                  this.props.showTextRowsSelected &&
-                    this.props.selectedRows &&
-                    this.props.selectedRows.length > 0
-                )
-              ),
-            },
-            this.props.toolbarProps,
-            {
-              style: (0, _objectSpread2["default"])(
-                {
-                  zIndex: 60,
-                },
-                ((_this$props$toolbarPr = this.props.toolbarProps) === null ||
-                _this$props$toolbarPr === void 0
-                  ? void 0
-                  : _this$props$toolbarPr.styles) || {}
-              ),
+              "aria-label": localization.clearSearchAriaLabel
+            }, /*#__PURE__*/React.createElement(this.props.icons.ResetSearch, {
+              fontSize: "small",
+              "aria-label": "clear"
+            }))),
+            style: this.props.searchFieldStyle,
+            inputProps: {
+              "aria-label": localization.searchAriaLabel
             }
-          ),
-          title && this.renderToolbarTitle(title),
-          this.props.searchFieldAlignment === "left" && this.renderSearch(),
-          this.props.toolbarButtonAlignment === "left" && this.renderActions(),
-          /*#__PURE__*/ React.createElement("div", {
-            className: classes.spacer,
-          }),
-          this.props.searchFieldAlignment === "right" && this.renderSearch(),
-          this.props.toolbarButtonAlignment === "right" && this.renderActions()
-        );
-      },
-    },
-  ]);
+          }, ((_this$props$searchFie = this.props.searchFieldProps) === null || _this$props$searchFie === void 0 ? void 0 : _this$props$searchFie.InputProps) || {})
+        }));
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: "renderDefaultActions",
+    value: function renderDefaultActions() {
+      var _this3 = this;
+
+      var localization = (0, _objectSpread2["default"])({}, MTableToolbar.defaultProps.localization, this.props.localization);
+      var classes = this.props.classes;
+      return /*#__PURE__*/React.createElement("div", null, this.props.columnsButton && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_Tooltip["default"], {
+        title: localization.showColumnsTitle
+      }, /*#__PURE__*/React.createElement(_IconButton["default"], {
+        color: "inherit",
+        onClick: function onClick(event) {
+          return _this3.setState({
+            columnsButtonAnchorEl: event.currentTarget
+          });
+        },
+        "aria-label": localization.showColumnsAriaLabel
+      }, /*#__PURE__*/React.createElement(this.props.icons.ViewColumn, null))), /*#__PURE__*/React.createElement(_Menu["default"], {
+        anchorEl: this.state.columnsButtonAnchorEl,
+        open: Boolean(this.state.columnsButtonAnchorEl),
+        onClose: function onClose() {
+          return _this3.setState({
+            columnsButtonAnchorEl: null
+          });
+        }
+      }, /*#__PURE__*/React.createElement(_MenuItem["default"], {
+        key: "text",
+        disabled: true,
+        style: {
+          opacity: 1,
+          fontWeight: 600,
+          fontSize: 12
+        }
+      }, localization.addRemoveColumns), this.props.columns.map(function (col) {
+        if (!col.hidden || col.hiddenByColumnsButton) {
+          return /*#__PURE__*/React.createElement("li", {
+            key: col.tableData.id
+          }, /*#__PURE__*/React.createElement(_MenuItem["default"], {
+            className: classes.formControlLabel,
+            component: "label",
+            htmlFor: "column-toggle-".concat(col.tableData.id),
+            disabled: col.removable === false
+          }, /*#__PURE__*/React.createElement(_Checkbox["default"], {
+            checked: !col.hidden,
+            id: "column-toggle-".concat(col.tableData.id),
+            onChange: function onChange() {
+              return _this3.props.onColumnsChanged(col, !col.hidden);
+            }
+          }), /*#__PURE__*/React.createElement("span", null, col.title)));
+        }
+
+        return null;
+      }))), this.props.exportButton && /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_Tooltip["default"], {
+        title: localization.exportTitle
+      }, /*#__PURE__*/React.createElement(_IconButton["default"], {
+        color: "inherit",
+        onClick: function onClick(event) {
+          return _this3.setState({
+            exportButtonAnchorEl: event.currentTarget
+          });
+        },
+        "aria-label": localization.exportAriaLabel
+      }, /*#__PURE__*/React.createElement(this.props.icons.Export, null))), /*#__PURE__*/React.createElement(_Menu["default"], {
+        anchorEl: this.state.exportButtonAnchorEl,
+        open: Boolean(this.state.exportButtonAnchorEl),
+        onClose: function onClose() {
+          return _this3.setState({
+            exportButtonAnchorEl: null
+          });
+        }
+      }, /*#__PURE__*/React.createElement(_MenuItem["default"], {
+        key: "export-csv",
+        onClick: this.exportCsv
+      }, localization.exportCSVName), /*#__PURE__*/React.createElement(_MenuItem["default"], {
+        key: "export-pdf",
+        onClick: this.exportPdf
+      }, localization.exportPDFName))), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(this.props.components.Actions, {
+        actions: this.props.actions && this.props.actions.filter(function (a) {
+          return a.position === "toolbar";
+        }),
+        components: this.props.components
+      })));
+    }
+  }, {
+    key: "renderSelectedActions",
+    value: function renderSelectedActions() {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(this.props.components.Actions, {
+        actions: this.props.actions.filter(function (a) {
+          return a.position === "toolbarOnSelect";
+        }),
+        data: this.props.selectedRows,
+        components: this.props.components
+      }));
+    }
+  }, {
+    key: "renderActions",
+    value: function renderActions() {
+      var classes = this.props.classes;
+      return /*#__PURE__*/React.createElement("div", {
+        className: classes.actions
+      }, /*#__PURE__*/React.createElement("div", null, this.props.selectedRows && this.props.selectedRows.length > 0 ? this.renderSelectedActions() : this.renderDefaultActions()));
+    }
+  }, {
+    key: "renderToolbarTitle",
+    value: function renderToolbarTitle(title) {
+      var classes = this.props.classes;
+      var toolBarTitle = typeof title === "string" ? /*#__PURE__*/React.createElement(_Typography["default"], {
+        variant: "h6",
+        style: {
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis"
+        }
+      }, title) : title;
+      return /*#__PURE__*/React.createElement("div", {
+        className: classes.title
+      }, toolBarTitle);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props$toolbarPr;
+
+      var classes = this.props.classes;
+      var localization = (0, _objectSpread2["default"])({}, MTableToolbar.defaultProps.localization, this.props.localization);
+      var title = this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0 ? typeof localization.nRowsSelected === "function" ? localization.nRowsSelected(this.props.selectedRows.length) : localization.nRowsSelected.replace("{0}", this.props.selectedRows.length) : this.props.showTitle ? this.props.title : null;
+      return /*#__PURE__*/React.createElement(_Toolbar["default"], (0, _extends2["default"])({
+        className: (0, _classnames["default"])(classes.root, (0, _defineProperty2["default"])({}, classes.highlight, this.props.showTextRowsSelected && this.props.selectedRows && this.props.selectedRows.length > 0))
+      }, this.props.toolbarProps, {
+        style: (0, _objectSpread2["default"])({
+          zIndex: 60
+        }, ((_this$props$toolbarPr = this.props.toolbarProps) === null || _this$props$toolbarPr === void 0 ? void 0 : _this$props$toolbarPr.styles) || {})
+      }), title && this.renderToolbarTitle(title), this.props.searchFieldAlignment === "left" && this.renderSearch(), this.props.toolbarButtonAlignment === "left" && this.renderActions(), /*#__PURE__*/React.createElement("div", {
+        className: classes.spacer
+      }), this.props.searchFieldAlignment === "right" && this.renderSearch(), this.props.toolbarButtonAlignment === "right" && this.renderActions());
+    }
+  }]);
   return MTableToolbar;
-})(React.Component);
+}(React.Component);
 
 exports.MTableToolbar = MTableToolbar;
 MTableToolbar.defaultProps = {
@@ -697,7 +379,7 @@ MTableToolbar.defaultProps = {
     searchTooltip: "Search",
     searchPlaceholder: "Search",
     searchAriaLabel: "Search",
-    clearSearchAriaLabel: "Clear Search",
+    clearSearchAriaLabel: "Clear Search"
   },
   search: true,
   showTitle: true,
@@ -710,7 +392,7 @@ MTableToolbar.defaultProps = {
   searchFieldVariant: "standard",
   selectedRows: [],
   title: "No Title!",
-  searchFieldProps: {},
+  searchFieldProps: {}
 };
 MTableToolbar.propTypes = {
   actions: _propTypes["default"].array,
@@ -728,10 +410,7 @@ MTableToolbar.propTypes = {
   searchFieldVariant: _propTypes["default"].string,
   searchFieldProps: _propTypes["default"].object,
   selectedRows: _propTypes["default"].array,
-  title: _propTypes["default"].oneOfType([
-    _propTypes["default"].element,
-    _propTypes["default"].string,
-  ]),
+  title: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].string]),
   showTitle: _propTypes["default"].bool.isRequired,
   showTextRowsSelected: _propTypes["default"].bool.isRequired,
   toolbarProps: _propTypes["default"].object.isRequired,
@@ -742,65 +421,52 @@ MTableToolbar.propTypes = {
   exportAllData: _propTypes["default"].bool,
   exportButton: _propTypes["default"].bool,
   exportDelimiter: _propTypes["default"].string,
-  exportFileName: _propTypes["default"].oneOfType([
-    _propTypes["default"].string,
-    _propTypes["default"].func,
-  ]),
+  exportFileName: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].func]),
   exportCsv: _propTypes["default"].func,
   exportPdf: _propTypes["default"].func,
   classes: _propTypes["default"].object,
-  searchAutoFocus: _propTypes["default"].bool,
+  searchAutoFocus: _propTypes["default"].bool
 };
 
 var styles = function styles(theme) {
   return {
     root: {
-      paddingRight: theme.spacing(1),
+      paddingRight: theme.spacing(1)
     },
-    highlight:
-      theme.palette.type === "light"
-        ? {
-            color: theme.palette.secondary.main,
-            backgroundColor: (0, _colorManipulator.lighten)(
-              theme.palette.secondary.light,
-              0.85
-            ),
-          }
-        : {
-            color: theme.palette.text.primary,
-            backgroundColor: theme.palette.secondary.dark,
-          },
+    highlight: theme.palette.type === "light" ? {
+      color: theme.palette.secondary.main,
+      backgroundColor: theme.palette.secondary.dark
+    } : {
+      color: theme.palette.text.primary,
+      backgroundColor: theme.palette.secondary.dark
+    },
     spacer: {
-      flex: "1 1 10%",
+      flex: "1 1 10%"
     },
-    actions: (0, _defineProperty2["default"])(
-      {
-        color: theme.palette.text.secondary,
-      },
-      theme.breakpoints.down("sm"),
-      {
-        width: "100%",
-        margin: 0,
-        padding: 0,
-        "& > div > div": {
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "flex-end",
-        },
+    actions: (0, _defineProperty2["default"])({
+      color: theme.palette.text.secondary
+    }, theme.breakpoints.down("sm"), {
+      width: "100%",
+      margin: 0,
+      padding: 0,
+      "& > div > div": {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-end"
       }
-    ),
+    }),
     title: {
       overflow: "hidden",
-      flex: "0 0 auto",
+      flex: "0 0 auto"
     },
     searchField: {
       minWidth: 150,
-      paddingLeft: theme.spacing(2),
+      paddingLeft: theme.spacing(2)
     },
     formControlLabel: {
       paddingLeft: theme.spacing(1),
-      paddingRight: theme.spacing(1),
-    },
+      paddingRight: theme.spacing(1)
+    }
   };
 };
 
