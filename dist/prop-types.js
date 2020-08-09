@@ -41,7 +41,10 @@ var propTypes = {
         iconProps: _propTypes["default"].object,
         iconButtonProps: _propTypes["default"].object,
         fab: _propTypes["default"].bool,
-        title: _propTypes["default"].string,
+        title: _propTypes["default"].oneOfType([
+          _propTypes["default"].string,
+          _propTypes["default"].element,
+        ]),
         disabled: _propTypes["default"].bool,
         hidden: _propTypes["default"].bool,
       }),
