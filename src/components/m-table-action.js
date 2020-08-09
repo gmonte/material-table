@@ -1,73 +1,99 @@
 /* eslint-disable no-unused-vars */
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import Fab from '@material-ui/core/Fab';
-import Tooltip from '@material-ui/core/Tooltip';
+import * as React from "react";
+import PropTypes from "prop-types";
+import Icon from "@material-ui/core/Icon";
+import IconButtonComponent from "@material-ui/core/IconButton";
+import Fab from "@material-ui/core/Fab";
+import Tooltip from "@material-ui/core/Tooltip";
 /* eslint-enable no-unused-vars */
 
 class MTableAction extends React.Component {
-	render() {
-		let action = this.props.action;
-		if (typeof action === 'function') {
-			action = action(this.props.data);
-			if (!action) {
-				return null;
-			}
-		}
+  render() {
+    let action = this.props.action;
 
-		if (action.hidden) {
-			return null;
-		}
+    if (typeof action === "function") {
+      action = action(this.props.data);
+      if (!action) {
+        return null;
+      }
+    }
 
-		const handleOnClick = event => {
-			if (action.onClick) {
-				action.onClick(event, this.props.data);
-				event.stopPropagation();
-			}
-		};
+    if (action.action) {
+      action = action.action(this.props.data);
+      if (!action) {
+        return null;
+      }
+    }
 
-		const IconButtonComponent = action.fab ? Fab : IconButton;
-		const title = action.fab && action.title ? action.title : null;
+    if (action.hidden) {
+      return null;
+    }
 
-		const button = (
-			<IconButtonComponent
-				size={this.props.size}
-				color="inherit"
-				disabled={action.disabled}
-				onClick={event => handleOnClick(event)}
-				{...(action.iconButtonProps || {})}
-			>
-				{typeof action.icon === 'string' ? (
-					<Icon {...action.iconProps}>{action.icon}</Icon>
-				) : (
-					<action.icon {...action.iconProps} disabled={action.disabled} />
-				)}
-				{title}
-			</IconButtonComponent>
-		);
+    const disabled = action.disabled || this.props.disabled;
 
-		if (action.tooltip) {
-			return <Tooltip title={action.tooltip}>{button}</Tooltip>;
-		} else {
-			return button;
-		}
-	}
+    const iconButtonProps = action.iconButtonProps || {};
+
+    const handleOnClick = (event) => {
+      if (action.onClick) {
+        action.onClick(event, this.props.data);
+        event.stopPropagation();
+      }
+    };
+
+    const IconButtonComponent = action.fab ? Fab : IconButtonComponent;
+    const title = action.fab && action.title;
+
+    const icon =
+      typeof action.icon === "string" ? (
+        <Icon {...action.iconProps}>{action.icon}</Icon>
+      ) : typeof action.icon === "function" ? (
+        action.icon({ ...action.iconProps, disabled: disabled })
+      ) : (
+        <action.icon />
+      );
+
+    const button = (
+      <IconButtonComponent
+        size={this.props.size}
+        color="inherit"
+        disabled={disabled}
+        onClick={handleOnClick}
+        {...iconButtonProps}
+      >
+        {icon}
+        {title}
+      </IconButtonComponent>
+    );
+
+    if (action.tooltip) {
+      // fix for issue #1049
+      // https://github.com/mbrn/material-table/issues/1049
+      return disabled ? (
+        <Tooltip title={action.tooltip}>
+          <span>{button}</span>
+        </Tooltip>
+      ) : (
+        <Tooltip title={action.tooltip}>{button}</Tooltip>
+      );
+    } else {
+      return button;
+    }
+  }
 }
 
 MTableAction.defaultProps = {
-	action: {},
-	data: {}
+  action: {},
+  data: {},
 };
 
 MTableAction.propTypes = {
-	action: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
-	data: PropTypes.oneOfType([
-		PropTypes.object,
-		PropTypes.arrayOf(PropTypes.object)
-	]),
-	size: PropTypes.string
+  action: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
+  data: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.arrayOf(PropTypes.object),
+  ]),
+  disabled: PropTypes.bool,
+  size: PropTypes.string,
 };
 
 export default MTableAction;
