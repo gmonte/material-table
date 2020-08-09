@@ -440,16 +440,10 @@ export const styles = (theme) => ({
   root: {
     paddingRight: theme.spacing(1),
   },
-  highlight:
-    theme.palette.type === "light"
-      ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: theme.palette.secondary.dark,
-        }
-      : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
+  highlight: {
+    color: theme.palette.text.primary,
+    backgroundColor: theme.palette.secondary.dark,
+  },
   spacer: {
     flex: "1 1 10%",
   },
