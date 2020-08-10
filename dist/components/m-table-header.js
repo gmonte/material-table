@@ -9,7 +9,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = exports.styles = exports.MTableHeader = void 0;
 
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+var _objectSpread3 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
@@ -110,7 +112,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
           key: columnDef.tableData.id,
           align: cellAlignment,
           className: _this.props.classes.header,
-          style: (0, _objectSpread2["default"])({}, _this.props.headerStyle, columnDef.headerStyle, {
+          style: (0, _objectSpread3["default"])({}, _this.props.headerStyle, columnDef.headerStyle, {
             boxSizing: "border-box",
             width: columnDef.tableData.width
           }),
@@ -122,17 +124,17 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderActionsHeader",
     value: function renderActionsHeader() {
-      var localization = (0, _objectSpread2["default"])({}, MTableHeader.defaultProps.localization, this.props.localization);
-      var width = CommonValues.actionsColumnWidth(this.props);
+      var _objectSpread2;
+
+      var localization = (0, _objectSpread3["default"])({}, MTableHeader.defaultProps.localization, this.props.localization);
       return /*#__PURE__*/React.createElement(_TableCell["default"], {
         key: "key-actions-column",
         padding: "checkbox",
         className: this.props.classes.header,
-        style: (0, _objectSpread2["default"])({}, this.props.headerStyle, {
-          width: width,
-          textAlign: "center",
-          boxSizing: "border-box"
-        })
+        style: (0, _objectSpread3["default"])({}, this.props.headerStyle, (_objectSpread2 = {
+          textAlign: 'right',
+          width: 'max-content'
+        }, (0, _defineProperty2["default"])(_objectSpread2, "textAlign", "center"), (0, _defineProperty2["default"])(_objectSpread2, "boxSizing", "border-box"), _objectSpread2))
       }, /*#__PURE__*/React.createElement(_TableSortLabel["default"], {
         hideSortIcon: true,
         disabled: true
@@ -148,7 +150,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
         padding: "none",
         key: "key-selection-column",
         className: this.props.classes.header,
-        style: (0, _objectSpread2["default"])({}, this.props.headerStyle, {
+        style: (0, _objectSpread3["default"])({}, this.props.headerStyle, {
           width: selectionWidth
         })
       }, this.props.showSelectAllCheckbox && /*#__PURE__*/React.createElement(_Checkbox["default"], (0, _extends2["default"])({
@@ -166,7 +168,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
         padding: "none",
         key: "key-detail-panel-column",
         className: this.props.classes.header,
-        style: (0, _objectSpread2["default"])({}, this.props.headerStyle)
+        style: (0, _objectSpread3["default"])({}, this.props.headerStyle)
       });
     }
   }, {
@@ -207,7 +209,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
           padding: "none",
           key: "key-tree-data-header",
           className: this.props.classes.header,
-          style: (0, _objectSpread2["default"])({}, this.props.headerStyle)
+          style: (0, _objectSpread3["default"])({}, this.props.headerStyle)
         }));
       }
 
