@@ -278,6 +278,7 @@ var MTableEditRow = /*#__PURE__*/function (_React$Component) {
         size: size,
         padding: "none",
         key: "key-actions-column",
+        align: "right",
         style: (0, _objectSpread2["default"])({
           width: 42 * actions.length,
           padding: "0px 5px"
@@ -286,17 +287,12 @@ var MTableEditRow = /*#__PURE__*/function (_React$Component) {
         style: {
           display: "flex"
         }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          display: "flex",
-          justifyContent: 'flex-end'
-        }
       }, /*#__PURE__*/React.createElement(this.props.components.Actions, {
         data: this.props.data,
         actions: actions,
         components: this.props.components,
         size: size
-      }))));
+      })));
     }
   }, {
     key: "getStyle",

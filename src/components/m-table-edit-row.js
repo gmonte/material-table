@@ -214,6 +214,7 @@ export default class MTableEditRow extends React.Component {
         size={size}
         padding="none"
         key="key-actions-column"
+        align="right"
         style={{
           width: 42 * actions.length,
           padding: "0px 5px",
@@ -221,14 +222,12 @@ export default class MTableEditRow extends React.Component {
         }}
       >
         <div style={{ display: "flex" }}>
-          <div style={{ display: "flex", justifyContent: 'flex-end'}}>
-            <this.props.components.Actions
-              data={this.props.data}
-              actions={actions}
-              components={this.props.components}
-              size={size}
-            />
-          </div>
+          <this.props.components.Actions
+            data={this.props.data}
+            actions={actions}
+            components={this.props.components}
+            size={size}
+          />
         </div>
       </TableCell>
     );
