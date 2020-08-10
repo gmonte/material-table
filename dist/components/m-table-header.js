@@ -128,7 +128,6 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
         padding: "checkbox",
         className: this.props.classes.header,
         style: (0, _objectSpread2["default"])({}, this.props.headerStyle, {
-          width: 'max-content',
           textAlign: "right",
           boxSizing: "border-box"
         })

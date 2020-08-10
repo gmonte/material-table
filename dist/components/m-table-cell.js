@@ -202,8 +202,7 @@ var MTableCell = /*#__PURE__*/function (_React$Component) {
         renderValue = /*#__PURE__*/React.createElement("div", {
           style: {
             borderBottom: "1px dashed grey",
-            cursor: "pointer",
-            width: "max-content"
+            cursor: "pointer"
           },
           onClick: function onClick(e) {
             e.stopPropagation();

@@ -164,7 +164,6 @@ export default class MTableCell extends React.Component {
           style={{
             borderBottom: "1px dashed grey",
             cursor: "pointer",
-            width: "max-content",
           }}
           onClick={(e) => {
             e.stopPropagation();
