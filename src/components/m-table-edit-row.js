@@ -220,7 +220,7 @@ export default class MTableEditRow extends React.Component {
           ...this.props.options.editCellStyle,
         }}
       >
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", justifyContent: 'flex-end' }}>
           <this.props.components.Actions
             data={this.props.data}
             actions={actions}

@@ -123,9 +123,8 @@ export class MTableHeader extends React.Component {
         className={this.props.classes.header}
         style={{
           ...this.props.headerStyle,
-          textAlign: 'right',
           width: 'max-content',
-          textAlign: "center",
+          textAlign: "right",
           boxSizing: "border-box",
         }}
       >

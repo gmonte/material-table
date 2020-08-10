@@ -284,7 +284,8 @@ var MTableEditRow = /*#__PURE__*/function (_React$Component) {
         }, this.props.options.editCellStyle)
       }, /*#__PURE__*/React.createElement("div", {
         style: {
-          display: "flex"
+          display: "flex",
+          justifyContent: 'flex-end'
         }
       }, /*#__PURE__*/React.createElement(this.props.components.Actions, {
         data: this.props.data,
