@@ -129,7 +129,9 @@ export class MTableHeader extends React.Component {
         }}
       >
         <TableSortLabel hideSortIcon={true} disabled>
-          {localization.actions}
+          <div style={{display: 'flex', justifyContent: 'flex-end' }}>
+            {localization.actions}
+          </div>
         </TableSortLabel>
       </TableCell>
     );

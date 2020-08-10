@@ -135,7 +135,12 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/React.createElement(_TableSortLabel["default"], {
         hideSortIcon: true,
         disabled: true
-      }, localization.actions));
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          display: 'flex',
+          justifyContent: 'flex-end'
+        }
+      }, localization.actions)));
     }
   }, {
     key: "renderSelectionHeader",
