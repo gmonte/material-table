@@ -59,7 +59,9 @@ var MTableGroupbar = /*#__PURE__*/function (_React$Component) {
         // some basic styles to make the items look a bit nicer
         userSelect: "none",
         // padding: '8px 16px',
-        margin: "0 ".concat(8, "px 0 0")
+        margin: "0 ".concat(8, "px 0 0"),
+        display: "flex",
+        alignItems: "center"
       }, draggableStyle);
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getListStyle", function (isDraggingOver) {
