@@ -222,6 +222,7 @@ export default class MTableEditRow extends React.Component {
         }}
       >
         <div style={{ display: "flex" }}>
+          asd
           <this.props.components.Actions
             data={this.props.data}
             actions={actions}
