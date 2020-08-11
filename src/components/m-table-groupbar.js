@@ -18,7 +18,8 @@ class MTableGroupbar extends React.Component {
     userSelect: "none",
     // padding: '8px 16px',
     margin: `0 ${8}px 0 0`,
-
+    display: "flex",
+    alignItems: "center",
     // change background colour if dragging
     // background: isDragging ? 'lightgreen' : 'grey',
 
