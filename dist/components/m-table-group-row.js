@@ -164,6 +164,7 @@ var MTableGroupRow = /*#__PURE__*/function (_React$Component) {
       for (var i = 0; i < this.props.level; i++) {
         freeCells.push( /*#__PURE__*/React.createElement(_TableCell["default"], {
           padding: "checkbox",
+          size: "small",
           key: i
         }));
       }

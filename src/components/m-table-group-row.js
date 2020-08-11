@@ -106,7 +106,7 @@ export default class MTableGroupRow extends React.Component {
 
     const freeCells = [];
     for (let i = 0; i < this.props.level; i++) {
-      freeCells.push(<TableCell padding="checkbox" key={i} />);
+      freeCells.push(<TableCell padding="checkbox" size="small" key={i} />);
     }
 
     let value = this.props.groupData.value;
