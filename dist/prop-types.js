@@ -329,6 +329,7 @@ var propTypes = {
   ]),
   options: _propTypes["default"].shape({
     actionsCellStyle: _propTypes["default"].object,
+    actionsCellDivStyle: _propTypes["default"].object,
     editCellStyle: _propTypes["default"].object,
     detailPanelColumnStyle: _propTypes["default"].object,
     actionsColumnIndex: _propTypes["default"].number,

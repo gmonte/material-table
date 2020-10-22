@@ -233,9 +233,12 @@ var MTableBodyRow = /*#__PURE__*/ (function (_React$Component) {
           /*#__PURE__*/ React.createElement(
             "div",
             {
-              style: {
-                display: "flex",
-              },
+              style: (0, _objectSpread2["default"])(
+                {
+                  display: "flex",
+                },
+                this.props.options.actionsCellDivStyle
+              ),
             },
             /*#__PURE__*/ React.createElement(this.props.components.Actions, {
               data: this.props.data,
