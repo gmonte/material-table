@@ -804,7 +804,6 @@ export default class MaterialTable extends React.Component {
                     .replace("{count}", row.count)
                 }
                 labelRowsPerPage={localization.labelRowsPerPage}
-                iconButtonProps={props.options.paginationIconButtonProps}
               />
             </TableRow>
           </TableFooter>
