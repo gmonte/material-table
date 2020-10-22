@@ -9,6 +9,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _extends2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/extends")
+);
+
 var _objectSpread2 = _interopRequireDefault(
   require("@babel/runtime/helpers/objectSpread")
 );
@@ -134,14 +138,18 @@ var MTableAction = /*#__PURE__*/ (function (_React$Component) {
                 })
               )
             : /*#__PURE__*/ React.createElement(action.icon, null);
+        var iconButtonProps = action.iconButtonProps || {};
         var button = /*#__PURE__*/ React.createElement(
           _IconButton["default"],
-          {
-            size: this.props.size,
-            color: "inherit",
-            disabled: disabled,
-            onClick: handleOnClick,
-          },
+          (0, _extends2["default"])(
+            {
+              size: this.props.size,
+              color: "inherit",
+              disabled: disabled,
+              onClick: handleOnClick,
+            },
+            iconButtonProps
+          ),
           icon
         );
 

@@ -39,6 +39,7 @@ var propTypes = {
         tooltip: _propTypes["default"].string,
         onClick: _propTypes["default"].func.isRequired,
         iconProps: _propTypes["default"].object,
+        iconButtonProps: _propTypes["default"].object,
         disabled: _propTypes["default"].bool,
         hidden: _propTypes["default"].bool,
       }),
