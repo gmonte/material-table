@@ -1386,6 +1386,7 @@ var MaterialTable = /*#__PURE__*/ (function (_React$Component) {
                       .replace("{count}", row.count);
                   },
                   labelRowsPerPage: localization.labelRowsPerPage,
+                  iconButtonProps: props.options.paginationIconButtonProps,
                 })
               )
             )

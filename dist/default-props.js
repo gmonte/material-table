@@ -365,6 +365,7 @@ var defaultProps = {
     paging: true,
     pageSize: 5,
     pageSizeOptions: [5, 10, 20],
+    paginationIconButtonProps: {},
     paginationType: "normal",
     paginationPosition: "bottom",
     showEmptyDataSourceMessage: true,

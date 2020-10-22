@@ -382,6 +382,7 @@ var propTypes = {
       "initial",
       "inherit",
     ]),
+    paginationIconButtonProps: _propTypes["default"].object,
     padding: _propTypes["default"].oneOf(["default", "dense"]),
     paging: _propTypes["default"].bool,
     pageSize: _propTypes["default"].number,

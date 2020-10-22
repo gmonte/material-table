@@ -9,6 +9,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _extends2 = _interopRequireDefault(
+  require("@babel/runtime/helpers/extends")
+);
+
 var _objectSpread2 = _interopRequireDefault(
   require("@babel/runtime/helpers/objectSpread")
 );
@@ -153,7 +157,8 @@ var MTablePaginationInner = /*#__PURE__*/ (function (_React$Component) {
           page = _this$props.page,
           rowsPerPage = _this$props.rowsPerPage,
           theme = _this$props.theme,
-          showFirstLastPageButtons = _this$props.showFirstLastPageButtons;
+          showFirstLastPageButtons = _this$props.showFirstLastPageButtons,
+          iconButtonProps = _this$props.iconButtonProps;
         var localization = (0, _objectSpread2["default"])(
           {},
           MTablePaginationInner.defaultProps.localization,
@@ -175,11 +180,11 @@ var MTablePaginationInner = /*#__PURE__*/ (function (_React$Component) {
                 null,
                 /*#__PURE__*/ React.createElement(
                   _IconButton["default"],
-                  {
+                  (0, _extends2["default"])({}, iconButtonProps, {
                     onClick: this.handleFirstPageButtonClick,
-                    disabled: page === 0,
                     "aria-label": localization.firstAriaLabel,
-                  },
+                    disabled: page === 0,
+                  }),
                   theme.direction === "rtl"
                     ? /*#__PURE__*/ React.createElement(
                         this.props.icons.LastPage,
@@ -202,11 +207,11 @@ var MTablePaginationInner = /*#__PURE__*/ (function (_React$Component) {
               null,
               /*#__PURE__*/ React.createElement(
                 _IconButton["default"],
-                {
+                (0, _extends2["default"])({}, iconButtonProps, {
                   onClick: this.handleBackButtonClick,
                   disabled: page === 0,
                   "aria-label": localization.previousAriaLabel,
-                },
+                }),
                 theme.direction === "rtl"
                   ? /*#__PURE__*/ React.createElement(
                       this.props.icons.NextPage,
@@ -256,11 +261,11 @@ var MTablePaginationInner = /*#__PURE__*/ (function (_React$Component) {
               null,
               /*#__PURE__*/ React.createElement(
                 _IconButton["default"],
-                {
+                (0, _extends2["default"])({}, iconButtonProps, {
                   onClick: this.handleNextButtonClick,
                   disabled: page >= Math.ceil(count / rowsPerPage) - 1,
                   "aria-label": localization.nextAriaLabel,
-                },
+                }),
                 theme.direction === "rtl"
                   ? /*#__PURE__*/ React.createElement(
                       this.props.icons.PreviousPage,
@@ -284,11 +289,11 @@ var MTablePaginationInner = /*#__PURE__*/ (function (_React$Component) {
                 null,
                 /*#__PURE__*/ React.createElement(
                   _IconButton["default"],
-                  {
+                  (0, _extends2["default"])({}, iconButtonProps, {
                     onClick: this.handleLastPageButtonClick,
                     disabled: page >= Math.ceil(count / rowsPerPage) - 1,
                     "aria-label": localization.lastAriaLabel,
-                  },
+                  }),
                   theme.direction === "rtl"
                     ? /*#__PURE__*/ React.createElement(
                         this.props.icons.FirstPage,
@@ -327,9 +332,11 @@ MTablePaginationInner.propTypes = {
   localization: _propTypes["default"].object,
   theme: _propTypes["default"].any,
   showFirstLastPageButtons: _propTypes["default"].bool,
+  iconButtonProps: _propTypes["default"].object,
 };
 MTablePaginationInner.defaultProps = {
   showFirstLastPageButtons: true,
+  iconButtonProps: {},
   localization: {
     firstTooltip: "First Page",
     previousTooltip: "Previous Page",
