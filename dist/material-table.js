@@ -889,18 +889,19 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
             return props.options.paginationType === "normal" ? /*#__PURE__*/React.createElement(_components.MTablePagination, (0, _extends2["default"])({}, subProps, {
               icons: props.icons,
               localization: localization,
-              showFirstLastPageButtons: props.options.showFirstLastPageButtons
+              showFirstLastPageButtons: props.options.showFirstLastPageButtons,
+              iconButtonProps: props.options.paginationIconButtonProps
             })) : /*#__PURE__*/React.createElement(_components.MTableSteppedPagination, (0, _extends2["default"])({}, subProps, {
               icons: props.icons,
               localization: localization,
-              showFirstLastPageButtons: props.options.showFirstLastPageButtons
+              showFirstLastPageButtons: props.options.showFirstLastPageButtons,
+              iconButtonProps: props.options.paginationIconButtonProps
             }));
           },
           labelDisplayedRows: function labelDisplayedRows(row) {
             return localization.labelDisplayedRows.replace("{from}", row.from).replace("{to}", row.to).replace("{count}", row.count);
           },
-          labelRowsPerPage: localization.labelRowsPerPage,
-          iconButtonProps: props.options.paginationIconButtonProps
+          labelRowsPerPage: localization.labelRowsPerPage
         }))));
       }
     }
