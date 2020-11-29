@@ -215,7 +215,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
         className: this.props.classes.header,
         style: (0, _objectSpread2["default"])({}, this.props.headerStyle, {
           width: width,
-          textAlign: "center",
+          textAlign: "left",
           boxSizing: "border-box"
         })
       }, /*#__PURE__*/React.createElement(_TableSortLabel["default"], {
