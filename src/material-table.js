@@ -17,6 +17,7 @@ import * as CommonValues from "./utils/common-values";
 
 export default class MaterialTable extends React.Component {
   dataManager = new DataManager();
+  mounted = true
 
   constructor(props) {
     super(props);
@@ -56,17 +57,23 @@ export default class MaterialTable extends React.Component {
   }
 
   componentDidMount() {
-    this.setState(
-      {
-        ...this.dataManager.getRenderState(),
-        width: this.tableContainerDiv.current.scrollWidth,
-      },
-      () => {
-        if (this.isRemoteData()) {
-          this.onQueryChange(this.state.query);
+    if (this.mounted) {
+      this.setState(
+        {
+          ...this.dataManager.getRenderState(),
+          width: this.tableContainerDiv.current.scrollWidth,
+        },
+        () => {
+          if (this.isRemoteData()) {
+            this.onQueryChange(this.state.query);
+          }
         }
-      }
-    );
+      );
+    }
+  }
+
+  componentWillUnmount() {
+    this.mounted = false
   }
 
   setDataManagerFields(props, isInit) {
@@ -578,46 +585,52 @@ export default class MaterialTable extends React.Component {
   };
   onQueryChange = (query, callback) => {
     query = { ...this.state.query, ...query, error: this.state.errorState };
-    this.setState({ isLoading: true, errorState: undefined }, () => {
-      this.props
-        .data(query)
-        .then((result) => {
-          query.totalCount = result.totalCount;
-          query.page = result.page;
-          this.dataManager.setData(result.data);
-          this.setState(
-            {
-              isLoading: false,
-              errorState: false,
-              ...this.dataManager.getRenderState(),
-              query,
-            },
-            () => {
-              callback && callback();
+    if (this.mounted) {
+      this.setState({ isLoading: true, errorState: undefined }, () => {
+        this.props
+          .data(query)
+          .then((result) => {
+            if (this.mounted) {
+              query.totalCount = result.totalCount;
+              query.page = result.page;
+              this.dataManager.setData(result.data);
+              this.setState(
+                {
+                  isLoading: false,
+                  errorState: false,
+                  ...this.dataManager.getRenderState(),
+                  query,
+                },
+                () => {
+                  callback && callback();
+                }
+              );
             }
-          );
-        })
-        .catch((error) => {
-          const localization = {
-            ...MaterialTable.defaultProps.localization,
-            ...this.props.localization,
-          };
-          const errorState = {
-            message:
-              typeof error === "object"
-                ? error.message
-                : error !== undefined
-                ? error
-                : localization.error,
-            errorCause: "query",
-          };
-          this.setState({
-            isLoading: false,
-            errorState,
-            ...this.dataManager.getRenderState(),
+          })
+          .catch((error) => {
+            if (this.mounted) {
+              const localization = {
+                ...MaterialTable.defaultProps.localization,
+                ...this.props.localization,
+              };
+              const errorState = {
+                message:
+                  typeof error === "object"
+                    ? error.message
+                    : error !== undefined
+                    ? error
+                    : localization.error,
+                errorCause: "query",
+              };
+              this.setState({
+                isLoading: false,
+                errorState,
+                ...this.dataManager.getRenderState(),
+              });
+            }
           });
-        });
-    });
+      });
+    }
   };
 
   onRowSelected = (event, path, dataClicked) => {
