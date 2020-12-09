@@ -1,7 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true,
+  value: true
 });
 exports.reducePercentsInCalc = exports.selectionMaxWidth = exports.actionsColumnWidth = exports.rowActions = exports.baseIconSize = exports.elementSize = void 0;
 
@@ -50,11 +50,7 @@ var reducePercentsInCalc = function reducePercentsInCalc(calc, fullValue) {
 
     leftIndex++;
     var value = Number.parseFloat(calc.substring(leftIndex, index));
-    calc =
-      calc.substring(0, leftIndex) +
-      (value * fullValue) / 100 +
-      "px" +
-      calc.substring(index + 1);
+    calc = calc.substring(0, leftIndex) + value * fullValue / 100 + "px" + calc.substring(index + 1);
     index = calc.indexOf("%");
   }
 
