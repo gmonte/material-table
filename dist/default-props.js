@@ -236,6 +236,7 @@ var defaultProps = {
     header: true,
     headerSelectionProps: {},
     hideFilterIcons: false,
+    hideGroupbar: false,
     loadingType: "overlay",
     padding: "default",
     searchAutoFocus: false,

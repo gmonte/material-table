@@ -964,7 +964,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         dataManager: this.dataManager,
         onColumnsChanged: this.onChangeColumnHidden,
         localization: (0, _objectSpread2["default"])({}, MaterialTable.defaultProps.localization.toolbar, this.props.localization.toolbar)
-      }), props.options.grouping && /*#__PURE__*/React.createElement(props.components.Groupbar, {
+      }), props.options.grouping && !props.options.hideGroupbar && /*#__PURE__*/React.createElement(props.components.Groupbar, {
         icons: props.icons,
         localization: (0, _objectSpread2["default"])({}, MaterialTable.defaultProps.localization.grouping, props.localization.grouping),
         groupColumns: this.state.columns.filter(function (col) {

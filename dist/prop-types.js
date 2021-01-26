@@ -151,6 +151,7 @@ var propTypes = {
     headerSelectionProps: _propTypes["default"].object,
     headerStyle: _propTypes["default"].object,
     hideFilterIcons: _propTypes["default"].bool,
+    hideGroupbar: _propTypes["default"].bool,
     initialPage: _propTypes["default"].number,
     maxBodyHeight: _propTypes["default"].oneOfType([_propTypes["default"].number, _propTypes["default"].string]),
     minBodyHeight: _propTypes["default"].oneOfType([_propTypes["default"].number, _propTypes["default"].string]),
