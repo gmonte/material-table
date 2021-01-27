@@ -9,9 +9,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
@@ -84,9 +84,13 @@ var MTableAction = /*#__PURE__*/function (_React$Component) {
         }
       };
 
-      var icon = typeof action.icon === "string" ? /*#__PURE__*/React.createElement(_Icon["default"], action.iconProps, action.icon) : typeof action.icon === "function" ? action.icon((0, _objectSpread2["default"])({}, action.iconProps, {
+      var icon = typeof action.icon === 'string' ? /*#__PURE__*/React.createElement(_Icon["default"], (0, _extends2["default"])({}, action.iconProps, {
         disabled: disabled
-      })) : /*#__PURE__*/React.createElement(action.icon, null);
+      }), action.icon) : typeof action.icon === 'function' ? action.icon((0, _objectSpread2["default"])({}, action.iconProps, {
+        disabled: disabled
+      })) : /*#__PURE__*/React.createElement(action.icon, (0, _extends2["default"])({}, action.iconProps, {
+        disabled: disabled
+      }));
       var iconButtonProps = action.iconButtonProps || {};
       var ButtonComponent = action.ButtonComponent || _IconButton["default"];
       var button = /*#__PURE__*/React.createElement(ButtonComponent, (0, _extends2["default"])({
