@@ -272,4 +272,5 @@ export const defaultProps = {
     },
   },
   style: {},
+  disabledRow: () => false
 };

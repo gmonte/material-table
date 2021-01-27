@@ -26,7 +26,7 @@ export default class MTableGroupRow extends React.Component {
         detail = this.props.groupData.groups.map((groupData, index) => (
           <this.props.components.GroupRow
             actions={this.props.actions}
-            key={groupData.value || "" + index}
+            key={groupData.value || '' + index}
             columns={this.props.columns}
             components={this.props.components}
             detailPanel={this.props.detailPanel}
@@ -39,6 +39,7 @@ export default class MTableGroupRow extends React.Component {
             onGroupExpandChanged={this.props.onGroupExpandChanged}
             onRowSelected={this.props.onRowSelected}
             onRowClick={this.props.onRowClick}
+            disabledRow={this.props.disabledRow}
             onToggleDetailPanel={this.props.onToggleDetailPanel}
             onTreeExpandChanged={this.props.onTreeExpandChanged}
             onEditingCanceled={this.props.onEditingCanceled}
