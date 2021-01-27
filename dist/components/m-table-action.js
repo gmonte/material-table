@@ -88,7 +88,8 @@ var MTableAction = /*#__PURE__*/function (_React$Component) {
         disabled: disabled
       })) : /*#__PURE__*/React.createElement(action.icon, null);
       var iconButtonProps = action.iconButtonProps || {};
-      var button = /*#__PURE__*/React.createElement(_IconButton["default"], (0, _extends2["default"])({
+      var ButtonComponent = action.ButtonComponent || _IconButton["default"];
+      var button = /*#__PURE__*/React.createElement(ButtonComponent, (0, _extends2["default"])({
         size: this.props.size,
         color: "inherit",
         disabled: disabled,
