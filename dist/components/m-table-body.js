@@ -157,6 +157,7 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
             path: [index + _this.props.pageSize * _this.props.currentPage],
             onToggleDetailPanel: _this.props.onToggleDetailPanel,
             onRowClick: _this.props.onRowClick,
+            disabledRow: _this.props.disabledRow,
             isTreeData: _this.props.isTreeData,
             onTreeExpandChanged: _this.props.onTreeExpandChanged,
             onEditingCanceled: _this.props.onEditingCanceled,

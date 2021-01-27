@@ -85,7 +85,7 @@ var MTableGroupRow = /*#__PURE__*/function (_React$Component) {
           detail = this.props.groupData.groups.map(function (groupData, index) {
             return /*#__PURE__*/React.createElement(_this2.props.components.GroupRow, {
               actions: _this2.props.actions,
-              key: groupData.value || "" + index,
+              key: groupData.value || '' + index,
               columns: _this2.props.columns,
               components: _this2.props.components,
               detailPanel: _this2.props.detailPanel,
@@ -98,6 +98,7 @@ var MTableGroupRow = /*#__PURE__*/function (_React$Component) {
               onGroupExpandChanged: _this2.props.onGroupExpandChanged,
               onRowSelected: _this2.props.onRowSelected,
               onRowClick: _this2.props.onRowClick,
+              disabledRow: _this2.props.disabledRow,
               onToggleDetailPanel: _this2.props.onToggleDetailPanel,
               onTreeExpandChanged: _this2.props.onTreeExpandChanged,
               onEditingCanceled: _this2.props.onEditingCanceled,

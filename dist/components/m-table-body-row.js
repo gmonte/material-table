@@ -406,6 +406,7 @@ var MTableBodyRow = /*#__PURE__*/function (_React$Component) {
           getFieldValue = _this$props.getFieldValue,
           isTreeData = _this$props.isTreeData,
           onRowClick = _this$props.onRowClick,
+          disabledRow = _this$props.disabledRow,
           onRowSelected = _this$props.onRowSelected,
           onTreeExpandChanged = _this$props.onTreeExpandChanged,
           onToggleDetailPanel = _this$props.onToggleDetailPanel,
@@ -421,20 +422,21 @@ var MTableBodyRow = /*#__PURE__*/function (_React$Component) {
           onCellEditStarted = _this$props.onCellEditStarted,
           onCellEditFinished = _this$props.onCellEditFinished,
           scrollWidth = _this$props.scrollWidth,
-          rowProps = (0, _objectWithoutProperties2["default"])(_this$props, ["icons", "data", "columns", "components", "detailPanel", "getFieldValue", "isTreeData", "onRowClick", "onRowSelected", "onTreeExpandChanged", "onToggleDetailPanel", "onEditingCanceled", "onEditingApproved", "options", "hasAnyEditingRow", "treeDataMaxLevel", "localization", "actions", "errorState", "cellEditable", "onCellEditStarted", "onCellEditFinished", "scrollWidth"]);
+          rowProps = (0, _objectWithoutProperties2["default"])(_this$props, ["icons", "data", "columns", "components", "detailPanel", "getFieldValue", "isTreeData", "onRowClick", "disabledRow", "onRowSelected", "onTreeExpandChanged", "onToggleDetailPanel", "onEditingCanceled", "onEditingApproved", "options", "hasAnyEditingRow", "treeDataMaxLevel", "localization", "actions", "errorState", "cellEditable", "onCellEditStarted", "onCellEditFinished", "scrollWidth"]);
+      var rowIsDisabled = disabledRow(data);
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_TableRow["default"], (0, _extends2["default"])({
         selected: hasAnyEditingRow
       }, rowProps, {
-        hover: onRowClick ? true : false,
+        hover: onRowClick ? !rowIsDisabled : false,
         style: this.getStyle(this.props.index, this.props.level),
         onClick: function onClick(event) {
-          onRowClick && onRowClick(event, _this6.props.data, function (panelIndex) {
+          !rowIsDisabled && onRowClick && onRowClick(event, _this6.props.data, function (panelIndex) {
             var panel = detailPanel;
 
             if (Array.isArray(panel)) {
               panel = panel[panelIndex || 0];
 
-              if (typeof panel === "function") {
+              if (typeof panel === 'function') {
                 panel = panel(_this6.props.data);
               }
 
@@ -498,7 +500,10 @@ MTableBodyRow.defaultProps = {
   index: 0,
   data: {},
   options: {},
-  path: []
+  path: [],
+  disabledRow: function disabledRow() {
+    return false;
+  }
 };
 MTableBodyRow.propTypes = {
   actions: _propTypes["default"].array,
@@ -517,5 +522,6 @@ MTableBodyRow.propTypes = {
   onRowClick: _propTypes["default"].func,
   onEditingApproved: _propTypes["default"].func,
   onEditingCanceled: _propTypes["default"].func,
-  errorState: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].bool])
+  errorState: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].bool]),
+  disabledRow: _propTypes["default"].func
 };

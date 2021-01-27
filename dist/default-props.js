@@ -294,6 +294,9 @@ var defaultProps = {
       bulkEditCancel: "Discard all changes"
     }
   },
-  style: {}
+  style: {},
+  disabledRow: function disabledRow() {
+    return false;
+  }
 };
 exports.defaultProps = defaultProps;

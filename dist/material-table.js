@@ -540,6 +540,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         onEditingApproved: _this.onEditingApproved,
         localization: (0, _objectSpread2["default"])({}, MaterialTable.defaultProps.localization.body, _this.props.localization.body),
         onRowClick: _this.props.onRowClick,
+        disabledRow: _this.props.disabledRow,
         showAddRow: _this.state.showAddRow,
         hasAnyEditingRow: !!(_this.state.lastEditingRow || _this.state.showAddRow),
         hasDetailPanel: !!props.detailPanel,
