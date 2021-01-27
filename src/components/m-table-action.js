@@ -48,8 +48,10 @@ class MTableAction extends React.Component {
 
     const iconButtonProps = action.iconButtonProps || {};
 
+    const ButtonComponent = action.ButtonComponent || IconButton;
+
     const button = (
-      <IconButton
+      <ButtonComponent
         size={this.props.size}
         color="inherit"
         disabled={disabled}
@@ -57,7 +59,7 @@ class MTableAction extends React.Component {
         {...iconButtonProps}
       >
         {icon}
-      </IconButton>
+      </ButtonComponent>
     );
 
     if (action.tooltip) {
