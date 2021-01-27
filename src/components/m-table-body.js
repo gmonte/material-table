@@ -129,6 +129,7 @@ class MTableBody extends React.Component {
             path={[index + this.props.pageSize * this.props.currentPage]}
             onToggleDetailPanel={this.props.onToggleDetailPanel}
             onRowClick={this.props.onRowClick}
+            disabledRow={this.props.disabledRow}
             isTreeData={this.props.isTreeData}
             onTreeExpandChanged={this.props.onTreeExpandChanged}
             onEditingCanceled={this.props.onEditingCanceled}

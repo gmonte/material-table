@@ -909,6 +909,7 @@ export default class MaterialTable extends React.Component {
           ...this.props.localization.body,
         }}
         onRowClick={this.props.onRowClick}
+        disabledRow={this.props.disabledRow}
         showAddRow={this.state.showAddRow}
         hasAnyEditingRow={
           !!(this.state.lastEditingRow || this.state.showAddRow)

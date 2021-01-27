@@ -410,6 +410,7 @@ export default class MTableBodyRow extends React.Component {
       getFieldValue,
       isTreeData,
       onRowClick,
+      disabledRow,
       onRowSelected,
       onTreeExpandChanged,
       onToggleDetailPanel,
@@ -428,20 +429,23 @@ export default class MTableBodyRow extends React.Component {
       ...rowProps
     } = this.props;
 
+    const rowIsDisabled = disabledRow(data)
+
     return (
       <>
         <TableRow
           selected={hasAnyEditingRow}
           {...rowProps}
-          hover={onRowClick ? true : false}
+          hover={onRowClick ? !rowIsDisabled : false}
           style={this.getStyle(this.props.index, this.props.level)}
           onClick={(event) => {
+            !rowIsDisabled &&
             onRowClick &&
               onRowClick(event, this.props.data, (panelIndex) => {
                 let panel = detailPanel;
                 if (Array.isArray(panel)) {
                   panel = panel[panelIndex || 0];
-                  if (typeof panel === "function") {
+                  if (typeof panel === 'function') {
                     panel = panel(this.props.data);
                   }
                   panel = panel.render;
@@ -522,6 +526,7 @@ MTableBodyRow.defaultProps = {
   data: {},
   options: {},
   path: [],
+  disabledRow: () => false
 };
 
 MTableBodyRow.propTypes = {
@@ -545,4 +550,5 @@ MTableBodyRow.propTypes = {
   onEditingApproved: PropTypes.func,
   onEditingCanceled: PropTypes.func,
   errorState: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  disabledRow: PropTypes.func
 };
