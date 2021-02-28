@@ -59,7 +59,7 @@ var CommonValues = _interopRequireWildcard(require("./utils/common-values"));
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
 /* eslint-enable no-unused-vars */
 var MaterialTable = /*#__PURE__*/function (_React$Component) {
@@ -708,10 +708,12 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
       if (calculatedProps.options.selection) calculatedProps.actions = calculatedProps.actions.filter(function (a) {
         return a;
       }).map(function (action) {
+        var _action;
+
         if (action.position === "auto" || action.isFreeAction === false || action.position === undefined && action.isFreeAction === undefined) {
           if (typeof action === "function") return {
             action: action,
-            position: "toolbarOnSelect"
+            position: ((_action = action()) === null || _action === void 0 ? void 0 : _action.position) || "toolbarOnSelect"
           };else return (0, _objectSpread2["default"])({}, action, {
             position: "toolbarOnSelect"
           });
