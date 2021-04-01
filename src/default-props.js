@@ -159,6 +159,15 @@ export const defaultProps = {
         clear
       </Icon>
     )),
+    Resize: React.forwardRef((props, ref) => (
+      <Icon
+        {...props}
+        ref={ref}
+        style={{ ...props.style, transform: "rotate(90deg)" }}
+      >
+        drag_handle
+      </Icon>
+    )),
     Search: React.forwardRef((props, ref) => (
       <Icon {...props} ref={ref}>
         search
@@ -204,12 +213,14 @@ export const defaultProps = {
     header: true,
     headerSelectionProps: {},
     hideFilterIcons: false,
+    hideGroupbar: false,
     loadingType: "overlay",
     padding: "default",
     searchAutoFocus: false,
     paging: true,
     pageSize: 5,
     pageSizeOptions: [5, 10, 20],
+    paginationIconButtonProps: {},
     paginationType: "normal",
     paginationPosition: "bottom",
     showEmptyDataSourceMessage: true,
@@ -261,4 +272,5 @@ export const defaultProps = {
     },
   },
   style: {},
+  disabledRow: () => false
 };

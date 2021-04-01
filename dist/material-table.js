@@ -73,6 +73,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
     (0, _classCallCheck2["default"])(this, MaterialTable);
     _this = _super.call(this, _props);
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "dataManager", new _dataManager["default"]());
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "mounted", true);
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "isRemoteData", function (props) {
       return !Array.isArray((props || _this.props).data);
     });
@@ -335,37 +336,43 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         error: _this.state.errorState
       });
 
-      _this.setState({
-        isLoading: true,
-        errorState: undefined
-      }, function () {
-        _this.props.data(query).then(function (result) {
-          query.totalCount = result.totalCount;
-          query.page = result.page;
+      if (_this.mounted) {
+        _this.setState({
+          isLoading: true,
+          errorState: undefined
+        }, function () {
+          _this.props.data(query).then(function (result) {
+            if (_this.mounted) {
+              query.totalCount = result.totalCount;
+              query.page = result.page;
 
-          _this.dataManager.setData(result.data);
+              _this.dataManager.setData(result.data);
 
-          _this.setState((0, _objectSpread2["default"])({
-            isLoading: false,
-            errorState: false
-          }, _this.dataManager.getRenderState(), {
-            query: query
-          }), function () {
-            callback && callback();
+              _this.setState((0, _objectSpread2["default"])({
+                isLoading: false,
+                errorState: false
+              }, _this.dataManager.getRenderState(), {
+                query: query
+              }), function () {
+                callback && callback();
+              });
+            }
+          })["catch"](function (error) {
+            if (_this.mounted) {
+              var localization = (0, _objectSpread2["default"])({}, MaterialTable.defaultProps.localization, _this.props.localization);
+              var errorState = {
+                message: (0, _typeof2["default"])(error) === "object" ? error.message : error !== undefined ? error : localization.error,
+                errorCause: "query"
+              };
+
+              _this.setState((0, _objectSpread2["default"])({
+                isLoading: false,
+                errorState: errorState
+              }, _this.dataManager.getRenderState()));
+            }
           });
-        })["catch"](function (error) {
-          var localization = (0, _objectSpread2["default"])({}, MaterialTable.defaultProps.localization, _this.props.localization);
-          var errorState = {
-            message: (0, _typeof2["default"])(error) === "object" ? error.message : error !== undefined ? error : localization.error,
-            errorCause: "query"
-          };
-
-          _this.setState((0, _objectSpread2["default"])({
-            isLoading: false,
-            errorState: errorState
-          }, _this.dataManager.getRenderState()));
         });
-      });
+      }
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onRowSelected", function (event, path, dataClicked) {
       _this.dataManager.changeRowSelected(event.target.checked, path);
@@ -469,6 +476,11 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
 
       _this.setState(_this.dataManager.getRenderState());
     });
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "onColumnResized", function (id, additionalWidth) {
+      _this.dataManager.onColumnResized(id, additionalWidth);
+
+      _this.setState(_this.dataManager.getRenderState());
+    });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderTable", function (props) {
       return /*#__PURE__*/React.createElement(_Table["default"], {
         style: {
@@ -502,7 +514,9 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         draggable: props.options.draggable,
         thirdSortClick: props.options.thirdSortClick,
         treeDataMaxLevel: _this.state.treeDataMaxLevel,
-        options: props.options
+        options: props.options,
+        onColumnResized: _this.onColumnResized,
+        scrollWidth: _this.state.width
       }), /*#__PURE__*/React.createElement(props.components.Body, {
         actions: props.actions,
         components: props.components,
@@ -526,6 +540,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         onEditingApproved: _this.onEditingApproved,
         localization: (0, _objectSpread2["default"])({}, MaterialTable.defaultProps.localization.body, _this.props.localization.body),
         onRowClick: _this.props.onRowClick,
+        disabledRow: _this.props.disabledRow,
         showAddRow: _this.state.showAddRow,
         hasAnyEditingRow: !!(_this.state.lastEditingRow || _this.state.showAddRow),
         hasDetailPanel: !!props.detailPanel,
@@ -534,7 +549,8 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         onCellEditStarted: _this.onCellEditStarted,
         onCellEditFinished: _this.onCellEditFinished,
         bulkEditOpen: _this.dataManager.bulkEditOpen,
-        onBulkEditRowChanged: _this.dataManager.onBulkEditRowChanged
+        onBulkEditRowChanged: _this.dataManager.onBulkEditRowChanged,
+        scrollWidth: _this.state.width
       }));
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getColumnsWidth", function (props, count) {
@@ -612,13 +628,20 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      this.setState((0, _objectSpread2["default"])({}, this.dataManager.getRenderState(), {
-        width: this.tableContainerDiv.current.scrollWidth
-      }), function () {
-        if (_this2.isRemoteData()) {
-          _this2.onQueryChange(_this2.state.query);
-        }
-      });
+      if (this.mounted) {
+        this.setState((0, _objectSpread2["default"])({}, this.dataManager.getRenderState(), {
+          width: this.tableContainerDiv.current.scrollWidth
+        }), function () {
+          if (_this2.isRemoteData()) {
+            _this2.onQueryChange(_this2.state.query);
+          }
+        });
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.mounted = false;
     }
   }, {
     key: "setDataManagerFields",
@@ -649,7 +672,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
       } // If the columns changed and the defaultSorting differs from the current sorting, it will trigger a new sorting
 
 
-      var shouldReorder = isInit || defaultSortColumnIndex !== this.dataManager.orderBy && defaultSortDirection !== this.dataManager.orderDirection;
+      var shouldReorder = isInit || defaultSortColumnIndex !== this.dataManager.orderBy && !this.isRemoteData() && defaultSortDirection !== this.dataManager.orderDirection;
       shouldReorder && this.dataManager.changeOrder(defaultSortColumnIndex, defaultSortDirection);
       isInit && this.dataManager.changeSearchText(props.options.searchText || "");
       isInit && this.dataManager.changeCurrentPage(props.options.initialPage ? props.options.initialPage : 0);
@@ -883,11 +906,13 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
             return props.options.paginationType === "normal" ? /*#__PURE__*/React.createElement(_components.MTablePagination, (0, _extends2["default"])({}, subProps, {
               icons: props.icons,
               localization: localization,
-              showFirstLastPageButtons: props.options.showFirstLastPageButtons
+              showFirstLastPageButtons: props.options.showFirstLastPageButtons,
+              iconButtonProps: props.options.paginationIconButtonProps
             })) : /*#__PURE__*/React.createElement(_components.MTableSteppedPagination, (0, _extends2["default"])({}, subProps, {
               icons: props.icons,
               localization: localization,
-              showFirstLastPageButtons: props.options.showFirstLastPageButtons
+              showFirstLastPageButtons: props.options.showFirstLastPageButtons,
+              iconButtonProps: props.options.paginationIconButtonProps
             }));
           },
           labelDisplayedRows: function labelDisplayedRows(row) {
@@ -944,7 +969,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         dataManager: this.dataManager,
         onColumnsChanged: this.onChangeColumnHidden,
         localization: (0, _objectSpread2["default"])({}, MaterialTable.defaultProps.localization.toolbar, this.props.localization.toolbar)
-      }), props.options.grouping && /*#__PURE__*/React.createElement(props.components.Groupbar, {
+      }), props.options.grouping && !props.options.hideGroupbar && /*#__PURE__*/React.createElement(props.components.Groupbar, {
         icons: props.icons,
         localization: (0, _objectSpread2["default"])({}, MaterialTable.defaultProps.localization.grouping, props.localization.grouping),
         groupColumns: this.state.columns.filter(function (col) {

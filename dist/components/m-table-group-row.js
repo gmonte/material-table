@@ -85,7 +85,7 @@ var MTableGroupRow = /*#__PURE__*/function (_React$Component) {
           detail = this.props.groupData.groups.map(function (groupData, index) {
             return /*#__PURE__*/React.createElement(_this2.props.components.GroupRow, {
               actions: _this2.props.actions,
-              key: groupData.value || "" + index,
+              key: groupData.value || '' + index,
               columns: _this2.props.columns,
               components: _this2.props.components,
               detailPanel: _this2.props.detailPanel,
@@ -98,6 +98,7 @@ var MTableGroupRow = /*#__PURE__*/function (_React$Component) {
               onGroupExpandChanged: _this2.props.onGroupExpandChanged,
               onRowSelected: _this2.props.onRowSelected,
               onRowClick: _this2.props.onRowClick,
+              disabledRow: _this2.props.disabledRow,
               onToggleDetailPanel: _this2.props.onToggleDetailPanel,
               onTreeExpandChanged: _this2.props.onTreeExpandChanged,
               onEditingCanceled: _this2.props.onEditingCanceled,
@@ -107,7 +108,8 @@ var MTableGroupRow = /*#__PURE__*/function (_React$Component) {
               isTreeData: _this2.props.isTreeData,
               cellEditable: _this2.props.cellEditable,
               onCellEditStarted: _this2.props.onCellEditStarted,
-              onCellEditFinished: _this2.props.onCellEditFinished
+              onCellEditFinished: _this2.props.onCellEditFinished,
+              scrollWidth: _this2.props.scrollWidth
             });
           });
         } else {
@@ -128,7 +130,8 @@ var MTableGroupRow = /*#__PURE__*/function (_React$Component) {
                 onEditingCanceled: _this2.props.onEditingCanceled,
                 onEditingApproved: _this2.props.onEditingApproved,
                 getFieldValue: _this2.props.getFieldValue,
-                onBulkEditRowChanged: _this2.props.onBulkEditRowChanged
+                onBulkEditRowChanged: _this2.props.onBulkEditRowChanged,
+                scrollWidth: _this2.props.scrollWidth
               });
             } else {
               return /*#__PURE__*/React.createElement(_this2.props.components.Row, {
@@ -152,7 +155,8 @@ var MTableGroupRow = /*#__PURE__*/function (_React$Component) {
                 hasAnyEditingRow: _this2.props.hasAnyEditingRow,
                 cellEditable: _this2.props.cellEditable,
                 onCellEditStarted: _this2.props.onCellEditStarted,
-                onCellEditFinished: _this2.props.onCellEditFinished
+                onCellEditFinished: _this2.props.onCellEditFinished,
+                scrollWidth: _this2.props.scrollWidth
               });
             }
           });
@@ -231,6 +235,7 @@ MTableGroupRow.propTypes = {
   onEditingApproved: _propTypes["default"].func,
   options: _propTypes["default"].object,
   path: _propTypes["default"].arrayOf(_propTypes["default"].number),
+  scrollWidth: _propTypes["default"].number.isRequired,
   cellEditable: _propTypes["default"].object,
   onCellEditStarted: _propTypes["default"].func,
   onCellEditFinished: _propTypes["default"].func,

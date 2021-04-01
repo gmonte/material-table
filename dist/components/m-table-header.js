@@ -9,19 +9,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = exports.styles = exports.MTableHeader = void 0;
 
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
 var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var React = _interopRequireWildcard(require("react"));
 
@@ -45,6 +49,8 @@ var _core = require("@material-ui/core");
 
 var CommonValues = _interopRequireWildcard(require("../utils/common-values"));
 
+var _fastDeepEqual = _interopRequireDefault(require("fast-deep-equal"));
+
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
@@ -55,15 +61,76 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(MTableHeader);
 
-  function MTableHeader() {
+  function MTableHeader(props) {
+    var _this;
+
     (0, _classCallCheck2["default"])(this, MTableHeader);
-    return _super.apply(this, arguments);
-  }
+    _this = _super.call(this, props);
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "handleMouseDown", function (e, columnDef) {
+      _this.setState({
+        lastAdditionalWidth: columnDef.tableData.additionalWidth,
+        lastX: e.clientX,
+        resizingColumnDef: columnDef
+      });
+    });
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "handleMouseMove", function (e) {
+      if (!_this.state.resizingColumnDef) {
+        return;
+      }
+
+      var additionalWidth = _this.state.lastAdditionalWidth + e.clientX - _this.state.lastX;
+      additionalWidth = Math.min(_this.state.resizingColumnDef.maxWidth || additionalWidth, additionalWidth);
+
+      if (_this.state.resizingColumnDef.tableData.additionalWidth !== additionalWidth) {
+        _this.props.onColumnResized(_this.state.resizingColumnDef.tableData.id, additionalWidth);
+      }
+    });
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "handleMouseUp", function (e) {
+      _this.setState({
+        resizingColumnDef: undefined
+      });
+    });
+    (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getCellStyle", function (columnDef) {
+      var width = CommonValues.reducePercentsInCalc(columnDef.tableData.width, _this.props.scrollWidth);
+      var style = (0, _objectSpread2["default"])({}, _this.props.headerStyle, columnDef.headerStyle, {
+        boxSizing: "border-box",
+        width: width,
+        maxWidth: columnDef.maxWidth,
+        minWidth: columnDef.minWidth
+      });
+
+      if (_this.props.options.tableLayout === "fixed" && _this.props.options.columnResizable && columnDef.resizable !== false) {
+        style.paddingRight = 2;
+      }
+
+      return style;
+    });
+    _this.state = {
+      lastX: 0,
+      resizingColumnDef: undefined
+    };
+    return _this;
+  } // shouldComponentUpdate(nextProps, nextState){
+  //   return !equal(nextProps, this.props) || !equal(nextState, this.state);
+  // }
+
 
   (0, _createClass2["default"])(MTableHeader, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.addEventListener("mousemove", this.handleMouseMove);
+      document.addEventListener("mouseup", this.handleMouseUp);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      document.removeEventListener("mousemove", this.handleMouseMove);
+      document.removeEventListener("mouseup", this.handleMouseUp);
+    }
+  }, {
     key: "renderHeader",
     value: function renderHeader() {
-      var _this = this;
+      var _this2 = this;
 
       var size = this.props.options.padding === "default" ? "medium" : "small";
       var mapArr = this.props.columns.filter(function (columnDef) {
@@ -73,7 +140,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
       }).map(function (columnDef, index) {
         var content = columnDef.title;
 
-        if (_this.props.draggable) {
+        if (_this2.props.draggable) {
           content = /*#__PURE__*/React.createElement(_reactBeautifulDnd.Draggable, {
             key: columnDef.tableData.id,
             draggableId: columnDef.tableData.id.toString(),
@@ -85,35 +152,54 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
           });
         }
 
-        if (columnDef.sorting !== false && _this.props.sorting) {
+        if (columnDef.sorting !== false && _this2.props.sorting) {
           content = /*#__PURE__*/React.createElement(_TableSortLabel["default"], {
-            IconComponent: _this.props.icons.SortArrow,
-            classes: _this.props.sortLabelClasses,
-            active: _this.props.orderBy === columnDef.tableData.id,
-            direction: _this.props.orderDirection || "asc",
+            IconComponent: _this2.props.icons.SortArrow,
+            classes: _this2.props.sortLabelClasses,
+            active: _this2.props.orderBy === columnDef.tableData.id,
+            direction: _this2.props.orderDirection || "asc",
             onClick: function onClick() {
-              var orderDirection = columnDef.tableData.id !== _this.props.orderBy ? "asc" : _this.props.orderDirection === "asc" ? "desc" : _this.props.orderDirection === "desc" && _this.props.thirdSortClick ? "" : _this.props.orderDirection === "desc" && !_this.props.thirdSortClick ? "asc" : _this.props.orderDirection === "" ? "asc" : "desc";
+              var orderDirection = columnDef.tableData.id !== _this2.props.orderBy ? "asc" : _this2.props.orderDirection === "asc" ? "desc" : _this2.props.orderDirection === "desc" && _this2.props.thirdSortClick ? "" : _this2.props.orderDirection === "desc" && !_this2.props.thirdSortClick ? "asc" : _this2.props.orderDirection === "" ? "asc" : "desc";
 
-              _this.props.onOrderChange(columnDef.tableData.id, orderDirection);
+              _this2.props.onOrderChange(columnDef.tableData.id, orderDirection);
             }
           }, content);
         }
 
         if (columnDef.tooltip) {
           content = /*#__PURE__*/React.createElement(_core.Tooltip, {
-            title: columnDef.tooltip
+            title: columnDef.tooltip,
+            placement: "bottom"
           }, /*#__PURE__*/React.createElement("span", null, content));
+        }
+
+        if (_this2.props.options.tableLayout === "fixed" && _this2.props.options.columnResizable && columnDef.resizable !== false) {
+          content = /*#__PURE__*/React.createElement("div", {
+            style: {
+              display: "flex",
+              alignItems: "center"
+            }
+          }, /*#__PURE__*/React.createElement("div", {
+            style: {
+              flex: 1
+            }
+          }, content), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement(_this2.props.icons.Resize, {
+            style: {
+              cursor: "col-resize",
+              color: _this2.state.resizingColumnDef && _this2.state.resizingColumnDef.tableData.id === columnDef.tableData.id ? _this2.props.theme.palette.primary.main : "inherit"
+            },
+            onMouseDown: function onMouseDown(e) {
+              return _this2.handleMouseDown(e, columnDef);
+            }
+          }));
         }
 
         var cellAlignment = columnDef.align !== undefined ? columnDef.align : ["numeric", "currency"].indexOf(columnDef.type) !== -1 ? "right" : "left";
         return /*#__PURE__*/React.createElement(_TableCell["default"], {
           key: columnDef.tableData.id,
           align: cellAlignment,
-          className: _this.props.classes.header,
-          style: (0, _objectSpread2["default"])({}, _this.props.headerStyle, columnDef.headerStyle, {
-            boxSizing: "border-box",
-            width: columnDef.tableData.width
-          }),
+          className: _this2.props.classes.header,
+          style: _this2.getCellStyle(columnDef),
           size: size
         }, content);
       });
@@ -144,7 +230,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "renderSelectionHeader",
     value: function renderSelectionHeader() {
-      var _this2 = this;
+      var _this3 = this;
 
       var selectionWidth = CommonValues.selectionMaxWidth(this.props, this.props.treeDataMaxLevel);
       return /*#__PURE__*/React.createElement(_TableCell["default"], {
@@ -158,7 +244,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
         indeterminate: this.props.selectedCount > 0 && this.props.selectedCount < this.props.dataCount,
         checked: this.props.dataCount > 0 && this.props.selectedCount === this.props.dataCount,
         onChange: function onChange(event, checked) {
-          return _this2.props.onAllSelected && _this2.props.onAllSelected(checked);
+          return _this3.props.onAllSelected && _this3.props.onAllSelected(checked);
         }
       }, this.props.options.headerSelectionProps)));
     }
@@ -175,7 +261,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var headers = this.renderHeader();
 
@@ -220,7 +306,7 @@ var MTableHeader = /*#__PURE__*/function (_React$Component) {
         headers.splice(0, 0, /*#__PURE__*/React.createElement(_TableCell["default"], {
           padding: "checkbox",
           key: "key-group-header" + columnDef.tableData.id,
-          className: _this3.props.classes.header
+          className: _this4.props.classes.header
         }));
       });
       return /*#__PURE__*/React.createElement(_TableHead["default"], null, /*#__PURE__*/React.createElement(_TableRow["default"], null, headers));
@@ -275,6 +361,7 @@ MTableHeader.propTypes = {
 var styles = function styles(theme) {
   return {
     header: {
+      // display: 'inline-block',
       position: "sticky",
       top: 0,
       zIndex: 10,
@@ -286,6 +373,8 @@ var styles = function styles(theme) {
 
 exports.styles = styles;
 
-var _default = (0, _withStyles["default"])(styles)(MTableHeader);
+var _default = (0, _withStyles["default"])(styles, {
+  withTheme: true
+})(MTableHeader);
 
 exports["default"] = _default;

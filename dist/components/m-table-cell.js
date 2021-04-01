@@ -37,6 +37,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _parseISO = _interopRequireDefault(require("date-fns/parseISO"));
 
+var CommonValues = _interopRequireWildcard(require("../utils/common-values"));
+
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
@@ -68,9 +70,12 @@ var MTableCell = /*#__PURE__*/function (_React$Component) {
       }
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getStyle", function () {
+      var width = CommonValues.reducePercentsInCalc(_this.props.columnDef.tableData.width, _this.props.scrollWidth);
       var cellStyle = {
         color: "inherit",
-        width: _this.props.columnDef.tableData.width,
+        width: width,
+        maxWidth: _this.props.columnDef.maxWidth,
+        minWidth: _this.props.columnDef.minWidth,
         boxSizing: "border-box",
         fontSize: "inherit",
         fontFamily: "inherit",
@@ -194,7 +199,8 @@ var MTableCell = /*#__PURE__*/function (_React$Component) {
           errorState = _this$props.errorState,
           cellEditable = _this$props.cellEditable,
           onCellEditStarted = _this$props.onCellEditStarted,
-          cellProps = (0, _objectWithoutProperties2["default"])(_this$props, ["icons", "columnDef", "rowData", "errorState", "cellEditable", "onCellEditStarted"]);
+          scrollWidth = _this$props.scrollWidth,
+          cellProps = (0, _objectWithoutProperties2["default"])(_this$props, ["icons", "columnDef", "rowData", "errorState", "cellEditable", "onCellEditStarted", "scrollWidth"]);
       var cellAlignment = columnDef.align !== undefined ? columnDef.align : ["numeric", "currency"].indexOf(this.props.columnDef.type) !== -1 ? "right" : "left";
       var renderValue = this.getRenderValue();
 

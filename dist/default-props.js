@@ -9,6 +9,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.defaultProps = void 0;
 
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _react = _interopRequireDefault(require("react"));
@@ -180,6 +182,14 @@ var defaultProps = {
         ref: ref
       }), "clear");
     }),
+    Resize: _react["default"].forwardRef(function (props, ref) {
+      return /*#__PURE__*/_react["default"].createElement(_Icon["default"], (0, _extends2["default"])({}, props, {
+        ref: ref,
+        style: (0, _objectSpread2["default"])({}, props.style, {
+          transform: "rotate(90deg)"
+        })
+      }), "drag_handle");
+    }),
     Search: _react["default"].forwardRef(function (props, ref) {
       return /*#__PURE__*/_react["default"].createElement(_Icon["default"], (0, _extends2["default"])({}, props, {
         ref: ref
@@ -226,12 +236,14 @@ var defaultProps = {
     header: true,
     headerSelectionProps: {},
     hideFilterIcons: false,
+    hideGroupbar: false,
     loadingType: "overlay",
     padding: "default",
     searchAutoFocus: false,
     paging: true,
     pageSize: 5,
     pageSizeOptions: [5, 10, 20],
+    paginationIconButtonProps: {},
     paginationType: "normal",
     paginationPosition: "bottom",
     showEmptyDataSourceMessage: true,
@@ -282,6 +294,9 @@ var defaultProps = {
       bulkEditCancel: "Discard all changes"
     }
   },
-  style: {}
+  style: {},
+  disabledRow: function disabledRow() {
+    return false;
+  }
 };
 exports.defaultProps = defaultProps;

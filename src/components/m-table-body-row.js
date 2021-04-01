@@ -44,6 +44,7 @@ export default class MTableBodyRow extends React.Component {
               rowData={this.props.data}
               cellEditable={this.props.cellEditable}
               onCellEditFinished={this.props.onCellEditFinished}
+              scrollWidth={this.props.scrollWidth}
             />
           );
         } else {
@@ -68,6 +69,7 @@ export default class MTableBodyRow extends React.Component {
                 columnDef.editable !== "never" && !!this.props.cellEditable
               }
               onCellEditStarted={this.props.onCellEditStarted}
+              scrollWidth={this.props.scrollWidth}
             />
           );
         }
@@ -91,7 +93,9 @@ export default class MTableBodyRow extends React.Component {
           ...this.props.options.actionsCellStyle,
         }}
       >
-        <div style={{ display: "flex", justifyContent: 'flex-end' }}>
+        <div
+          style={{ display: "flex", ustifyContent: 'flex-end', ...this.props.options.actionsCellDivStyle }}
+        >
           <this.props.components.Actions
             data={this.props.data}
             actions={actions}
@@ -317,7 +321,12 @@ export default class MTableBodyRow extends React.Component {
     if (typeof this.props.options.rowStyle === "function") {
       style = {
         ...style,
-        ...this.props.options.rowStyle(this.props.data, index, level),
+        ...this.props.options.rowStyle(
+          this.props.data,
+          index,
+          level,
+          this.props.hasAnyEditingRow
+        ),
       };
     } else if (this.props.options.rowStyle) {
       style = {
@@ -331,7 +340,7 @@ export default class MTableBodyRow extends React.Component {
     }
 
     if (this.props.hasAnyEditingRow) {
-      style.opacity = 0.2;
+      style.opacity = style.opacity ? style.opacity : 0.2;
     }
 
     return style;
@@ -401,6 +410,7 @@ export default class MTableBodyRow extends React.Component {
       getFieldValue,
       isTreeData,
       onRowClick,
+      disabledRow,
       onRowSelected,
       onTreeExpandChanged,
       onToggleDetailPanel,
@@ -415,23 +425,27 @@ export default class MTableBodyRow extends React.Component {
       cellEditable,
       onCellEditStarted,
       onCellEditFinished,
+      scrollWidth,
       ...rowProps
     } = this.props;
+
+    const rowIsDisabled = disabledRow(data)
 
     return (
       <>
         <TableRow
           selected={hasAnyEditingRow}
           {...rowProps}
-          hover={onRowClick ? true : false}
+          hover={onRowClick ? !rowIsDisabled : false}
           style={this.getStyle(this.props.index, this.props.level)}
           onClick={(event) => {
+            !rowIsDisabled &&
             onRowClick &&
               onRowClick(event, this.props.data, (panelIndex) => {
                 let panel = detailPanel;
                 if (Array.isArray(panel)) {
                   panel = panel[panelIndex || 0];
-                  if (typeof panel === "function") {
+                  if (typeof panel === 'function') {
                     panel = panel(this.props.data);
                   }
                   panel = panel.render;
@@ -512,6 +526,7 @@ MTableBodyRow.defaultProps = {
   data: {},
   options: {},
   path: [],
+  disabledRow: () => false
 };
 
 MTableBodyRow.propTypes = {
@@ -535,4 +550,5 @@ MTableBodyRow.propTypes = {
   onEditingApproved: PropTypes.func,
   onEditingCanceled: PropTypes.func,
   errorState: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  disabledRow: PropTypes.func
 };

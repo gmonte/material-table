@@ -26,7 +26,7 @@ export default class MTableGroupRow extends React.Component {
         detail = this.props.groupData.groups.map((groupData, index) => (
           <this.props.components.GroupRow
             actions={this.props.actions}
-            key={groupData.value || "" + index}
+            key={groupData.value || '' + index}
             columns={this.props.columns}
             components={this.props.components}
             detailPanel={this.props.detailPanel}
@@ -39,6 +39,7 @@ export default class MTableGroupRow extends React.Component {
             onGroupExpandChanged={this.props.onGroupExpandChanged}
             onRowSelected={this.props.onRowSelected}
             onRowClick={this.props.onRowClick}
+            disabledRow={this.props.disabledRow}
             onToggleDetailPanel={this.props.onToggleDetailPanel}
             onTreeExpandChanged={this.props.onTreeExpandChanged}
             onEditingCanceled={this.props.onEditingCanceled}
@@ -49,6 +50,7 @@ export default class MTableGroupRow extends React.Component {
             cellEditable={this.props.cellEditable}
             onCellEditStarted={this.props.onCellEditStarted}
             onCellEditFinished={this.props.onCellEditFinished}
+            scrollWidth={this.props.scrollWidth}
           />
         ));
       } else {
@@ -71,6 +73,7 @@ export default class MTableGroupRow extends React.Component {
                 onEditingApproved={this.props.onEditingApproved}
                 getFieldValue={this.props.getFieldValue}
                 onBulkEditRowChanged={this.props.onBulkEditRowChanged}
+                scrollWidth={this.props.scrollWidth}
               />
             );
           } else {
@@ -97,6 +100,7 @@ export default class MTableGroupRow extends React.Component {
                 cellEditable={this.props.cellEditable}
                 onCellEditStarted={this.props.onCellEditStarted}
                 onCellEditFinished={this.props.onCellEditFinished}
+                scrollWidth={this.props.scrollWidth}
               />
             );
           }
@@ -189,6 +193,7 @@ MTableGroupRow.propTypes = {
   onEditingApproved: PropTypes.func,
   options: PropTypes.object,
   path: PropTypes.arrayOf(PropTypes.number),
+  scrollWidth: PropTypes.number.isRequired,
   cellEditable: PropTypes.object,
   onCellEditStarted: PropTypes.func,
   onCellEditFinished: PropTypes.func,

@@ -135,7 +135,8 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
             onEditingCanceled: _this.props.onEditingCanceled,
             onEditingApproved: _this.props.onEditingApproved,
             getFieldValue: _this.props.getFieldValue,
-            onBulkEditRowChanged: _this.props.onBulkEditRowChanged
+            onBulkEditRowChanged: _this.props.onBulkEditRowChanged,
+            scrollWidth: _this.props.scrollWidth
           });
         } else {
           return /*#__PURE__*/React.createElement(_this.props.components.Row, {
@@ -158,6 +159,7 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
             path: [index + _this.props.pageSize * _this.props.currentPage],
             onToggleDetailPanel: _this.props.onToggleDetailPanel,
             onRowClick: _this.props.onRowClick,
+            disabledRow: _this.props.disabledRow,
             isTreeData: _this.props.isTreeData,
             onTreeExpandChanged: _this.props.onTreeExpandChanged,
             onEditingCanceled: _this.props.onEditingCanceled,
@@ -166,7 +168,8 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
             treeDataMaxLevel: _this.props.treeDataMaxLevel,
             cellEditable: _this.props.cellEditable,
             onCellEditStarted: _this.props.onCellEditStarted,
-            onCellEditFinished: _this.props.onCellEditFinished
+            onCellEditFinished: _this.props.onCellEditFinished,
+            scrollWidth: _this.props.scrollWidth
           });
         }
       });
@@ -205,7 +208,8 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
           cellEditable: _this2.props.cellEditable,
           onCellEditStarted: _this2.props.onCellEditStarted,
           onCellEditFinished: _this2.props.onCellEditFinished,
-          onBulkEditRowChanged: _this2.props.onBulkEditRowChanged
+          onBulkEditRowChanged: _this2.props.onBulkEditRowChanged,
+          scrollWidth: _this2.props.scrollWidth
         });
       });
     }
@@ -241,10 +245,12 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
           dateTimePickerLocalization: this.props.localization.dateTimePickerLocalization
         }),
         hasDetailPanel: !!this.props.detailPanel,
+        detailPanelColumnAlignment: this.props.options.detailPanelColumnAlignment,
         isTreeData: this.props.isTreeData,
         filterCellStyle: this.props.options.filterCellStyle,
         filterRowStyle: this.props.options.filterRowStyle,
-        hideFilterIcons: this.props.options.hideFilterIcons
+        hideFilterIcons: this.props.options.hideFilterIcons,
+        scrollWidth: this.props.scrollWidth
       }), this.props.showAddRow && this.props.options.addRowPosition === "first" && /*#__PURE__*/React.createElement(this.props.components.EditRow, {
         columns: this.props.columns.filter(function (columnDef) {
           return !columnDef.hidden;
@@ -263,7 +269,8 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
         detailPanel: this.props.detailPanel,
         onEditingCanceled: this.props.onEditingCanceled,
         onEditingApproved: this.props.onEditingApproved,
-        getFieldValue: this.props.getFieldValue
+        getFieldValue: this.props.getFieldValue,
+        scrollWidth: this.props.scrollWidth
       }), groups.length > 0 ? this.renderGroupedRows(groups, renderData) : this.renderUngroupedRows(renderData), this.props.showAddRow && this.props.options.addRowPosition === "last" && /*#__PURE__*/React.createElement(this.props.components.EditRow, {
         columns: this.props.columns.filter(function (columnDef) {
           return !columnDef.hidden;
@@ -282,7 +289,8 @@ var MTableBody = /*#__PURE__*/function (_React$Component) {
         detailPanel: this.props.detailPanel,
         onEditingCanceled: this.props.onEditingCanceled,
         onEditingApproved: this.props.onEditingApproved,
-        getFieldValue: this.props.getFieldValue
+        getFieldValue: this.props.getFieldValue,
+        scrollWidth: this.props.scrollWidth
       }), this.renderEmpty(emptyRowCount, renderData));
     }
   }]);
@@ -319,6 +327,7 @@ MTableBody.propTypes = {
   renderData: _propTypes["default"].array,
   initialFormData: _propTypes["default"].object,
   selection: _propTypes["default"].bool.isRequired,
+  scrollWidth: _propTypes["default"].number.isRequired,
   showAddRow: _propTypes["default"].bool,
   treeDataMaxLevel: _propTypes["default"].number,
   localization: _propTypes["default"].object,

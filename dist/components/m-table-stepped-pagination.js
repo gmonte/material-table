@@ -9,6 +9,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
@@ -113,7 +115,8 @@ var MTablePaginationInner = /*#__PURE__*/function (_React$Component) {
           page = _this$props.page,
           rowsPerPage = _this$props.rowsPerPage,
           theme = _this$props.theme,
-          showFirstLastPageButtons = _this$props.showFirstLastPageButtons;
+          showFirstLastPageButtons = _this$props.showFirstLastPageButtons,
+          iconButtonProps = _this$props.iconButtonProps;
       var localization = (0, _objectSpread2["default"])({}, MTablePaginationInner.defaultProps.localization, this.props.localization);
       var maxPages = Math.ceil(count / rowsPerPage) - 1;
       var pageStart = Math.max(page - 1, 0);
@@ -122,31 +125,31 @@ var MTablePaginationInner = /*#__PURE__*/function (_React$Component) {
         className: classes.root
       }, showFirstLastPageButtons && /*#__PURE__*/React.createElement(_Tooltip["default"], {
         title: localization.firstTooltip
-      }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_IconButton["default"], {
+      }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_IconButton["default"], (0, _extends2["default"])({}, iconButtonProps, {
         onClick: this.handleFirstPageButtonClick,
         disabled: page === 0,
         "aria-label": localization.firstAriaLabel
-      }, theme.direction === "rtl" ? /*#__PURE__*/React.createElement(this.props.icons.LastPage, null) : /*#__PURE__*/React.createElement(this.props.icons.FirstPage, null)))), /*#__PURE__*/React.createElement(_Tooltip["default"], {
+      }), theme.direction === "rtl" ? /*#__PURE__*/React.createElement(this.props.icons.LastPage, null) : /*#__PURE__*/React.createElement(this.props.icons.FirstPage, null)))), /*#__PURE__*/React.createElement(_Tooltip["default"], {
         title: localization.previousTooltip
-      }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_IconButton["default"], {
+      }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_IconButton["default"], (0, _extends2["default"])({}, iconButtonProps, {
         onClick: this.handleBackButtonClick,
         disabled: page === 0,
         "aria-label": localization.previousAriaLabel
-      }, /*#__PURE__*/React.createElement(this.props.icons.PreviousPage, null)))), /*#__PURE__*/React.createElement(_Hidden["default"], {
+      }), /*#__PURE__*/React.createElement(this.props.icons.PreviousPage, null)))), /*#__PURE__*/React.createElement(_Hidden["default"], {
         smDown: true
       }, this.renderPagesButton(pageStart, pageEnd)), /*#__PURE__*/React.createElement(_Tooltip["default"], {
         title: localization.nextTooltip
-      }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_IconButton["default"], {
+      }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_IconButton["default"], (0, _extends2["default"])({}, iconButtonProps, {
         onClick: this.handleNextButtonClick,
         disabled: page >= maxPages,
         "aria-label": localization.nextAriaLabel
-      }, /*#__PURE__*/React.createElement(this.props.icons.NextPage, null)))), showFirstLastPageButtons && /*#__PURE__*/React.createElement(_Tooltip["default"], {
+      }), /*#__PURE__*/React.createElement(this.props.icons.NextPage, null)))), showFirstLastPageButtons && /*#__PURE__*/React.createElement(_Tooltip["default"], {
         title: localization.lastTooltip
-      }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_IconButton["default"], {
+      }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_IconButton["default"], (0, _extends2["default"])({}, iconButtonProps, {
         onClick: this.handleLastPageButtonClick,
         disabled: page >= Math.ceil(count / rowsPerPage) - 1,
         "aria-label": localization.lastAriaLabel
-      }, theme.direction === "rtl" ? /*#__PURE__*/React.createElement(this.props.icons.FirstPage, null) : /*#__PURE__*/React.createElement(this.props.icons.LastPage, null)))));
+      }), theme.direction === "rtl" ? /*#__PURE__*/React.createElement(this.props.icons.FirstPage, null) : /*#__PURE__*/React.createElement(this.props.icons.LastPage, null)))));
     }
   }]);
   return MTablePaginationInner;
@@ -170,10 +173,12 @@ MTablePaginationInner.propTypes = {
   classes: _propTypes["default"].object,
   localization: _propTypes["default"].object,
   theme: _propTypes["default"].any,
-  showFirstLastPageButtons: _propTypes["default"].bool
+  showFirstLastPageButtons: _propTypes["default"].bool,
+  iconButtonProps: _propTypes["default"].object
 };
 MTablePaginationInner.defaultProps = {
   showFirstLastPageButtons: true,
+  iconButtonProps: {},
   localization: {
     firstTooltip: "First Page",
     previousTooltip: "Previous Page",

@@ -69,7 +69,9 @@ var MTableEditField = /*#__PURE__*/function (_React$Component) {
           rowData = _this$props.rowData,
           onRowDataChange = _this$props.onRowDataChange,
           errorState = _this$props.errorState,
-          props = (0, _objectWithoutProperties2["default"])(_this$props, ["columnDef", "rowData", "onRowDataChange", "errorState"]);
+          onBulkEditRowChanged = _this$props.onBulkEditRowChanged,
+          scrollWidth = _this$props.scrollWidth,
+          props = (0, _objectWithoutProperties2["default"])(_this$props, ["columnDef", "rowData", "onRowDataChange", "errorState", "onBulkEditRowChanged", "scrollWidth"]);
       return props;
     }
   }, {
@@ -113,7 +115,7 @@ var MTableEditField = /*#__PURE__*/function (_React$Component) {
           props = (0, _objectWithoutProperties2["default"])(_this$getProps2, ["helperText", "error"]);
 
       return /*#__PURE__*/React.createElement(_FormControl["default"], {
-        error: error,
+        error: Boolean(error),
         component: "fieldset"
       }, /*#__PURE__*/React.createElement(_FormGroup["default"], null, /*#__PURE__*/React.createElement(_FormControlLabel["default"], {
         label: "",
@@ -170,10 +172,10 @@ var MTableEditField = /*#__PURE__*/function (_React$Component) {
         InputProps: {
           style: {
             fontSize: 13
-          },
-          inputProps: {
-            "aria-label": "".concat(this.props.columnDef.title, ": press space to edit")
           }
+        },
+        inputProps: {
+          "aria-label": "".concat(this.props.columnDef.title, ": press space to edit")
         }
       })));
     }
@@ -191,10 +193,10 @@ var MTableEditField = /*#__PURE__*/function (_React$Component) {
         InputProps: {
           style: {
             fontSize: 13
-          },
-          inputProps: {
-            "aria-label": "".concat(this.props.columnDef.title, ": press space to edit")
           }
+        },
+        inputProps: {
+          "aria-label": "".concat(this.props.columnDef.title, ": press space to edit")
         }
       })));
     }
@@ -217,10 +219,10 @@ var MTableEditField = /*#__PURE__*/function (_React$Component) {
         InputProps: {
           style: {
             fontSize: 13
-          },
-          inputProps: {
-            "aria-label": this.props.columnDef.title
           }
+        },
+        inputProps: {
+          "aria-label": this.props.columnDef.title
         }
       }));
     }
@@ -245,12 +247,14 @@ var MTableEditField = /*#__PURE__*/function (_React$Component) {
 
           return _this4.props.onChange(value);
         },
-        inputProps: {
+        InputProps: {
           style: {
             fontSize: 13,
-            textAlign: "right",
-            "aria-label": this.props.columnDef.title
+            textAlign: "right"
           }
+        },
+        inputProps: {
+          "aria-label": this.props.columnDef.title
         },
         onKeyDown: this.props.onKeyDown,
         autoFocus: this.props.autoFocus
