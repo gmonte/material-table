@@ -905,12 +905,14 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
               icons: props.icons,
               localization: localization,
               showFirstLastPageButtons: props.options.showFirstLastPageButtons,
-              iconButtonProps: props.options.paginationIconButtonProps
+              iconButtonProps: props.options.paginationIconButtonProps,
+              activateIconButtonProps: props.options.paginationActivateIconButtonProps
             })) : /*#__PURE__*/React.createElement(_components.MTableSteppedPagination, (0, _extends2["default"])({}, subProps, {
               icons: props.icons,
               localization: localization,
               showFirstLastPageButtons: props.options.showFirstLastPageButtons,
-              iconButtonProps: props.options.paginationIconButtonProps
+              iconButtonProps: props.options.paginationIconButtonProps,
+              activateIconButtonProps: props.options.paginationActivateIconButtonProps
             }));
           },
           labelDisplayedRows: function labelDisplayedRows(row) {
