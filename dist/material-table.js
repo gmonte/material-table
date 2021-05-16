@@ -31,8 +31,6 @@ var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/ge
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _Table = _interopRequireDefault(require("@material-ui/core/Table"));
-
 var _TableFooter = _interopRequireDefault(require("@material-ui/core/TableFooter"));
 
 var _TableRow = _interopRequireDefault(require("@material-ui/core/TableRow"));
@@ -482,7 +480,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
       _this.setState(_this.dataManager.getRenderState());
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderTable", function (props) {
-      return /*#__PURE__*/React.createElement(_Table["default"], {
+      return /*#__PURE__*/React.createElement(props.components.Table, {
         style: {
           tableLayout: props.options.fixedColumns && (props.options.fixedColumns.left || props.options.fixedColumns.right) ? "fixed" : props.options.tableLayout
         }
@@ -870,7 +868,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         var isOutsidePageNumbers = this.isOutsidePageNumbers(props);
         var currentPage = isOutsidePageNumbers ? Math.min(props.page, Math.floor(props.totalCount / this.state.pageSize)) : this.state.currentPage;
         var totalCount = isOutsidePageNumbers ? props.totalCount : this.state.data.length;
-        return /*#__PURE__*/React.createElement(_Table["default"], null, /*#__PURE__*/React.createElement(_TableFooter["default"], {
+        return /*#__PURE__*/React.createElement(props.components.Table, null, /*#__PURE__*/React.createElement(_TableFooter["default"], {
           style: {
             display: "grid"
           }

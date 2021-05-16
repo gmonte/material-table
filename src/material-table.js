@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import Table from "@material-ui/core/Table";
 import TableFooter from "@material-ui/core/TableFooter";
 import TableRow from "@material-ui/core/TableRow";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -761,7 +760,7 @@ export default class MaterialTable extends React.Component {
         : this.state.data.length;
 
       return (
-        <Table>
+        <props.components.Table>
           <TableFooter style={{ display: "grid" }}>
             <TableRow>
               <props.components.Pagination
@@ -825,13 +824,13 @@ export default class MaterialTable extends React.Component {
               />
             </TableRow>
           </TableFooter>
-        </Table>
+        </props.components.Table>
       );
     }
   }
 
   renderTable = (props) => (
-    <Table
+    <props.components.Table
       style={{
         tableLayout:
           props.options.fixedColumns &&
@@ -926,7 +925,7 @@ export default class MaterialTable extends React.Component {
         onBulkEditRowChanged={this.dataManager.onBulkEditRowChanged}
         scrollWidth={this.state.width}
       />
-    </Table>
+    </props.components.Table>
   );
 
   getColumnsWidth = (props, count) => {

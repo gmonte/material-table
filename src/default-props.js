@@ -2,6 +2,7 @@ import React from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Icon from "@material-ui/core/Icon";
 import Paper from "@material-ui/core/Paper";
+import Table from "@material-ui/core/Table";
 import TablePagination from "@material-ui/core/TablePagination";
 import * as MComponents from "./components";
 import PropTypes from "prop-types";
@@ -89,6 +90,7 @@ export const defaultProps = {
     OverlayError: OverlayError,
     Pagination: TablePagination,
     Row: MComponents.MTableBodyRow,
+    Table,
     Toolbar: MComponents.MTableToolbar,
   },
   data: [],

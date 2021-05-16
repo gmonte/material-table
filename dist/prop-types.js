@@ -82,6 +82,7 @@ var propTypes = {
     OverlayError: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent]),
     Pagination: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent]),
     Row: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent]),
+    Table: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent]),
     Toolbar: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent])
   }),
   data: _propTypes["default"].oneOfType([_propTypes["default"].arrayOf(_propTypes["default"].object), _propTypes["default"].func]).isRequired,

@@ -162,6 +162,11 @@ export const propTypes = {
       PropTypes.func,
       StyledComponent,
     ]),
+    Table: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.func,
+      StyledComponent,
+    ]),
     Toolbar: PropTypes.oneOfType([
       PropTypes.element,
       PropTypes.func,
