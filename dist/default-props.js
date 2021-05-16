@@ -21,8 +21,6 @@ var _Icon = _interopRequireDefault(require("@material-ui/core/Icon"));
 
 var _Paper = _interopRequireDefault(require("@material-ui/core/Paper"));
 
-var _Table = _interopRequireDefault(require("@material-ui/core/Table"));
-
 var _TablePagination = _interopRequireDefault(require("@material-ui/core/TablePagination"));
 
 var MComponents = _interopRequireWildcard(require("./components"));
@@ -114,7 +112,7 @@ var defaultProps = {
     OverlayError: OverlayError,
     Pagination: _TablePagination["default"],
     Row: MComponents.MTableBodyRow,
-    Table: _Table["default"],
+    Table: MComponents.MTable,
     Toolbar: MComponents.MTableToolbar
   },
   data: [],

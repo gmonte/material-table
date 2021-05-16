@@ -1,3 +1,4 @@
+import MTable from "./m-table";
 import MTableAction from "./m-table-action";
 import MTableActions from "./m-table-actions";
 import MTableBody from "./m-table-body";
@@ -15,6 +16,7 @@ import MTableSteppedPagination from "./m-table-stepped-pagination";
 import MTableToolbar from "./m-table-toolbar";
 
 export {
+  MTable,
   MTableAction,
   MTableActions,
   MTableBody,

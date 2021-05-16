@@ -5,6 +5,12 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "MTable", {
+  enumerable: true,
+  get: function get() {
+    return _mTable["default"];
+  }
+});
 Object.defineProperty(exports, "MTableAction", {
   enumerable: true,
   get: function get() {
@@ -95,6 +101,8 @@ Object.defineProperty(exports, "MTableToolbar", {
     return _mTableToolbar["default"];
   }
 });
+
+var _mTable = _interopRequireDefault(require("./m-table"));
 
 var _mTableAction = _interopRequireDefault(require("./m-table-action"));
 
