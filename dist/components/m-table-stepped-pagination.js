@@ -9,9 +9,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
@@ -88,7 +88,7 @@ var MTablePaginationInner = /*#__PURE__*/function (_React$Component) {
 
       for (var p = start; p <= end; p++) {
         var buttonVariant = p === this.props.page ? "contained" : "text";
-        buttons.push( /*#__PURE__*/React.createElement(_Button["default"], {
+        buttons.push( /*#__PURE__*/React.createElement(_Button["default"], (0, _extends2["default"])({
           size: "small",
           style: {
             boxShadow: "none",
@@ -97,11 +97,10 @@ var MTablePaginationInner = /*#__PURE__*/function (_React$Component) {
             minWidth: "30px",
             minHeight: "30px"
           },
-          disabled: p === this.props.page,
           variant: buttonVariant,
-          onClick: this.handleNumberButtonClick(p),
+          onClick: p === this.props.page && this.handleNumberButtonClick(p),
           key: p
-        }, p + 1));
+        }, this.props.iconButtonProps), p + 1));
       }
 
       return /*#__PURE__*/React.createElement("span", null, buttons);

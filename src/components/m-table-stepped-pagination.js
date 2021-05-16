@@ -47,10 +47,10 @@ class MTablePaginationInner extends React.Component {
             minWidth: "30px",
             minHeight: "30px",
           }}
-          disabled={p === this.props.page}
           variant={buttonVariant}
-          onClick={this.handleNumberButtonClick(p)}
+          onClick={p === this.props.page && this.handleNumberButtonClick(p)}
           key={p}
+          {...this.props.iconButtonProps}
         >
           {p + 1}
         </Button>
