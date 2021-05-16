@@ -185,7 +185,8 @@ var propTypes = {
     showTextRowsSelected: _propTypes["default"].bool,
     sorting: _propTypes["default"].bool,
     toolbar: _propTypes["default"].bool,
-    thirdSortClick: _propTypes["default"].bool
+    thirdSortClick: _propTypes["default"].bool,
+    divTableStyle: _propTypes["default"].object
   }),
   localization: _propTypes["default"].shape({
     grouping: _propTypes["default"].shape({

@@ -370,6 +370,7 @@ export const propTypes = {
     sorting: PropTypes.bool,
     toolbar: PropTypes.bool,
     thirdSortClick: PropTypes.bool,
+    divTableStyle: PropTypes.object,
   }),
   localization: PropTypes.shape({
     grouping: PropTypes.shape({

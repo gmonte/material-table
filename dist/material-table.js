@@ -1010,7 +1010,9 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
             background: "white",
             transform: "translateX(calc(".concat(_this4.getColumnsWidth(props, -1 * props.options.fixedColumns.right), " - 100%))")
           }
-        }, table)) : null, /*#__PURE__*/React.createElement("div", null, table), _this4.state.width && props.options.fixedColumns && props.options.fixedColumns.left ? /*#__PURE__*/React.createElement("div", {
+        }, table)) : null, /*#__PURE__*/React.createElement("div", {
+          style: props.options.divTableStyle
+        }, table), _this4.state.width && props.options.fixedColumns && props.options.fixedColumns.left ? /*#__PURE__*/React.createElement("div", {
           style: {
             width: _this4.getColumnsWidth(props, props.options.fixedColumns.left),
             position: "absolute",

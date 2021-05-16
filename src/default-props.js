@@ -243,6 +243,7 @@ export const defaultProps = {
     detailPanelColumnAlignment: "left",
     thirdSortClick: true,
     overflowY: "auto",
+    divTableStyle: {},
   },
   localization: {
     error: "Data could not be retrieved",
