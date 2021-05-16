@@ -50,7 +50,7 @@ class MTablePaginationInner extends React.Component {
           variant={buttonVariant}
           onClick={p !== this.props.page && this.handleNumberButtonClick(p)}
           key={p}
-          {...this.props.activateIconButtonProps}
+          {...(p === this.props.page ? this.props.numberIconButtonProps : {})}
         >
           {p + 1}
         </Button>
@@ -168,13 +168,13 @@ MTablePaginationInner.propTypes = {
   theme: PropTypes.any,
   showFirstLastPageButtons: PropTypes.bool,
   iconButtonProps: PropTypes.object,
-  activateIconButtonProps: PropTypes.object,
+  numberIconButtonProps: PropTypes.object,
 };
 
 MTablePaginationInner.defaultProps = {
   showFirstLastPageButtons: true,
   iconButtonProps: {},
-  activateIconButtonProps: {},
+  numberIconButtonProps: {},
   localization: {
     firstTooltip: "First Page",
     previousTooltip: "Previous Page",

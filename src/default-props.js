@@ -222,7 +222,7 @@ export const defaultProps = {
     pageSize: 5,
     pageSizeOptions: [5, 10, 20],
     paginationIconButtonProps: {},
-    paginationActivateIconButtonProps: {},
+    paginationNumberIconButtonProps: {},
     paginationType: "normal",
     paginationPosition: "bottom",
     showEmptyDataSourceMessage: true,
