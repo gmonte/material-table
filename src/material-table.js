@@ -801,7 +801,7 @@ export default class MaterialTable extends React.Component {
                         props.options.showFirstLastPageButtons
                       }
                       iconButtonProps={props.options.paginationIconButtonProps}
-                      numberIconButtonProps={props.options.paginationNumberIconButtonProps}
+                      activeIconButtonProps={props.options.paginationActiveIconButtonProps}
                     />
                   ) : (
                     <MTableSteppedPagination
@@ -812,7 +812,7 @@ export default class MaterialTable extends React.Component {
                         props.options.showFirstLastPageButtons
                       }
                       iconButtonProps={props.options.paginationIconButtonProps}
-                      numberIconButtonProps={props.options.paginationNumberIconButtonProps}
+                      activeIconButtonProps={props.options.paginationActiveIconButtonProps}
                     />
                   )
                 }

@@ -72,7 +72,9 @@ var MTablePaginationInner = /*#__PURE__*/function (_React$Component) {
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "handleNumberButtonClick", function (number) {
       return function (event) {
-        _this.props.onChangePage(event, number);
+        if (number !== _this.props.page) {
+          _this.props.onChangePage(event, number);
+        }
       };
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "handleLastPageButtonClick", function (event) {
@@ -98,9 +100,9 @@ var MTablePaginationInner = /*#__PURE__*/function (_React$Component) {
             minHeight: "30px"
           },
           variant: buttonVariant,
-          onClick: p !== this.props.page && this.handleNumberButtonClick(p),
+          onClick: this.handleNumberButtonClick(p),
           key: p
-        }, p === this.props.page ? this.props.numberIconButtonProps : {}), p + 1));
+        }, p === this.props.page ? this.props.activeIconButtonProps : {}), p + 1));
       }
 
       return /*#__PURE__*/React.createElement("span", null, buttons);
@@ -174,12 +176,12 @@ MTablePaginationInner.propTypes = {
   theme: _propTypes["default"].any,
   showFirstLastPageButtons: _propTypes["default"].bool,
   iconButtonProps: _propTypes["default"].object,
-  numberIconButtonProps: _propTypes["default"].object
+  activeIconButtonProps: _propTypes["default"].object
 };
 MTablePaginationInner.defaultProps = {
   showFirstLastPageButtons: true,
   iconButtonProps: {},
-  numberIconButtonProps: {},
+  activeIconButtonProps: {},
   localization: {
     firstTooltip: "First Page",
     previousTooltip: "Previous Page",

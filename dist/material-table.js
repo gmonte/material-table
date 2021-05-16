@@ -906,13 +906,13 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
               localization: localization,
               showFirstLastPageButtons: props.options.showFirstLastPageButtons,
               iconButtonProps: props.options.paginationIconButtonProps,
-              numberIconButtonProps: props.options.paginationNumberIconButtonProps
+              activeIconButtonProps: props.options.paginationActiveIconButtonProps
             })) : /*#__PURE__*/React.createElement(_components.MTableSteppedPagination, (0, _extends2["default"])({}, subProps, {
               icons: props.icons,
               localization: localization,
               showFirstLastPageButtons: props.options.showFirstLastPageButtons,
               iconButtonProps: props.options.paginationIconButtonProps,
-              numberIconButtonProps: props.options.paginationNumberIconButtonProps
+              activeIconButtonProps: props.options.paginationActiveIconButtonProps
             }));
           },
           labelDisplayedRows: function labelDisplayedRows(row) {
