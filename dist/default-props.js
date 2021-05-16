@@ -267,7 +267,8 @@ var defaultProps = {
     thirdSortClick: true,
     overflowY: "auto",
     divTableStyle: {},
-    horizontalScrollStyle: {}
+    horizontalScrollStyle: {},
+    tableContainerStyle: {}
   },
   localization: {
     error: "Data could not be retrieved",

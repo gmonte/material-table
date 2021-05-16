@@ -245,6 +245,7 @@ export const defaultProps = {
     overflowY: "auto",
     divTableStyle: {},
     horizontalScrollStyle: {},
+    tableContainerStyle: {},
   },
   localization: {
     error: "Data could not be retrieved",

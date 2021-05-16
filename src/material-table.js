@@ -1048,108 +1048,119 @@ export default class MaterialTable extends React.Component {
               onGroupRemoved={this.onGroupRemoved}
             />
           )}
-          <ScrollBar double={props.options.doubleHorizontalScroll} style={props.options.horizontalScrollStyle}>
-            <Droppable droppableId="headers" direction="horizontal">
-              {(provided, snapshot) => {
-                const table = this.renderTable(props);
-                return (
-                  <div ref={provided.innerRef}>
-                    <div
-                      ref={this.tableContainerDiv}
-                      style={{
-                        maxHeight: props.options.maxBodyHeight,
-                        minHeight: props.options.minBodyHeight,
-                        overflowY: props.options.overflowY,
-                      }}
-                    >
-                      {this.state.width &&
-                      props.options.fixedColumns &&
-                      props.options.fixedColumns.right ? (
-                        <div
-                          style={{
-                            width: this.getColumnsWidth(
-                              props,
-                              -1 * props.options.fixedColumns.right
-                            ),
-                            position: "absolute",
-                            top: 0,
-                            right: 0,
-                            boxShadow: "-2px 0px 15px rgba(125,147,178,.25)",
-                            overflowX: "hidden",
-                            zIndex: 11,
-                          }}
-                        >
+
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              flex: 1,
+              width: '100%',
+              ...props.options.tableContainerStyle,
+            }}
+          >
+            <ScrollBar double={props.options.doubleHorizontalScroll} style={props.options.horizontalScrollStyle}>
+              <Droppable droppableId="headers" direction="horizontal">
+                {(provided, snapshot) => {
+                  const table = this.renderTable(props);
+                  return (
+                    <div ref={provided.innerRef}>
+                      <div
+                        ref={this.tableContainerDiv}
+                        style={{
+                          maxHeight: props.options.maxBodyHeight,
+                          minHeight: props.options.minBodyHeight,
+                          overflowY: props.options.overflowY,
+                        }}
+                      >
+                        {this.state.width &&
+                        props.options.fixedColumns &&
+                        props.options.fixedColumns.right ? (
                           <div
                             style={{
-                              width: this.state.width,
-                              background: "white",
-                              transform: `translateX(calc(${this.getColumnsWidth(
+                              width: this.getColumnsWidth(
                                 props,
                                 -1 * props.options.fixedColumns.right
-                              )} - 100%))`,
+                              ),
+                              position: "absolute",
+                              top: 0,
+                              right: 0,
+                              boxShadow: "-2px 0px 15px rgba(125,147,178,.25)",
+                              overflowX: "hidden",
+                              zIndex: 11,
                             }}
                           >
-                            {table}
+                            <div
+                              style={{
+                                width: this.state.width,
+                                background: "white",
+                                transform: `translateX(calc(${this.getColumnsWidth(
+                                  props,
+                                  -1 * props.options.fixedColumns.right
+                                )} - 100%))`,
+                              }}
+                            >
+                              {table}
+                            </div>
                           </div>
-                        </div>
-                      ) : null}
+                        ) : null}
 
-                      <div style={props.options.divTableStyle}>{table}</div>
+                        <div style={props.options.divTableStyle}>{table}</div>
 
-                      {this.state.width &&
-                      props.options.fixedColumns &&
-                      props.options.fixedColumns.left ? (
-                        <div
-                          style={{
-                            width: this.getColumnsWidth(
-                              props,
-                              props.options.fixedColumns.left
-                            ),
-                            position: "absolute",
-                            top: 0,
-                            left: 0,
-                            boxShadow: "2px 0px 15px rgba(125,147,178,.25)",
-                            overflowX: "hidden",
-                            zIndex: 11,
-                          }}
-                        >
+                        {this.state.width &&
+                        props.options.fixedColumns &&
+                        props.options.fixedColumns.left ? (
                           <div
                             style={{
-                              width: this.state.width,
-                              background: "white",
+                              width: this.getColumnsWidth(
+                                props,
+                                props.options.fixedColumns.left
+                              ),
+                              position: "absolute",
+                              top: 0,
+                              left: 0,
+                              boxShadow: "2px 0px 15px rgba(125,147,178,.25)",
+                              overflowX: "hidden",
+                              zIndex: 11,
                             }}
                           >
-                            {table}
+                            <div
+                              style={{
+                                width: this.state.width,
+                                background: "white",
+                              }}
+                            >
+                              {table}
+                            </div>
                           </div>
-                        </div>
-                      ) : null}
+                        ) : null}
+                      </div>
+                      {provided.placeholder}
                     </div>
-                    {provided.placeholder}
+                  );
+                }}
+              </Droppable>
+            </ScrollBar>
+            {(this.state.isLoading || props.isLoading) &&
+              props.options.loadingType === "linear" && (
+                <div style={{ position: "relative", width: "100%" }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      height: "100%",
+                      width: "100%",
+                    }}
+                  >
+                    <LinearProgress />
                   </div>
-                );
-              }}
-            </Droppable>
-          </ScrollBar>
-          {(this.state.isLoading || props.isLoading) &&
-            props.options.loadingType === "linear" && (
-              <div style={{ position: "relative", width: "100%" }}>
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    height: "100%",
-                    width: "100%",
-                  }}
-                >
-                  <LinearProgress />
                 </div>
-              </div>
-            )}
-          {props.options.paginationPosition === "bottom" ||
-          props.options.paginationPosition === "both"
-            ? this.renderFooter()
-            : null}
+              )}
+            {props.options.paginationPosition === "bottom" ||
+            props.options.paginationPosition === "both"
+              ? this.renderFooter()
+              : null}
+          </div>
 
           {(this.state.isLoading || props.isLoading) &&
             props.options.loadingType === "overlay" && (

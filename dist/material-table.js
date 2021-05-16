@@ -977,7 +977,14 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         }),
         onSortChanged: this.onChangeGroupOrder,
         onGroupRemoved: this.onGroupRemoved
-      }), /*#__PURE__*/React.createElement(ScrollBar, {
+      }), /*#__PURE__*/React.createElement("div", {
+        style: (0, _objectSpread2["default"])({
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 1,
+          width: '100%'
+        }, props.options.tableContainerStyle)
+      }, /*#__PURE__*/React.createElement(ScrollBar, {
         "double": props.options.doubleHorizontalScroll,
         style: props.options.horizontalScrollStyle
       }, /*#__PURE__*/React.createElement(_reactBeautifulDnd.Droppable, {
@@ -1042,7 +1049,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
           height: "100%",
           width: "100%"
         }
-      }, /*#__PURE__*/React.createElement(_LinearProgress["default"], null))), props.options.paginationPosition === "bottom" || props.options.paginationPosition === "both" ? this.renderFooter() : null, (this.state.isLoading || props.isLoading) && props.options.loadingType === "overlay" && /*#__PURE__*/React.createElement("div", {
+      }, /*#__PURE__*/React.createElement(_LinearProgress["default"], null))), props.options.paginationPosition === "bottom" || props.options.paginationPosition === "both" ? this.renderFooter() : null), (this.state.isLoading || props.isLoading) && props.options.loadingType === "overlay" && /*#__PURE__*/React.createElement("div", {
         style: {
           position: "absolute",
           top: 0,
