@@ -1048,7 +1048,7 @@ export default class MaterialTable extends React.Component {
               onGroupRemoved={this.onGroupRemoved}
             />
           )}
-          <ScrollBar double={props.options.doubleHorizontalScroll}>
+          <ScrollBar double={props.options.doubleHorizontalScroll} style={props.options.horizontalScrollStyle}>
             <Droppable droppableId="headers" direction="horizontal">
               {(provided, snapshot) => {
                 const table = this.renderTable(props);
@@ -1208,14 +1208,14 @@ var style = () => ({
   },
 });
 
-const ScrollBar = withStyles(style)(({ double, children, classes }) => {
+const ScrollBar = withStyles(style)(({ double, children, classes, style }) => {
   if (double) {
     return <DoubleScrollbar>{children}</DoubleScrollbar>;
   } else {
     return (
       <div
         className={classes.horizontalScrollContainer}
-        style={{ overflowX: "auto", position: "relative" }}
+        style={{ overflowX: "auto", position: "relative", ...style }}
       >
         {children}
       </div>

@@ -266,7 +266,8 @@ var defaultProps = {
     detailPanelColumnAlignment: "left",
     thirdSortClick: true,
     overflowY: "auto",
-    divTableStyle: {}
+    divTableStyle: {},
+    horizontalScrollStyle: {}
   },
   localization: {
     error: "Data could not be retrieved",

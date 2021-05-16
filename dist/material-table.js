@@ -978,7 +978,8 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         onSortChanged: this.onChangeGroupOrder,
         onGroupRemoved: this.onGroupRemoved
       }), /*#__PURE__*/React.createElement(ScrollBar, {
-        "double": props.options.doubleHorizontalScroll
+        "double": props.options.doubleHorizontalScroll,
+        style: props.options.horizontalScrollStyle
       }, /*#__PURE__*/React.createElement(_reactBeautifulDnd.Droppable, {
         droppableId: "headers",
         direction: "horizontal"
@@ -1095,17 +1096,18 @@ var style = function style() {
 var ScrollBar = (0, _core.withStyles)(style)(function (_ref) {
   var _double = _ref["double"],
       children = _ref.children,
-      classes = _ref.classes;
+      classes = _ref.classes,
+      style = _ref.style;
 
   if (_double) {
     return /*#__PURE__*/React.createElement(_reactDoubleScrollbar["default"], null, children);
   } else {
     return /*#__PURE__*/React.createElement("div", {
       className: classes.horizontalScrollContainer,
-      style: {
+      style: (0, _objectSpread2["default"])({
         overflowX: "auto",
         position: "relative"
-      }
+      }, style)
     }, children);
   }
 });

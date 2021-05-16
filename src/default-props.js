@@ -244,6 +244,7 @@ export const defaultProps = {
     thirdSortClick: true,
     overflowY: "auto",
     divTableStyle: {},
+    horizontalScrollStyle: {},
   },
   localization: {
     error: "Data could not be retrieved",

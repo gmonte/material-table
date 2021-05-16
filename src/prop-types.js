@@ -371,6 +371,7 @@ export const propTypes = {
     toolbar: PropTypes.bool,
     thirdSortClick: PropTypes.bool,
     divTableStyle: PropTypes.object,
+    horizontalScrollStyle: PropTypes.object,
   }),
   localization: PropTypes.shape({
     grouping: PropTypes.shape({
