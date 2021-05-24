@@ -317,26 +317,38 @@ var DataManager = /*#__PURE__*/function () {
     key: "setColumns",
     value: function setColumns(columns) {
       var undefinedWidthColumns = columns.filter(function (c) {
-        return c.width === undefined && !c.hidden;
+        if (c.hidden) {
+          // Hidden column
+          return false;
+        }
+
+        if (c.columnDef && c.columnDef.tableData && c.columnDef.tableData.width) {
+          // tableData.width already calculated
+          return false;
+        } // Calculate width if no value provided
+
+
+        return c.width === undefined;
       });
       var usedWidth = ["0px"];
       this.columns = columns.map(function (columnDef, index) {
+        var width = typeof columnDef.width === "number" ? columnDef.width + "px" : columnDef.width;
+
+        if (width && columnDef.tableData && columnDef.tableData.width !== undefined) {
+          usedWidth.push(width);
+        }
+
         columnDef.tableData = (0, _objectSpread2["default"])({
           columnOrder: index,
           filterValue: columnDef.defaultFilter,
           groupOrder: columnDef.defaultGroupOrder,
           groupSort: columnDef.defaultGroupSort || "asc",
-          width: typeof columnDef.width === "number" ? columnDef.width + "px" : columnDef.width,
-          initialWidth: typeof columnDef.width === "number" ? columnDef.width + "px" : columnDef.width,
+          width: width,
+          initialWidth: width,
           additionalWidth: 0
         }, columnDef.tableData, {
           id: index
         });
-
-        if (columnDef.tableData.width !== undefined) {
-          usedWidth.push(columnDef.tableData.width);
-        }
-
         return columnDef;
       });
       usedWidth = "(" + usedWidth.join(" + ") + ")";
