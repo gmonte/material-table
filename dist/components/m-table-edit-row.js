@@ -291,7 +291,7 @@ var MTableEditRow = /*#__PURE__*/function (_React$Component) {
         style: {
           display: "flex"
         }
-      }, "asd", /*#__PURE__*/React.createElement(this.props.components.Actions, {
+      }, /*#__PURE__*/React.createElement(this.props.components.Actions, {
         data: this.props.data,
         actions: actions,
         components: this.props.components,
