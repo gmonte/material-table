@@ -207,6 +207,7 @@ export const defaultProps = {
     disableCancelEdit: false,
     doubleHorizontalScroll: false,
     emptyRowsWhenPaging: true,
+    editActionsStyle: {},
     exportAllData: false,
     exportButton: false,
     exportDelimiter: ",",

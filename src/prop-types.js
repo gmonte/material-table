@@ -317,6 +317,7 @@ export const propTypes = {
     detailPanelType: PropTypes.oneOf(["single", "multiple"]),
     disableCancelEdit: PropTypes.bool,
     doubleHorizontalScroll: PropTypes.bool,
+    editActionsStyle: PropTypes.object,
     emptyRowsWhenPaging: PropTypes.bool,
     exportAllData: PropTypes.bool,
     exportButton: PropTypes.oneOfType([

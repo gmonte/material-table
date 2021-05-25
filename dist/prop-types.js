@@ -140,6 +140,7 @@ var propTypes = {
     detailPanelType: _propTypes["default"].oneOf(["single", "multiple"]),
     disableCancelEdit: _propTypes["default"].bool,
     doubleHorizontalScroll: _propTypes["default"].bool,
+    editActionsStyle: _propTypes["default"].object,
     emptyRowsWhenPaging: _propTypes["default"].bool,
     exportAllData: _propTypes["default"].bool,
     exportButton: _propTypes["default"].oneOfType([_propTypes["default"].bool, _propTypes["default"].shape({

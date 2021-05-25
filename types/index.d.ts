@@ -302,6 +302,7 @@ export interface Options<RowData extends object> {
   actionsCellDivStyle?: React.CSSProperties;
   detailPanelColumnStyle?: React.CSSProperties;
   editCellStyle?: React.CSSProperties;
+  editActionsStyle?: React.CSSProperties;
   actionsColumnIndex?: number;
   addRowPosition?: "first" | "last";
   columnsButton?: boolean;
