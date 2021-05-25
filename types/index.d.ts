@@ -342,6 +342,7 @@ export interface Options<RowData extends object> {
   pageSizeOptions?: number[];
   paginationType?: "normal" | "stepped";
   paginationPosition?: "bottom" | "top" | "both";
+  resetOnMount?: boolean,
   rowStyle?:
     | React.CSSProperties
     | ((data: any, index: number, level: number) => React.CSSProperties);

@@ -233,6 +233,7 @@ export const defaultProps = {
     showTextRowsSelected: true,
     tableLayout: "auto",
     toolbarButtonAlignment: "right",
+    resetOnMount: true,
     searchFieldAlignment: "right",
     searchFieldStyle: {},
     searchFieldVariant: "standard",
