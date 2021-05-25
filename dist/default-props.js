@@ -231,6 +231,7 @@ var defaultProps = {
     columnsButton: false,
     detailPanelType: "multiple",
     debounceInterval: 200,
+    disableCancelEdit: false,
     doubleHorizontalScroll: false,
     emptyRowsWhenPaging: true,
     exportAllData: false,

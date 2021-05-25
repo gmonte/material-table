@@ -275,13 +275,18 @@ var MTableEditRow = /*#__PURE__*/function (_React$Component) {
         tooltip: localization.saveTooltip,
         disabled: !isValid,
         onClick: this.handleSave
-      }, {
-        icon: this.props.icons.Clear,
-        tooltip: localization.cancelTooltip,
-        onClick: function onClick() {
-          _this3.props.onEditingCanceled(_this3.props.mode, _this3.props.data);
-        }
       }];
+
+      if (!this.props.options.disableCancelEdit) {
+        actions.push({
+          icon: this.props.icons.Clear,
+          tooltip: localization.cancelTooltip,
+          onClick: function onClick() {
+            _this3.props.onEditingCanceled(_this3.props.mode, _this3.props.data);
+          }
+        });
+      }
+
       return /*#__PURE__*/React.createElement(_TableCell["default"], {
         size: size,
         padding: "none",

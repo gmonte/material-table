@@ -309,6 +309,7 @@ export interface Options<RowData extends object> {
   defaultExpanded?: boolean | ((rowData: any) => boolean);
   debounceInterval?: number;
   detailPanelType?: "single" | "multiple";
+  disableCancelEdit?: boolean;
   doubleHorizontalScroll?: boolean;
   draggable?: boolean;
   emptyRowsWhenPaging?: boolean;

@@ -201,14 +201,16 @@ export default class MTableEditRow extends React.Component {
         disabled: !isValid,
         onClick: this.handleSave,
       },
-      {
+    ];
+    if (!this.props.options.disableCancelEdit) {
+      actions.push({
         icon: this.props.icons.Clear,
         tooltip: localization.cancelTooltip,
         onClick: () => {
           this.props.onEditingCanceled(this.props.mode, this.props.data);
         },
-      },
-    ];
+      });
+    }
     return (
       <TableCell
         size={size}
