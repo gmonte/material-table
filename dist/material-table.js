@@ -661,7 +661,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
       this.dataManager.setColumns(props.columns);
       this.dataManager.setDefaultExpanded(props.options.defaultExpanded);
 
-      if (props.options.resetOnMount) {
+      if (props.options.resetOnUpdate) {
         this.dataManager.changeRowEditing();
       }
 

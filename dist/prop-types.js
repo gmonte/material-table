@@ -171,7 +171,7 @@ var propTypes = {
     pageSizeOptions: _propTypes["default"].arrayOf(_propTypes["default"].number),
     paginationType: _propTypes["default"].oneOf(["normal", "stepped"]),
     paginationPosition: _propTypes["default"].oneOf(["bottom", "top", "both"]),
-    resetOnMount: _propTypes["default"].bool,
+    resetOnUpdate: _propTypes["default"].bool,
     rowStyle: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func]),
     search: _propTypes["default"].bool,
     searchText: _propTypes["default"].string,

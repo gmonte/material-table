@@ -262,7 +262,7 @@ var defaultProps = {
     showTextRowsSelected: true,
     tableLayout: "auto",
     toolbarButtonAlignment: "right",
-    resetOnMount: true,
+    resetOnUpdate: true,
     searchFieldAlignment: "right",
     searchFieldStyle: {},
     searchFieldVariant: "standard",
