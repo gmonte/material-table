@@ -355,7 +355,7 @@ export const propTypes = {
     pageSizeOptions: PropTypes.arrayOf(PropTypes.number),
     paginationType: PropTypes.oneOf(["normal", "stepped"]),
     paginationPosition: PropTypes.oneOf(["bottom", "top", "both"]),
-    resetOnMount: PropTypes.bool,
+    resetOnUpdate: PropTypes.bool,
     rowStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     search: PropTypes.bool,
     searchText: PropTypes.string,
