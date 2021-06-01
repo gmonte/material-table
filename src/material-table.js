@@ -1176,7 +1176,7 @@ export default class MaterialTable extends React.Component {
                   left: 0,
                   height: "100%",
                   width: "100%",
-                  zIndex: 11,
+                  zIndex: 110,
                 }}
               >
                 <props.components.OverlayLoading theme={props.theme} />

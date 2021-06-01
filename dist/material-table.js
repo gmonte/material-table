@@ -1065,7 +1065,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
           left: 0,
           height: "100%",
           width: "100%",
-          zIndex: 11
+          zIndex: 110
         }
       }, /*#__PURE__*/React.createElement(props.components.OverlayLoading, {
         theme: props.theme
