@@ -183,7 +183,7 @@ export const propTypes = {
     PropTypes.arrayOf(PropTypes.object),
     PropTypes.func,
   ]).isRequired,
-  footerData: PropTypes.object(),
+  footerData: PropTypes.object,
   editable: PropTypes.shape({
     isEditable: PropTypes.func,
     isDeletable: PropTypes.func,
