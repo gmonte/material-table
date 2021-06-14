@@ -553,6 +553,36 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         bulkEditOpen: _this.dataManager.bulkEditOpen,
         onBulkEditRowChanged: _this.dataManager.onBulkEditRowChanged,
         scrollWidth: _this.state.width
+      }), props.footerData && /*#__PURE__*/React.createElement(props.components.FooterRow, {
+        actions: props.actions,
+        components: props.components,
+        icons: props.icons,
+        data: _this.props.footerData,
+        index: _this.state.renderData.length,
+        errorState: _this.state.errorState,
+        level: 0,
+        options: props.options,
+        localization: (0, _objectSpread2["default"])({}, _this.props.localization.editRow, {
+          dateTimePickerLocalization: _this.props.localization.dateTimePickerLocalization
+        }),
+        onRowSelected: _this.onRowSelected,
+        columns: _this.state.columns,
+        getFieldValue: _this.dataManager.getFieldValue,
+        detailPanel: props.detailPanel,
+        path: [_this.state.renderData.length + _this.props.pageSize * _this.props.currentPage],
+        onToggleDetailPanel: _this.onToggleDetailPanel,
+        onFooterRowClick: _this.props.onFooterRowClick,
+        disabledRow: _this.props.disabledRow,
+        isTreeData: _this.props.parentChildData !== undefined,
+        onTreeExpandChanged: _this.onTreeExpandChanged,
+        onEditingCanceled: _this.onEditingCanceled,
+        onEditingApproved: _this.onEditingApproved,
+        hasAnyEditingRow: !!(_this.state.lastEditingRow || _this.state.showAddRow),
+        treeDataMaxLevel: _this.state.treeDataMaxLevel,
+        cellEditable: false,
+        onCellEditStarted: _this.onCellEditStarted,
+        onCellEditFinished: _this.onCellEditFinished,
+        scrollWidth: _this.state.width
       }));
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getColumnsWidth", function (props, count) {

@@ -101,6 +101,12 @@ Object.defineProperty(exports, "MTableToolbar", {
     return _mTableToolbar["default"];
   }
 });
+Object.defineProperty(exports, "MTableFooterRow", {
+  enumerable: true,
+  get: function get() {
+    return _mTableFooterRow["default"];
+  }
+});
 
 var _mTable = _interopRequireDefault(require("./m-table"));
 
@@ -133,3 +139,5 @@ var _mTablePagination = _interopRequireDefault(require("./m-table-pagination"));
 var _mTableSteppedPagination = _interopRequireDefault(require("./m-table-stepped-pagination"));
 
 var _mTableToolbar = _interopRequireDefault(require("./m-table-toolbar"));
+
+var _mTableFooterRow = _interopRequireDefault(require("./m-table-footer-row"));

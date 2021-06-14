@@ -84,9 +84,11 @@ var propTypes = {
     Pagination: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent]),
     Row: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent]),
     Table: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent]),
-    Toolbar: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent])
+    Toolbar: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent]),
+    FooterRow: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent])
   }),
   data: _propTypes["default"].oneOfType([_propTypes["default"].arrayOf(_propTypes["default"].object), _propTypes["default"].func]).isRequired,
+  footerData: _propTypes["default"].object(),
   editable: _propTypes["default"].shape({
     isEditable: _propTypes["default"].func,
     isDeletable: _propTypes["default"].func,
@@ -173,6 +175,7 @@ var propTypes = {
     paginationPosition: _propTypes["default"].oneOf(["bottom", "top", "both"]),
     resetOnUpdate: _propTypes["default"].bool,
     rowStyle: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func]),
+    footerRowStyle: _propTypes["default"].oneOfType([_propTypes["default"].object, _propTypes["default"].func]),
     search: _propTypes["default"].bool,
     searchText: _propTypes["default"].string,
     toolbarButtonAlignment: _propTypes["default"].oneOf(["left", "right"]),
@@ -216,6 +219,7 @@ var propTypes = {
   onChangeColumnHidden: _propTypes["default"].func,
   onOrderChange: _propTypes["default"].func,
   onRowClick: _propTypes["default"].func,
+  onFooterRowClick: _propTypes["default"].func,
   disabledRow: _propTypes["default"].func,
   onTreeExpandChange: _propTypes["default"].func,
   onQueryChange: _propTypes["default"].func,

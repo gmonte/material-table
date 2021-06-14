@@ -173,11 +173,17 @@ export const propTypes = {
       PropTypes.func,
       StyledComponent,
     ]),
+    FooterRow: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.func,
+      StyledComponent,
+    ]),
   }),
   data: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.object),
     PropTypes.func,
   ]).isRequired,
+  footerData: PropTypes.object(),
   editable: PropTypes.shape({
     isEditable: PropTypes.func,
     isDeletable: PropTypes.func,
@@ -357,6 +363,7 @@ export const propTypes = {
     paginationPosition: PropTypes.oneOf(["bottom", "top", "both"]),
     resetOnUpdate: PropTypes.bool,
     rowStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+    footerRowStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
     search: PropTypes.bool,
     searchText: PropTypes.string,
     toolbarButtonAlignment: PropTypes.oneOf(["left", "right"]),
@@ -400,6 +407,7 @@ export const propTypes = {
   onChangeColumnHidden: PropTypes.func,
   onOrderChange: PropTypes.func,
   onRowClick: PropTypes.func,
+  onFooterRowClick: PropTypes.func,
   disabledRow: PropTypes.func,
   onTreeExpandChange: PropTypes.func,
   onQueryChange: PropTypes.func,

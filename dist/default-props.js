@@ -117,9 +117,11 @@ var defaultProps = {
     Pagination: _TablePagination["default"],
     Row: MComponents.MTableBodyRow,
     Table: MComponents.MTable,
-    Toolbar: MComponents.MTableToolbar
+    Toolbar: MComponents.MTableToolbar,
+    FooterRow: MComponents.MTableFooterRow
   },
   data: [],
+  footerData: null,
   icons: {
     /* eslint-disable react/display-name */
     Add: _react["default"].forwardRef(function (props, ref) {
@@ -276,7 +278,9 @@ var defaultProps = {
     overflowY: "auto",
     divTableStyle: {},
     horizontalScrollStyle: {},
-    tableContainerStyle: {}
+    tableContainerStyle: {},
+    footerRowStyle: {},
+    rowStyle: {}
   },
   localization: {
     error: "Data could not be retrieved",

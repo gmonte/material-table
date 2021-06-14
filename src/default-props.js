@@ -91,8 +91,10 @@ export const defaultProps = {
     Row: MComponents.MTableBodyRow,
     Table: MComponents.MTable,
     Toolbar: MComponents.MTableToolbar,
+    FooterRow: MComponents.MTableFooterRow,
   },
   data: [],
+  footerData: null,
   icons: {
     /* eslint-disable react/display-name */
     Add: React.forwardRef((props, ref) => (
@@ -250,6 +252,8 @@ export const defaultProps = {
     divTableStyle: {},
     horizontalScrollStyle: {},
     tableContainerStyle: {},
+    footerRowStyle: {},
+    rowStyle: {}
   },
   localization: {
     error: "Data could not be retrieved",
