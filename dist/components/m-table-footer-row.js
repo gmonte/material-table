@@ -91,40 +91,23 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
         return !columnDef.hidden && !(columnDef.tableData.groupOrder > -1);
       }).sort(function (a, b) {
         return a.tableData.columnOrder - b.tableData.columnOrder;
-      }).map(function (columnDef, index) {
+      }).map(function (columnDef) {
         var value = _this2.props.getFieldValue(_this2.props.data, columnDef);
 
-        if (_this2.props.data.tableData.editCellList && _this2.props.data.tableData.editCellList.find(function (c) {
-          return c.tableData.id === columnDef.tableData.id;
-        })) {
-          return /*#__PURE__*/React.createElement(_this2.props.components.EditCell, {
-            components: _this2.props.components,
-            icons: _this2.props.icons,
-            localization: _this2.props.localization,
-            columnDef: columnDef,
-            size: size,
-            key: "cell-" + _this2.props.data.tableData.id + "-" + columnDef.tableData.id,
-            rowData: _this2.props.data,
-            cellEditable: _this2.props.cellEditable,
-            onCellEditFinished: _this2.props.onCellEditFinished,
-            scrollWidth: _this2.props.scrollWidth
-          });
-        } else {
-          return /*#__PURE__*/React.createElement(_this2.props.components.Cell, {
-            size: size,
-            errorState: _this2.props.errorState,
-            icons: _this2.props.icons,
-            columnDef: (0, _objectSpread2["default"])({
-              cellStyle: _this2.props.options.cellStyle
-            }, columnDef),
-            value: value,
-            key: "cell-" + _this2.props.data.tableData.id + "-" + columnDef.tableData.id,
-            rowData: _this2.props.data,
-            cellEditable: columnDef.editable !== "never" && !!_this2.props.cellEditable,
-            onCellEditStarted: _this2.props.onCellEditStarted,
-            scrollWidth: _this2.props.scrollWidth
-          });
-        }
+        return /*#__PURE__*/React.createElement(_this2.props.components.Cell, {
+          size: size,
+          errorState: _this2.props.errorState,
+          icons: _this2.props.icons,
+          columnDef: (0, _objectSpread2["default"])({
+            cellStyle: _this2.props.options.cellStyle
+          }, columnDef),
+          value: value,
+          key: "footer-cell-" + _this2.props.data.tableData.id + "-" + columnDef.tableData.id,
+          rowData: _this2.props.data,
+          cellEditable: false,
+          onCellEditStarted: _this2.props.onCellEditStarted,
+          scrollWidth: _this2.props.scrollWidth
+        });
       });
       return mapArr;
     }
@@ -313,12 +296,7 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
             onToggleDetailPanel(_this3.props.path, panel);
           });
         }
-      }), renderColumns), this.props.data.tableData && this.props.data.tableData.showDetailPanel && /*#__PURE__*/React.createElement(_TableRow["default"] // selected={this.props.index % 2 === 0}
-      , null, /*#__PURE__*/React.createElement(_TableCell["default"], {
-        size: size,
-        colSpan: renderColumns.length,
-        padding: "none"
-      }, this.props.data.tableData.showDetailPanel(this.props.data))), this.props.data.tableData.childRows && this.props.data.tableData.isTreeExpanded && this.props.data.tableData.childRows.map(function (data, index) {
+      }), renderColumns), this.props.data.tableData.childRows && this.props.data.tableData.isTreeExpanded && this.props.data.tableData.childRows.map(function (data, index) {
         return /*#__PURE__*/React.createElement(_this3.props.components.Row, (0, _extends2["default"])({}, _this3.props, {
           data: data,
           index: index,

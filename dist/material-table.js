@@ -484,6 +484,8 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
       _this.setState(_this.dataManager.getRenderState());
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderTable", function (props) {
+      var _this$state$renderDat, _this$state$renderDat2;
+
       return /*#__PURE__*/React.createElement(props.components.Table, {
         style: {
           tableLayout: props.options.fixedColumns && (props.options.fixedColumns.left || props.options.fixedColumns.right) ? "fixed" : props.options.tableLayout
@@ -557,7 +559,11 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         actions: props.actions,
         components: props.components,
         icons: props.icons,
-        data: _this.props.footerData,
+        data: (0, _objectSpread2["default"])({
+          tableData: (0, _objectSpread2["default"])({}, (_this$state$renderDat = _this.state.renderData) !== null && _this$state$renderDat !== void 0 && _this$state$renderDat.length ? _this.state.renderData[_this.state.renderData.length - 1].tableData : {}, {
+            id: (_this$state$renderDat2 = _this.state.renderData) !== null && _this$state$renderDat2 !== void 0 && _this$state$renderDat2.length ? _this.state.renderData[_this.state.renderData.length - 1].tableData.id + 1 : 0
+          })
+        }, _this.props.footerData),
         index: _this.state.renderData.length,
         errorState: _this.state.errorState,
         level: 0,
