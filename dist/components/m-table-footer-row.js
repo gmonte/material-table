@@ -92,15 +92,22 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
       }).map(function (columnDef) {
         var value = _this2.props.getFieldValue(_this2.props.data, columnDef);
 
+        console.log("FOOTER ROW", (0, _objectSpread2["default"])({}, columnDef, {
+          cellStyle: typeof _this2.props.options.cellStyle === 'function' ? function () {
+            var _this2$props$options;
+
+            return (0, _objectSpread2["default"])({}, (_this2$props$options = _this2.props.options).cellStyle.apply(_this2$props$options, arguments), _this2.getStyle(_this2.props.index, _this2.props.level));
+          } : (0, _objectSpread2["default"])({}, _this2.props.options.cellStyle, _this2.getStyle(_this2.props.index, _this2.props.level))
+        }));
         return /*#__PURE__*/React.createElement(_this2.props.components.Cell, {
           size: size,
           errorState: _this2.props.errorState,
           icons: _this2.props.icons,
           columnDef: (0, _objectSpread2["default"])({}, columnDef, {
             cellStyle: typeof _this2.props.options.cellStyle === 'function' ? function () {
-              var _this2$props$options;
+              var _this2$props$options2;
 
-              return (0, _objectSpread2["default"])({}, (_this2$props$options = _this2.props.options).cellStyle.apply(_this2$props$options, arguments), _this2.getStyle(_this2.props.index, _this2.props.level));
+              return (0, _objectSpread2["default"])({}, (_this2$props$options2 = _this2.props.options).cellStyle.apply(_this2$props$options2, arguments), _this2.getStyle(_this2.props.index, _this2.props.level));
             } : (0, _objectSpread2["default"])({}, _this2.props.options.cellStyle, _this2.getStyle(_this2.props.index, _this2.props.level))
           }),
           value: value,

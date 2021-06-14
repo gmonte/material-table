@@ -96,6 +96,7 @@ var MTableCell = /*#__PURE__*/function (_React$Component) {
         cellStyle.cursor = "default";
       }
 
+      console.log('CELL', (0, _objectSpread2["default"])({}, _this.props.style, cellStyle), _this.props.rowData);
       return (0, _objectSpread2["default"])({}, _this.props.style, cellStyle);
     });
     return _this;

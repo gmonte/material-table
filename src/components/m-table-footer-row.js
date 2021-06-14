@@ -66,6 +66,7 @@ export default class MTableFooterRow extends React.Component {
           padding: "0px 5px",
           boxSizing: "border-box",
           ...this.props.options.actionsCellStyle,
+          ...this.getStyle(this.props.index, this.props.level)
         }}
       />
     );
@@ -82,7 +83,10 @@ export default class MTableFooterRow extends React.Component {
         size={size}
         padding="none"
         key="key-selection-column"
-        style={{ width: selectionWidth }}
+        style={{
+          width: selectionWidth,
+          ...this.getStyle(this.props.index, this.props.level)
+        }}
       />
     );
   }
@@ -103,6 +107,7 @@ export default class MTableFooterRow extends React.Component {
             width: 42,
             textAlign: "center",
             ...this.props.options.detailPanelColumnStyle,
+            ...this.getStyle(this.props.index, this.props.level)
           }}
         />
       );
@@ -115,6 +120,7 @@ export default class MTableFooterRow extends React.Component {
               textAlign: "center",
               display: "flex",
               ...this.props.options.detailPanelColumnStyle,
+              ...this.getStyle(this.props.index, this.props.level)
             }}
           />
         </TableCell>
@@ -133,11 +139,16 @@ export default class MTableFooterRow extends React.Component {
           size={size}
           padding="none"
           key={"key-tree-data-column"}
-          style={{ width: 48 + 9 * (this.props.treeDataMaxLevel - 2) }}
+          style={{
+            width: 48 + 9 * (this.props.treeDataMaxLevel - 2),
+            ...this.getStyle(this.props.index, this.props.level)
+          }}
         />
       );
     } else {
-      return <TableCell padding="none" key={"key-tree-data-column"} />;
+      return <TableCell padding="none" key={"key-tree-data-column"} style={{
+        ...this.getStyle(this.props.index, this.props.level)
+      }} />;
     }
   }
 
@@ -221,6 +232,9 @@ export default class MTableFooterRow extends React.Component {
             size={size}
             padding="none"
             key={"key-group-cell" + columnDef.tableData.id}
+            style={{
+              ...this.getStyle(this.props.index, this.props.level)
+            }}
           />
         );
       });
