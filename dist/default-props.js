@@ -280,7 +280,8 @@ var defaultProps = {
     horizontalScrollStyle: {},
     tableContainerStyle: {},
     footerRowStyle: {},
-    rowStyle: {}
+    rowStyle: {},
+    tableFooterProps: {}
   },
   localization: {
     error: "Data could not be retrieved",

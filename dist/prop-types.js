@@ -196,7 +196,8 @@ var propTypes = {
     thirdSortClick: _propTypes["default"].bool,
     divTableStyle: _propTypes["default"].object,
     horizontalScrollStyle: _propTypes["default"].object,
-    tableContainerStyle: _propTypes["default"].object
+    tableContainerStyle: _propTypes["default"].object,
+    tableFooterProps: _propTypes["default"].object
   }),
   localization: _propTypes["default"].shape({
     grouping: _propTypes["default"].shape({

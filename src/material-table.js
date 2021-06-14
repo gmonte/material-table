@@ -931,47 +931,49 @@ export default class MaterialTable extends React.Component {
         scrollWidth={this.state.width}
       />
       {props.footerData && (
-        <props.components.FooterRow
-          actions={props.actions}
-          components={props.components}
-          icons={props.icons}
-          data={{
-            tableData: {
-              ...(this.state.renderData?.length ? this.state.renderData[this.state.renderData.length - 1].tableData : {}),
-              id: this.state.renderData?.length ? this.state.renderData[this.state.renderData.length - 1].tableData.id + 1 : 0 
-            },
-            ...this.props.footerData
-          }}
-          index={this.state.renderData.length}
-          errorState={this.state.errorState}
-          level={0}
-          options={props.options}
-          localization={{
-            ...this.props.localization.editRow,
-            dateTimePickerLocalization: this.props.localization
-              .dateTimePickerLocalization,
-          }}
-          onRowSelected={this.onRowSelected}
-          columns={this.state.columns}
-          getFieldValue={this.dataManager.getFieldValue}
-          detailPanel={props.detailPanel}
-          path={[this.state.renderData.length + this.props.pageSize * this.props.currentPage]}
-          onToggleDetailPanel={this.onToggleDetailPanel}
-          onFooterRowClick={this.props.onFooterRowClick}
-          disabledRow={this.props.disabledRow}
-          isTreeData={this.props.parentChildData !== undefined}
-          onTreeExpandChanged={this.onTreeExpandChanged}
-          onEditingCanceled={this.onEditingCanceled}
-          onEditingApproved={this.onEditingApproved}
-          hasAnyEditingRow={
-            !!(this.state.lastEditingRow || this.state.showAddRow)
-          }
-          treeDataMaxLevel={this.state.treeDataMaxLevel}
-          cellEditable={false}
-          onCellEditStarted={this.onCellEditStarted}
-          onCellEditFinished={this.onCellEditFinished}
-          scrollWidth={this.state.width}
-        />
+        <TableFooter {...(this.props.options?.tableFooterProps || {})}>
+          <props.components.FooterRow
+            actions={props.actions}
+            components={props.components}
+            icons={props.icons}
+            data={{
+              tableData: {
+                ...(this.state.renderData?.length ? this.state.renderData[this.state.renderData.length - 1].tableData : {}),
+                id: this.state.renderData?.length ? this.state.renderData[this.state.renderData.length - 1].tableData.id + 1 : 0 
+              },
+              ...this.props.footerData
+            }}
+            index={this.state.renderData.length}
+            errorState={this.state.errorState}
+            level={0}
+            options={props.options}
+            localization={{
+              ...this.props.localization.editRow,
+              dateTimePickerLocalization: this.props.localization
+                .dateTimePickerLocalization,
+            }}
+            onRowSelected={this.onRowSelected}
+            columns={this.state.columns}
+            getFieldValue={this.dataManager.getFieldValue}
+            detailPanel={props.detailPanel}
+            path={[this.state.renderData.length + this.props.pageSize * this.props.currentPage]}
+            onToggleDetailPanel={this.onToggleDetailPanel}
+            onFooterRowClick={this.props.onFooterRowClick}
+            disabledRow={this.props.disabledRow}
+            isTreeData={this.props.parentChildData !== undefined}
+            onTreeExpandChanged={this.onTreeExpandChanged}
+            onEditingCanceled={this.onEditingCanceled}
+            onEditingApproved={this.onEditingApproved}
+            hasAnyEditingRow={
+              !!(this.state.lastEditingRow || this.state.showAddRow)
+            }
+            treeDataMaxLevel={this.state.treeDataMaxLevel}
+            cellEditable={false}
+            onCellEditStarted={this.onCellEditStarted}
+            onCellEditFinished={this.onCellEditFinished}
+            scrollWidth={this.state.width}
+          />
+        </TableFooter>
       )}
     </props.components.Table>
   );

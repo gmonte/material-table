@@ -385,6 +385,7 @@ export const propTypes = {
     divTableStyle: PropTypes.object,
     horizontalScrollStyle: PropTypes.object,
     tableContainerStyle: PropTypes.object,
+    tableFooterProps: PropTypes.object,
   }),
   localization: PropTypes.shape({
     grouping: PropTypes.shape({

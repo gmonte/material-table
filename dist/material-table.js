@@ -484,7 +484,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
       _this.setState(_this.dataManager.getRenderState());
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "renderTable", function (props) {
-      var _this$state$renderDat, _this$state$renderDat2;
+      var _this$props$options, _this$state$renderDat, _this$state$renderDat2;
 
       return /*#__PURE__*/React.createElement(props.components.Table, {
         style: {
@@ -555,7 +555,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         bulkEditOpen: _this.dataManager.bulkEditOpen,
         onBulkEditRowChanged: _this.dataManager.onBulkEditRowChanged,
         scrollWidth: _this.state.width
-      }), props.footerData && /*#__PURE__*/React.createElement(props.components.FooterRow, {
+      }), props.footerData && /*#__PURE__*/React.createElement(_TableFooter["default"], ((_this$props$options = _this.props.options) === null || _this$props$options === void 0 ? void 0 : _this$props$options.tableFooterProps) || {}, /*#__PURE__*/React.createElement(props.components.FooterRow, {
         actions: props.actions,
         components: props.components,
         icons: props.icons,
@@ -589,7 +589,7 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         onCellEditStarted: _this.onCellEditStarted,
         onCellEditFinished: _this.onCellEditFinished,
         scrollWidth: _this.state.width
-      }));
+      })));
     });
     (0, _defineProperty2["default"])((0, _assertThisInitialized2["default"])(_this), "getColumnsWidth", function (props, count) {
       var result = [];
