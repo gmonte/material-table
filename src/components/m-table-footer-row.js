@@ -19,60 +19,30 @@ export default class MTableFooterRow extends React.Component {
           !columnDef.hidden && !(columnDef.tableData.groupOrder > -1)
       )
       .sort((a, b) => a.tableData.columnOrder - b.tableData.columnOrder)
-      .map((columnDef, index) => {
+      .map((columnDef) => {
         const value = this.props.getFieldValue(this.props.data, columnDef);
-
-        if (
-          this.props.data.tableData.editCellList &&
-          this.props.data.tableData.editCellList.find(
-            (c) => c.tableData.id === columnDef.tableData.id
-          )
-        ) {
-          return (
-            <this.props.components.EditCell
-              components={this.props.components}
-              icons={this.props.icons}
-              localization={this.props.localization}
-              columnDef={columnDef}
-              size={size}
-              key={
-                "cell-" +
-                this.props.data.tableData.id +
-                "-" +
-                columnDef.tableData.id
-              }
-              rowData={this.props.data}
-              cellEditable={this.props.cellEditable}
-              onCellEditFinished={this.props.onCellEditFinished}
-              scrollWidth={this.props.scrollWidth}
-            />
-          );
-        } else {
-          return (
-            <this.props.components.Cell
-              size={size}
-              errorState={this.props.errorState}
-              icons={this.props.icons}
-              columnDef={{
-                cellStyle: this.props.options.cellStyle,
-                ...columnDef,
-              }}
-              value={value}
-              key={
-                "cell-" +
-                this.props.data.tableData.id +
-                "-" +
-                columnDef.tableData.id
-              }
-              rowData={this.props.data}
-              cellEditable={
-                columnDef.editable !== "never" && !!this.props.cellEditable
-              }
-              onCellEditStarted={this.props.onCellEditStarted}
-              scrollWidth={this.props.scrollWidth}
-            />
-          );
-        }
+        return (
+          <this.props.components.Cell
+            size={size}
+            errorState={this.props.errorState}
+            icons={this.props.icons}
+            columnDef={{
+              cellStyle: this.props.options.cellStyle,
+              ...columnDef,
+            }}
+            value={value}
+            key={
+              "footer-cell-" +
+              this.props.data.tableData.id +
+              "-" +
+              columnDef.tableData.id
+            }
+            rowData={this.props.data}
+            cellEditable={ false }
+            onCellEditStarted={this.props.onCellEditStarted}
+            scrollWidth={this.props.scrollWidth}
+          />
+        )
       });
     return mapArr;
   }
@@ -294,20 +264,6 @@ export default class MTableFooterRow extends React.Component {
         >
           {renderColumns}
         </TableRow>
-        {this.props.data.tableData &&
-          this.props.data.tableData.showDetailPanel && (
-            <TableRow
-            // selected={this.props.index % 2 === 0}
-            >
-              <TableCell
-                size={size}
-                colSpan={renderColumns.length}
-                padding="none"
-              >
-                {this.props.data.tableData.showDetailPanel(this.props.data)}
-              </TableCell>
-            </TableRow>
-          )}
         {this.props.data.tableData.childRows &&
           this.props.data.tableData.isTreeExpanded &&
           this.props.data.tableData.childRows.map((data, index) => {

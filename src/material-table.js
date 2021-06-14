@@ -935,7 +935,13 @@ export default class MaterialTable extends React.Component {
           actions={props.actions}
           components={props.components}
           icons={props.icons}
-          data={this.props.footerData}
+          data={{
+            tableData: {
+              ...(this.state.renderData?.length ? this.state.renderData[this.state.renderData.length - 1].tableData : {}),
+              id: this.state.renderData?.length ? this.state.renderData[this.state.renderData.length - 1].tableData.id + 1 : 0 
+            },
+            ...this.props.footerData
+          }}
           index={this.state.renderData.length}
           errorState={this.state.errorState}
           level={0}
