@@ -38,8 +38,6 @@ export default class MTableFooterRow extends React.Component {
               columnDef.tableData.id
             }
             rowData={this.props.data}
-            cellEditable={ false }
-            onCellEditStarted={this.props.onCellEditStarted}
             scrollWidth={this.props.scrollWidth}
           />
         )
@@ -280,9 +278,6 @@ export default class MTableFooterRow extends React.Component {
                 hasAnyEditingRow={this.props.hasAnyEditingRow}
                 treeDataMaxLevel={treeDataMaxLevel}
                 errorState={this.props.errorState}
-                cellEditable={false}
-                onCellEditStarted={onCellEditStarted}
-                onCellEditFinished={onCellEditFinished}
               />
             );
           })

@@ -968,9 +968,6 @@ export default class MaterialTable extends React.Component {
               !!(this.state.lastEditingRow || this.state.showAddRow)
             }
             treeDataMaxLevel={this.state.treeDataMaxLevel}
-            cellEditable={false}
-            onCellEditStarted={this.onCellEditStarted}
-            onCellEditFinished={this.onCellEditFinished}
             scrollWidth={this.state.width}
           />
         </TableFooter>

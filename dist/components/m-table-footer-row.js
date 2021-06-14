@@ -104,8 +104,6 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
           value: value,
           key: "footer-cell-" + _this2.props.data.tableData.id + "-" + columnDef.tableData.id,
           rowData: _this2.props.data,
-          cellEditable: false,
-          onCellEditStarted: _this2.props.onCellEditStarted,
           scrollWidth: _this2.props.scrollWidth
         });
       });
@@ -307,10 +305,7 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
           onEditingApproved: onEditingApproved,
           hasAnyEditingRow: _this3.props.hasAnyEditingRow,
           treeDataMaxLevel: treeDataMaxLevel,
-          errorState: _this3.props.errorState,
-          cellEditable: false,
-          onCellEditStarted: onCellEditStarted,
-          onCellEditFinished: onCellEditFinished
+          errorState: _this3.props.errorState
         }));
       }));
     }

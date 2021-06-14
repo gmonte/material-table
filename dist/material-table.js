@@ -585,9 +585,6 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         onEditingApproved: _this.onEditingApproved,
         hasAnyEditingRow: !!(_this.state.lastEditingRow || _this.state.showAddRow),
         treeDataMaxLevel: _this.state.treeDataMaxLevel,
-        cellEditable: false,
-        onCellEditStarted: _this.onCellEditStarted,
-        onCellEditFinished: _this.onCellEditFinished,
         scrollWidth: _this.state.width
       })));
     });
