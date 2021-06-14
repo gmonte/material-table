@@ -96,13 +96,13 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
           size: size,
           errorState: _this2.props.errorState,
           icons: _this2.props.icons,
-          columnDef: (0, _objectSpread2["default"])({
+          columnDef: (0, _objectSpread2["default"])({}, columnDef, {
             cellStyle: typeof _this2.props.options.cellStyle === 'function' ? function () {
               var _this2$props$options;
 
               return (0, _objectSpread2["default"])({}, (_this2$props$options = _this2.props.options).cellStyle.apply(_this2$props$options, arguments), _this2.getStyle(_this2.props.index, _this2.props.level));
             } : (0, _objectSpread2["default"])({}, _this2.props.options.cellStyle, _this2.getStyle(_this2.props.index, _this2.props.level))
-          }, columnDef),
+          }),
           value: value,
           key: "footer-cell-" + _this2.props.data.tableData.id + "-" + columnDef.tableData.id,
           rowData: _this2.props.data,
