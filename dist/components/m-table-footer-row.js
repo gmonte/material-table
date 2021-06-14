@@ -9,8 +9,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
-
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
 var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
@@ -99,7 +97,11 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
           errorState: _this2.props.errorState,
           icons: _this2.props.icons,
           columnDef: (0, _objectSpread2["default"])({
-            cellStyle: _this2.props.options.cellStyle
+            cellStyle: typeof _this2.props.options.cellStyle === 'function' ? function () {
+              var _this2$props$options;
+
+              return (0, _objectSpread2["default"])({}, (_this2$props$options = _this2.props.options).cellStyle.apply(_this2$props$options, arguments), _this2.getStyle(_this2.props.index, _this2.props.level));
+            } : (0, _objectSpread2["default"])({}, _this2.props.options.cellStyle, _this2.getStyle(_this2.props.index, _this2.props.level))
           }, columnDef),
           value: value,
           key: "footer-cell-" + _this2.props.data.tableData.id + "-" + columnDef.tableData.id,
@@ -283,7 +285,7 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
           scrollWidth = _this$props.scrollWidth,
           rowProps = (0, _objectWithoutProperties2["default"])(_this$props, ["icons", "data", "columns", "components", "detailPanel", "getFieldValue", "isTreeData", "onFooterRowClick", "disabledRow", "onRowSelected", "onTreeExpandChanged", "onToggleDetailPanel", "onEditingCanceled", "onEditingApproved", "options", "hasAnyEditingRow", "treeDataMaxLevel", "localization", "actions", "errorState", "scrollWidth"]);
       var rowIsDisabled = disabledRow(data);
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_TableRow["default"], (0, _extends2["default"])({
+      return /*#__PURE__*/React.createElement(_TableRow["default"], (0, _extends2["default"])({
         selected: hasAnyEditingRow
       }, rowProps, {
         hover: onFooterRowClick ? !rowIsDisabled : false,
@@ -294,20 +296,7 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
             onToggleDetailPanel(_this3.props.path, panel);
           });
         }
-      }), renderColumns), this.props.data.tableData.childRows && this.props.data.tableData.isTreeExpanded && this.props.data.tableData.childRows.map(function (data, index) {
-        return /*#__PURE__*/React.createElement(_this3.props.components.Row, (0, _extends2["default"])({}, _this3.props, {
-          data: data,
-          index: index,
-          key: index,
-          level: _this3.props.level + 1,
-          path: [].concat((0, _toConsumableArray2["default"])(_this3.props.path), [index]),
-          onEditingCanceled: onEditingCanceled,
-          onEditingApproved: onEditingApproved,
-          hasAnyEditingRow: _this3.props.hasAnyEditingRow,
-          treeDataMaxLevel: treeDataMaxLevel,
-          errorState: _this3.props.errorState
-        }));
-      }));
+      }), renderColumns);
     }
   }]);
   return MTableFooterRow;

@@ -215,6 +215,7 @@ class MTableFilterRow extends React.Component {
           style={{
             ...this.props.filterCellStyle,
             ...columnDef.filterCellStyle,
+            ...this.getStyle()
           }}
         >
           {this.getComponentForColumn(columnDef)}

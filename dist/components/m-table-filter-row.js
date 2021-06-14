@@ -267,7 +267,7 @@ var MTableFilterRow = /*#__PURE__*/function (_React$Component) {
       }).map(function (columnDef) {
         return /*#__PURE__*/React.createElement(_TableCell["default"], {
           key: columnDef.tableData.id,
-          style: (0, _objectSpread2["default"])({}, _this2.props.filterCellStyle, columnDef.filterCellStyle)
+          style: (0, _objectSpread2["default"])({}, _this2.props.filterCellStyle, columnDef.filterCellStyle, _this2.getStyle())
         }, _this2.getComponentForColumn(columnDef));
       });
 

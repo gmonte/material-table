@@ -27,7 +27,15 @@ export default class MTableFooterRow extends React.Component {
             errorState={this.props.errorState}
             icons={this.props.icons}
             columnDef={{
-              cellStyle: this.props.options.cellStyle,
+              cellStyle: typeof this.props.options.cellStyle === 'function'
+                ? (...opts) => ({
+                  ...this.props.options.cellStyle(...opts),
+                  ...this.getStyle(this.props.index, this.props.level)
+                })
+                : ({
+                  ...this.props.options.cellStyle,
+                  ...this.getStyle(this.props.index, this.props.level)
+                }),
               ...columnDef,
             }}
             value={value}

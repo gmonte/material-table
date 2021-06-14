@@ -560,9 +560,13 @@ var MaterialTable = /*#__PURE__*/function (_React$Component) {
         components: props.components,
         icons: props.icons,
         data: (0, _objectSpread2["default"])({
-          tableData: (0, _objectSpread2["default"])({}, (_this$state$renderDat = _this.state.renderData) !== null && _this$state$renderDat !== void 0 && _this$state$renderDat.length ? _this.state.renderData[_this.state.renderData.length - 1].tableData : {}, {
-            id: (_this$state$renderDat2 = _this.state.renderData) !== null && _this$state$renderDat2 !== void 0 && _this$state$renderDat2.length ? _this.state.renderData[_this.state.renderData.length - 1].tableData.id + 1 : 0
-          })
+          tableData: {
+            childRows: null,
+            isTreeExpanded: false,
+            markedForTreeRemove: false,
+            id: ((_this$state$renderDat = _this.state.renderData) === null || _this$state$renderDat === void 0 ? void 0 : _this$state$renderDat.length) || 0,
+            path: [((_this$state$renderDat2 = _this.state.renderData) === null || _this$state$renderDat2 === void 0 ? void 0 : _this$state$renderDat2.length) || 0]
+          }
         }, _this.props.footerData),
         index: _this.state.renderData.length,
         errorState: _this.state.errorState,
