@@ -88,7 +88,7 @@ var propTypes = {
     FooterRow: _propTypes["default"].oneOfType([_propTypes["default"].element, _propTypes["default"].func, StyledComponent])
   }),
   data: _propTypes["default"].oneOfType([_propTypes["default"].arrayOf(_propTypes["default"].object), _propTypes["default"].func]).isRequired,
-  footerData: _propTypes["default"].object(),
+  footerData: _propTypes["default"].object,
   editable: _propTypes["default"].shape({
     isEditable: _propTypes["default"].func,
     isDeletable: _propTypes["default"].func,
