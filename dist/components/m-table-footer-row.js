@@ -92,22 +92,15 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
       }).map(function (columnDef) {
         var value = _this2.props.getFieldValue(_this2.props.data, columnDef);
 
-        console.log("FOOTER ROW", (0, _objectSpread2["default"])({}, columnDef, {
-          cellStyle: typeof _this2.props.options.cellStyle === 'function' ? function () {
-            var _this2$props$options;
-
-            return (0, _objectSpread2["default"])({}, (_this2$props$options = _this2.props.options).cellStyle.apply(_this2$props$options, arguments), _this2.getStyle(_this2.props.index, _this2.props.level));
-          } : (0, _objectSpread2["default"])({}, _this2.props.options.cellStyle, _this2.getStyle(_this2.props.index, _this2.props.level))
-        }));
         return /*#__PURE__*/React.createElement(_this2.props.components.Cell, {
           size: size,
           errorState: _this2.props.errorState,
           icons: _this2.props.icons,
           columnDef: (0, _objectSpread2["default"])({}, columnDef, {
             cellStyle: typeof _this2.props.options.cellStyle === 'function' ? function () {
-              var _this2$props$options2;
+              var _this2$props$options;
 
-              return (0, _objectSpread2["default"])({}, (_this2$props$options2 = _this2.props.options).cellStyle.apply(_this2$props$options2, arguments), _this2.getStyle(_this2.props.index, _this2.props.level));
+              return (0, _objectSpread2["default"])({}, (_this2$props$options = _this2.props.options).cellStyle.apply(_this2$props$options, arguments), _this2.getStyle(_this2.props.index, _this2.props.level));
             } : (0, _objectSpread2["default"])({}, _this2.props.options.cellStyle, _this2.getStyle(_this2.props.index, _this2.props.level))
           }),
           value: value,
@@ -131,7 +124,7 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
           width: width,
           padding: "0px 5px",
           boxSizing: "border-box"
-        }, this.props.options.actionsCellStyle)
+        }, this.props.options.actionsCellStyle, this.getStyle(this.props.index, this.props.level))
       });
     }
   }, {
@@ -143,9 +136,9 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
         size: size,
         padding: "none",
         key: "key-selection-column",
-        style: {
+        style: (0, _objectSpread2["default"])({
           width: selectionWidth
-        }
+        }, this.getStyle(this.props.index, this.props.level))
       });
     }
   }, {
@@ -161,7 +154,7 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
           style: (0, _objectSpread2["default"])({
             width: 42,
             textAlign: "center"
-          }, this.props.options.detailPanelColumnStyle)
+          }, this.props.options.detailPanelColumnStyle, this.getStyle(this.props.index, this.props.level))
         });
       } else {
         return /*#__PURE__*/React.createElement(_TableCell["default"], {
@@ -173,7 +166,7 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
             width: 42 * this.props.detailPanel.length,
             textAlign: "center",
             display: "flex"
-          }, this.props.options.detailPanelColumnStyle)
+          }, this.props.options.detailPanelColumnStyle, this.getStyle(this.props.index, this.props.level))
         }));
       }
     }
@@ -187,14 +180,15 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
           size: size,
           padding: "none",
           key: "key-tree-data-column",
-          style: {
+          style: (0, _objectSpread2["default"])({
             width: 48 + 9 * (this.props.treeDataMaxLevel - 2)
-          }
+          }, this.getStyle(this.props.index, this.props.level))
         });
       } else {
         return /*#__PURE__*/React.createElement(_TableCell["default"], {
           padding: "none",
-          key: "key-tree-data-column"
+          key: "key-tree-data-column",
+          style: (0, _objectSpread2["default"])({}, this.getStyle(this.props.index, this.props.level))
         });
       }
     }
@@ -265,7 +259,8 @@ var MTableFooterRow = /*#__PURE__*/function (_React$Component) {
         renderColumns.splice(0, 0, /*#__PURE__*/React.createElement(_TableCell["default"], {
           size: size,
           padding: "none",
-          key: "key-group-cell" + columnDef.tableData.id
+          key: "key-group-cell" + columnDef.tableData.id,
+          style: (0, _objectSpread2["default"])({}, _this3.getStyle(_this3.props.index, _this3.props.level))
         }));
       });
       var _this$props = this.props,
