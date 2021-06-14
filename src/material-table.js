@@ -938,8 +938,11 @@ export default class MaterialTable extends React.Component {
             icons={props.icons}
             data={{
               tableData: {
-                ...(this.state.renderData?.length ? this.state.renderData[this.state.renderData.length - 1].tableData : {}),
-                id: this.state.renderData?.length ? this.state.renderData[this.state.renderData.length - 1].tableData.id + 1 : 0 
+                childRows: null,
+                isTreeExpanded: false,
+                markedForTreeRemove: false,
+                id: this.state.renderData?.length || 0,
+                path: [this.state.renderData?.length || 0]
               },
               ...this.props.footerData
             }}

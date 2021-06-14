@@ -245,44 +245,22 @@ export default class MTableFooterRow extends React.Component {
     const rowIsDisabled = disabledRow(data)
 
     return (
-      <>
-        <TableRow
-          selected={hasAnyEditingRow}
-          {...rowProps}
-          hover={onFooterRowClick ? !rowIsDisabled : false}
-          style={this.getStyle(this.props.index, this.props.level)}
-          onClick={(event) => {
-            !rowIsDisabled &&
-            onFooterRowClick &&
-              onFooterRowClick(event, this.props.data, (panelIndex) => {
-                const panel = detailPanel;
-                onToggleDetailPanel(this.props.path, panel);
-              });
-          }}
-        >
-          {renderColumns}
-        </TableRow>
-        {this.props.data.tableData.childRows &&
-          this.props.data.tableData.isTreeExpanded &&
-          this.props.data.tableData.childRows.map((data, index) => {
-            return (
-              <this.props.components.Row
-                {...this.props}
-                data={data}
-                index={index}
-                key={index}
-                level={this.props.level + 1}
-                path={[...this.props.path, index]}
-                onEditingCanceled={onEditingCanceled}
-                onEditingApproved={onEditingApproved}
-                hasAnyEditingRow={this.props.hasAnyEditingRow}
-                treeDataMaxLevel={treeDataMaxLevel}
-                errorState={this.props.errorState}
-              />
-            );
-          })
-        }
-      </>
+      <TableRow
+        selected={hasAnyEditingRow}
+        {...rowProps}
+        hover={onFooterRowClick ? !rowIsDisabled : false}
+        style={this.getStyle(this.props.index, this.props.level)}
+        onClick={(event) => {
+          !rowIsDisabled &&
+          onFooterRowClick &&
+            onFooterRowClick(event, this.props.data, (panelIndex) => {
+              const panel = detailPanel;
+              onToggleDetailPanel(this.props.path, panel);
+            });
+        }}
+      >
+        {renderColumns}
+      </TableRow>
     );
   }
 }
